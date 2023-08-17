@@ -40,8 +40,10 @@ public class Analizador_Lexico {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\12\0\1\5\1\5\1\5\1\5\34\0\1\3\1\1\1\0\1\2"+
-    "\1\0\1\4\12\0\113\0\1\5\u1fa2\0\1\5\1\5\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\12\0\1\13\1\13\1\13\1\13\34\0\1\3\1\1\1\0\1\2"+
+    "\1\0\1\4\12\0\13\0\1\10\7\0\1\7\1\5\1\12\2\0"+
+    "\1\11\2\0\1\6\17\0\1\10\7\0\1\7\1\5\1\12\2\0"+
+    "\1\11\2\0\1\6\17\0\1\13\u1fa2\0\1\13\1\13\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -54,10 +56,11 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\1\4\1\5\1\6";
+    "\1\0\1\1\1\2\1\3\1\4\1\5\1\1\1\6"+
+    "\4\0\1\7";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[7];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -82,10 +85,11 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\6\0\6\0\6\0\6\0\6\0\6";
+    "\0\0\0\14\0\14\0\14\0\14\0\14\0\30\0\14"+
+    "\0\44\0\60\0\74\0\110\0\14";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[7];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -108,10 +112,12 @@ public class Analizador_Lexico {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\7\6\0";
+    "\1\2\1\3\1\4\1\5\1\6\1\7\5\2\1\10"+
+    "\22\0\1\11\14\0\1\12\14\0\1\13\14\0\1\14"+
+    "\14\0\1\15\1\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[12];
+    int [] result = new int[84];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -149,10 +155,10 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\6\11";
+    "\1\0\5\11\1\1\1\11\4\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[7];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -230,6 +236,7 @@ public class Analizador_Lexico {
   /* user code: */
     //---> Codigo de usuario en sintaxis java
     public static LinkedList<TError> TablaEL = new LinkedList<TError>();
+    public static LinkedList<Tokens> tabla_tokens = new LinkedList<Tokens>();
     
 
 
@@ -253,7 +260,7 @@ public class Analizador_Lexico {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 70) {
+    while (i < 110) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -608,27 +615,33 @@ public class Analizador_Lexico {
                 TError datos = new TError(yytext(), yyline, yycolumn, "Error Lexico", "Simbolo no existe en el lenguaje");
                 TablaEL.add(datos);
             }
-          case 7: break;
-          case 2: 
-            { System.out.println("Reconocido " + yytext()+" mas");
-            }
           case 8: break;
+          case 2: 
+            { System.out.println("Reconocido " + yytext()+" mas"); 
+                            TError datos = new TError(yytext(), yyline, yycolumn, "Error Lexico", "Simbolo no existe en el lenguaje");
+                            TablaEL.add(datos);
+            }
+          case 9: break;
           case 3: 
             { System.out.println("Reconocido " + yytext()+" men");
             }
-          case 9: break;
+          case 10: break;
           case 4: 
             { System.out.println("Reconocido " + yytext()+" por");
             }
-          case 10: break;
+          case 11: break;
           case 5: 
             { System.out.println("Reconocido " + yytext()+" div");
             }
-          case 11: break;
+          case 12: break;
           case 6: 
             { System.out.print(yytext());
             }
-          case 12: break;
+          case 13: break;
+          case 7: 
+            { System.out.println(yytext() + " un numero");
+            }
+          case 14: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

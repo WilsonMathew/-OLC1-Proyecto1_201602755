@@ -15,6 +15,9 @@ import java.util.LinkedList;
     
 %}
 
+
+
+
 //---> Directivas
 
 %public
@@ -38,12 +41,15 @@ numero = [0-9]+
 /*------------------ 3ra Area: Reglas Lexicas            ------------------*/
 //---> Simbolos
 
-"+"                     {System.out.println("Reconocido " + yytext()+" mas"); }
+"+"                     {System.out.println("Reconocido " + yytext()+" mas"); 
+                            TError datos = new TError(yytext(), yyline, yycolumn, "Error Lexico", "Simbolo no existe en el lenguaje");
+                            TablaEL.add(datos);
+                        }
 "-"                     {System.out.println("Reconocido " + yytext()+" men"); }
 "*"                     {System.out.println("Reconocido " + yytext()+" por"); }
 "/"                     {System.out.println("Reconocido " + yytext()+" div"); }
 
-
+numero                  {System.out.println(yytext() + " un numero");}
 
 
 //---> Simbolos ER

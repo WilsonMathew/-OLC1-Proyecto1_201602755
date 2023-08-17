@@ -6,6 +6,10 @@
 package GUI;
 
 import java.awt.Color;
+import Analizadores.*;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -78,6 +82,11 @@ public class user_interface extends javax.swing.JFrame {
         jScrollPane4.setViewportView(text_salida);
 
         jButton1.setText("Ejecutar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setMaximumSize(new java.awt.Dimension(98, 300));
 
@@ -167,6 +176,7 @@ public class user_interface extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -184,6 +194,35 @@ public class user_interface extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_btn_togActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        File archivo = new File("archivo.txt");
+        PrintWriter escribir;
+        
+        try {    
+            escribir = new PrintWriter(archivo);
+            escribir.print(text_entrada.getText());
+            escribir.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(user_interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Reader lector;
+        try{
+            lector = new BufferedReader(new FileReader("archivo.txt"));
+            Analizador_Lexico lexer = new Analizador_Lexico(lector);
+            String resultado = "";
+            
+            while(true){
+                lexer.yylex();
+            }
+            
+        }catch(Exception e){
+            System.out.println("no lee esa mierda");
+        }
+        
+            
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

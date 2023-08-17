@@ -19,6 +19,7 @@ public class GLexico {
         String path = "C:/Users/mathew/Documents/NetBeansProjects/[OLC1]Proyecto1_201602755/src/Analizadores/A_Lexico.jflex";
         //String[] rutaS ={"-parser", "Sintax","C:/Users/mathew/Documents/NetBeansProjects/simple_lexical_analyzer/src/Analizadores/A_Sintactico.cup"};
         generar(path);
+        
     }
     
     public static void generar(String path){
