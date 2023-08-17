@@ -464,6 +464,20 @@ public class Analizador_Lexico {
 
 
   /**
+   * Contains user EOF-code, which will be executed exactly once,
+   * when the end of file is reached
+   */
+  private void zzDoEOF() {
+    if (!zzEOFDone) {
+      zzEOFDone = true;
+        System.out.println("Llegamos al final de esta mierda");
+    System.out.println(TablaEL.toString());
+
+    }
+  }
+
+
+  /**
    * Resumes scanning until the next regular expression is matched,
    * the end of input is encountered or an I/O-Error occurs.
    *
@@ -606,6 +620,7 @@ public class Analizador_Lexico {
 
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
+            zzDoEOF();
         return YYEOF;
       }
       else {

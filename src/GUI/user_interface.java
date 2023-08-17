@@ -213,7 +213,8 @@ public class user_interface extends javax.swing.JFrame {
             Analizador_Lexico lexer = new Analizador_Lexico(lector);
             String resultado = "";
             
-            while(true){
+            int c;
+            while(-1 != (lector.read())){
                 lexer.yylex();
             }
             

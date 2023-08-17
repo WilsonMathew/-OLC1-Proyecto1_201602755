@@ -15,6 +15,11 @@ import java.util.LinkedList;
     
 %}
 
+%eof{
+    System.out.println("Llegamos al final de esta mierda");
+    System.out.println(TablaEL.toString());
+%eof}
+
 
 
 
