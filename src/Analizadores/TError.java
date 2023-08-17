@@ -10,14 +10,54 @@ package Analizadores;
  * @author mathew
  */
 public class TError {
-    String lexema, tipo, descripcion;
+    String lexema, descripcion;
     int linea, columna;
     
-    public TError(String le, int li, int co, String t, String de){
+    public TError(String le, String de, int li, int co ){
         lexema = le;
         linea = li;
         columna = co;
-        tipo = t;
         descripcion = de;
+    }
+    
+    @Override
+    public String toString(){
+        return "{" + "lexema: "     + this.lexema       + " "
+                   + "des: "        + this.descripcion  + " "
+                   + "linea: "      + this.linea        + " " 
+                   + "columna: "    + this.columna      + " "
+                + "} \n";
+    }
+
+    public void setLexema(String lexema) {
+        this.lexema = lexema;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setLinea(int linea) {
+        this.linea = linea;
+    }
+
+    public void setColumna(int columna) {
+        this.columna = columna;
+    }
+
+    public String getLexema() {
+        return lexema;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public int getLinea() {
+        return linea;
+    }
+
+    public int getColumna() {
+        return columna;
     }
 }

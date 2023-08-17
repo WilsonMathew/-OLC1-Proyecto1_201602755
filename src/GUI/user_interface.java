@@ -22,6 +22,7 @@ public class user_interface extends javax.swing.JFrame {
      */
     public user_interface() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -201,7 +202,8 @@ public class user_interface extends javax.swing.JFrame {
         
         try {    
             escribir = new PrintWriter(archivo);
-            escribir.print(text_entrada.getText());
+            escribir.print(" " + text_entrada.getText());
+            //System.out.println("Entrada: \n" + text_entrada.getText());
             escribir.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(user_interface.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,13 +213,13 @@ public class user_interface extends javax.swing.JFrame {
         try{
             lector = new BufferedReader(new FileReader("archivo.txt"));
             Analizador_Lexico lexer = new Analizador_Lexico(lector);
-            String resultado = "";
             
             int c;
             while(-1 != (lector.read())){
                 lexer.yylex();
             }
             
+            System.out.println(lexer.TablaEL);
         }catch(Exception e){
             System.out.println("no lee esa mierda");
         }

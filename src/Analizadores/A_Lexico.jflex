@@ -17,7 +17,7 @@ import java.util.LinkedList;
 
 %eof{
     System.out.println("Llegamos al final de esta mierda");
-    System.out.println(TablaEL.toString());
+    //System.out.println(TablaEL.toString());
 %eof}
 
 
@@ -46,26 +46,21 @@ numero = [0-9]+
 /*------------------ 3ra Area: Reglas Lexicas            ------------------*/
 //---> Simbolos
 
-"+"                     {System.out.println("Reconocido " + yytext()+" mas"); 
-                            TError datos = new TError(yytext(), yyline, yycolumn, "Error Lexico", "Simbolo no existe en el lenguaje");
-                            TablaEL.add(datos);
-                        }
+"+"                     {System.out.println("Reconocido " + yytext()+" mas"); }
 "-"                     {System.out.println("Reconocido " + yytext()+" men"); }
 "*"                     {System.out.println("Reconocido " + yytext()+" por"); }
 "/"                     {System.out.println("Reconocido " + yytext()+" div"); }
 
-numero                  {System.out.println(yytext() + " un numero");}
-
-
 //---> Simbolos ER
+{numero}                {System.out.println("Reconocido " + yytext()+" numero"); }
 
 //---> Espacios 
-//[\t\r\n\f\s]                          {/* White spaces */}
+[\t\r\n\f\s]                          {/* White spaces */}
 
 //---> Errores Lexicos
 
 .            {
                 System.out.println("Error Lexico    " + yytext()+ "     Linea " + yyline + " Columna " + yycolumn); 
-                TError datos = new TError(yytext(), yyline, yycolumn, "Error Lexico", "Simbolo no existe en el lenguaje");
+                TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
              }
