@@ -8,6 +8,7 @@ package GUI;
 import java.awt.Color;
 import Analizadores.*;
 import java.io.*;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -219,14 +220,197 @@ public class user_interface extends javax.swing.JFrame {
                 lexer.yylex();
             }
             
-            System.out.println(lexer.TablaEL);
+            //System.out.println(lexer.TablaEL);
+            System.out.println(lexer.tabla_tokens);
+            
+            reporte_tokens(lexer.tabla_tokens);
+            lexer.tabla_tokens.clear();
+            
+            // Genera reporte de erroes lexicos en HTMl
+            reporte_errores_lexicos(lexer.TablaEL);
+            lexer.TablaEL.clear();
+            //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
         }catch(Exception e){
+            
             System.out.println("no lee esa mierda");
         }
         
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void reporte_tokens(LinkedList<Tokens> tabla_tokens){
+        try{
+            PrintWriter file_out;
+
+            file_out =  new PrintWriter("Tabla_de_tokens.html");
+
+            file_out.println(   "<!DOCTYPE html>\n" +
+                                "<html>\n" +
+                                "<head>\n" +
+                                "  <title> Reporte de Tokens </title>\n" +
+                                "  <style>\n" +
+                                "    body {\n" +
+                                "      font-family: Arial, sans-serif;\n" +
+                                "      margin: 0;\n" +
+                                "      padding: 0;\n" +
+                                "      background-color: #c4cef9;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    h2 {\n" +
+                                "      text-align: center;\n" +
+                                "      padding: 20px;\n" +
+                                "      color: #000000;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    table {\n" +
+                                "      border-collapse: collapse;\n" +
+                                "      width: 80%;\n" +
+                                "      margin: 20px auto;\n" +
+                                "      background-color: #fff3e0;\n" +
+                                "      border: 1px solid #e57373;\n" +
+                                "      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th, td {\n" +
+                                "      border: 1px solid #ffcdd2;\n" +
+                                "      padding: 10px;\n" +
+                                "      text-align: left;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th {\n" +
+                                "      background-color: #ffcc80;\n" +
+                                "      color: #d84315;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    tr:nth-child(even) {\n" +
+                                "      background-color: #ffecb3;\n" +
+                                "    }\n" +
+                                "  </style>\n" +
+                                "</head>\n" +
+                                "<body>\n" +
+                                "\n" +
+                                "<h2> Reporte de Tokens </h2>");
+           
+                    //Table 
+                    file_out.println(   "<table>\n" +
+                                        "  <tr>\n" +
+                                        "    <th> Lexema </th>\n" +
+                                        "    <th> Descripcion </th>\n" +
+                                        "    <th> Linea </th>\n" +
+                                        "    <th> Columna </th>\n" +
+                                        "  </tr>\n" +
+                                        "  \n"
+                                        );
+                    
+                    for(Tokens item: tabla_tokens){
+                        file_out.println("  <tr>\n" +
+                                        "    <td>" + item.getLexema()       + "</td>\n" +
+                                        "    <td>" + item.getToken()        + "</td>\n" +
+                                        "    <td>" + item.getLinea()        + "</td>\n" +
+                                        "    <td>" + item.getColumna()      + "</td>\n" +
+                                        "  </tr>\n"
+                                    );
+                    }
+                    
+                    file_out.println(   "</table>\n" +
+                                        "</body>\n" +
+                                        "</html>");
+
+            System.out.println("Generated html table for Tokens");
+
+            file_out.close();
+        }catch(FileNotFoundException e){
+            System.out.println("not found");
+        }
+        
+    }
+    
+    public void reporte_errores_lexicos(LinkedList<TError> TablaEL){
+        try{
+            PrintWriter file_out;
+
+            file_out =  new PrintWriter("Tabla_errores_lexicos.html");
+
+            file_out.println(   "<!DOCTYPE html>\n" +
+                                "<html>\n" +
+                                "<head>\n" +
+                                "  <title>Reporte de Errores</title>\n" +
+                                "  <style>\n" +
+                                "    body {\n" +
+                                "      font-family: Arial, sans-serif;\n" +
+                                "      margin: 0;\n" +
+                                "      padding: 0;\n" +
+                                "      background-color: #008B95;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    h2 {\n" +
+                                "      text-align: center;\n" +
+                                "      padding: 20px;\n" +
+                                "      color: #FFFFFF;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    table {\n" +
+                                "      border-collapse: collapse;\n" +
+                                "      width: 80%;\n" +
+                                "      margin: 20px auto;\n" +
+                                "      background-color: #fff3e0;\n" +
+                                "      border: 1px solid #e57373;\n" +
+                                "      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th, td {\n" +
+                                "      border: 1px solid #ffcdd2;\n" +
+                                "      padding: 10px;\n" +
+                                "      text-align: left;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th {\n" +
+                                "      background-color: #ffcc80;\n" +
+                                "      color: #d84315;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    tr:nth-child(even) {\n" +
+                                "      background-color: #ffecb3;\n" +
+                                "    }\n" +
+                                "  </style>\n" +
+                                "</head>\n" +
+                                "<body>\n" +
+                                "\n" +
+                                "<h2> Tabla de errores Lexicos </h2>");
+           
+                    //Table 
+                    file_out.println(   "<table>\n" +
+                                        "  <tr>\n" +
+                                        "    <th> Lexema </th>\n" +
+                                        "    <th> Descripcion </th>\n" +
+                                        "    <th> Linea </th>\n" +
+                                        "    <th> Columna </th>\n" +
+                                        "  </tr>\n" +
+                                        "  \n"
+                                        );
+                    
+                    for(TError item: TablaEL){
+                        file_out.println("  <tr>\n" +
+                                        "    <td>" + item.getLexema()       + "</td>\n" +
+                                        "    <td>" + item.getDescripcion()  + "</td>\n" +
+                                        "    <td>" + item.getLinea()        + "</td>\n" +
+                                        "    <td>" + item.getColumna()      + "</td>\n" +
+                                        "  </tr>\n"
+                                    );
+                    }
+                    
+                    file_out.println(   "</table>\n" +
+                                        "</body>\n" +
+                                        "</html>");
+
+            System.out.println("Generated html table for errores lexicos");
+
+            file_out.close();
+        }catch(FileNotFoundException e){
+            System.out.println("not found");
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */

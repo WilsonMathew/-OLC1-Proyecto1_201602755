@@ -46,7 +46,7 @@ numero = [0-9]+
 /*------------------ 3ra Area: Reglas Lexicas            ------------------*/
 //---> Simbolos
 
-"+"                     {System.out.println("Reconocido " + yytext()+" mas"); }
+"+"                     {System.out.println("Reconocido " + yytext()+" mas");  tabla_tokens.add(new Tokens(yytext() ," Simbolo_mas " ,yyline ,yycolumn));}
 "-"                     {System.out.println("Reconocido " + yytext()+" men"); }
 "*"                     {System.out.println("Reconocido " + yytext()+" por"); }
 "/"                     {System.out.println("Reconocido " + yytext()+" div"); }
@@ -60,7 +60,7 @@ numero = [0-9]+
 //---> Errores Lexicos
 
 .            {
-                System.out.println("Error Lexico    " + yytext()+ "     Linea " + yyline + " Columna " + yycolumn); 
+                System.out.println(" Error Lexico " + yytext() + " Linea " + yyline + " Columna " + yycolumn); 
                 TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
              }

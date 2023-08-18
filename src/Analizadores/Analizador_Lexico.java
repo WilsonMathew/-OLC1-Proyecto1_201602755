@@ -623,7 +623,7 @@ public class Analizador_Lexico {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println("Error Lexico    " + yytext()+ "     Linea " + yyline + " Columna " + yycolumn); 
+            { System.out.println(" Error Lexico " + yytext() + " Linea " + yyline + " Columna " + yycolumn); 
                 TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
             }
@@ -633,7 +633,7 @@ public class Analizador_Lexico {
             }
           case 9: break;
           case 3: 
-            { System.out.println("Reconocido " + yytext()+" mas");
+            { System.out.println("Reconocido " + yytext()+" mas");  tabla_tokens.add(new Tokens(yytext() ," Simbolo_mas " ,yyline ,yycolumn));
             }
           case 10: break;
           case 4: 

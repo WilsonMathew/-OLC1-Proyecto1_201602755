@@ -468,7 +468,7 @@ public class Analizador_Lexico {
     if (!zzEOFDone) {
       zzEOFDone = true;
         System.out.println("Llegamos al final de esta mierda");
-    System.out.println(TablaEL.toString());
+    //System.out.println(TablaEL.toString());
 
     }
   }
