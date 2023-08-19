@@ -29,17 +29,22 @@ import java.util.LinkedList;
 %class Analizador_Lexico
 //%cupsym Simbolos
 //%cup
-//%char
+%char
 %column
-//%full
+%full
 %ignorecase
 %line
 %unicode
 %standalone
 
-//---> Expresiones Regulares
-numero      = [0-9]+(\.[0-9]+)?
-tipo_dato  = "int" | "double" | "char" | "bool" | "string" 
+//---> Expresiones Regulares 
+comentario              = "//"[^\n]*\n 
+multi_comentario        = "/*"([^*]|("*"+[^*/]))*"*/"
+DIGIT                   = [0-9]
+numero                  = {DIGIT}+(\.{DIGIT}+)?([eE][+-]?{DIGIT}+)?
+id                      = [a-zA-Z_][a-zA-Z0-9_]*
+string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
+
  
 //---> Estados
 %%
@@ -93,6 +98,10 @@ tipo_dato  = "int" | "double" | "char" | "bool" | "string"
 "definirglobales"       {System.out.println("Reconocido " + yytext()+" reservada_definirglobales");     tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));}
 "string"                {System.out.println("Reconocido " + yytext()+" reservada_string");      tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));}
 "double"                {System.out.println("Reconocido " + yytext()+" reservada_double");      tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));}
+"int"                   {System.out.println("Reconocido " + yytext()+" reservada_int");         tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));}
+"char"                  {System.out.println("Reconocido " + yytext()+" reservada_char");        tabla_tokens.add(new Tokens(yytext() ,"reservada_char" ,yyline ,yycolumn));}
+"bool"                  {System.out.println("Reconocido " + yytext()+" reservada_bool");        tabla_tokens.add(new Tokens(yytext() ,"reservada_bool" ,yyline ,yycolumn));}
+
 "graficabarras"         {System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));}
 "graficapie"            {System.out.println("Reconocido " + yytext()+" reservada_graficapie");          tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));}
 "titulo"                {System.out.println("Reconocido " + yytext()+" reservada_titulo");      tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));}
@@ -105,7 +114,10 @@ tipo_dato  = "int" | "double" | "char" | "bool" | "string"
 
 //---> Simbolos ER
 {numero}                {System.out.println("Reconocido " + yytext()+" numero"); tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); }
-{tipo_dato}             {System.out.println("Reconocido " + yytext()+" numero"); tabla_tokens.add(new Tokens(yytext() , "tipo_dato" ,yyline ,yycolumn)); }
+{comentario}            {System.out.println("Reconocido " + yytext()+" comentario"); tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); }
+{multi_comentario}      {System.out.println("Reconocido " + yytext()+" multi_comentario"); tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); }
+{id}                    {System.out.println("Reconocido " + yytext()+" id"); tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); }
+{string_literal}        {System.out.println("Reconocido " + yytext()+" string_literal"); tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); }
 
 
 //---> Espacios 
