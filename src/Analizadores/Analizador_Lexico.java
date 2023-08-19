@@ -40,10 +40,18 @@ public class Analizador_Lexico {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\6\1\6\1\6\1\6\1\6\22\0\1\6\11\0\1\4"+
-    "\1\2\1\0\1\3\1\0\1\5\12\1\113\0\1\6\32\0\1\6"+
-    "\u15df\0\1\6\u097f\0\13\6\35\0\1\6\1\6\5\0\1\6\57\0"+
-    "\1\6\u0fa0\0\1\6\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\ud00f\0";
+    "\11\0\1\57\1\57\1\57\1\57\1\57\22\0\1\57\1\43\2\0"+
+    "\1\31\1\0\1\44\1\0\1\24\1\25\1\37\1\35\1\34\1\36"+
+    "\1\2\1\40\12\1\1\23\1\22\1\42\1\30\1\41\2\0\1\16"+
+    "\1\11\1\14\1\6\1\13\1\51\1\21\1\15\1\3\1\54\1\53"+
+    "\1\12\1\50\1\4\1\7\1\46\1\0\1\17\1\20\1\5\1\10"+
+    "\1\47\1\52\1\55\1\56\1\0\1\32\1\0\1\33\3\0\1\16"+
+    "\1\11\1\14\1\6\1\13\1\51\1\21\1\15\1\3\1\54\1\53"+
+    "\1\12\1\50\1\4\1\7\1\46\1\0\1\17\1\20\1\5\1\10"+
+    "\1\47\1\52\1\55\1\56\1\0\1\26\1\45\1\27\7\0\1\57"+
+    "\32\0\1\57\217\0\2\3\115\0\1\20\u1500\0\1\57\u097f\0\13\57"+
+    "\35\0\1\57\1\57\5\0\1\57\57\0\1\57\312\0\1\53\u0ed5\0"+
+    "\1\57\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\ud00f\0";
 
   /** 
    * Translates characters to character classes
@@ -56,10 +64,19 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7";
+    "\1\0\1\1\1\2\11\1\1\3\1\4\1\5\1\6"+
+    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
+    "\1\17\1\20\1\21\1\22\1\23\1\24\6\1\1\25"+
+    "\2\0\1\26\2\0\1\27\12\0\1\30\1\31\1\32"+
+    "\1\33\1\34\1\35\5\0\1\2\1\36\21\0\1\37"+
+    "\7\0\1\40\1\0\1\41\3\0\1\42\1\0\1\43"+
+    "\6\0\1\44\5\0\1\45\1\0\1\46\1\0\1\47"+
+    "\2\0\1\50\1\51\3\0\1\52\1\53\4\0\1\54"+
+    "\1\55\1\56\13\0\1\57\7\0\1\60\1\61\1\0"+
+    "\1\62";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[8];
+    int [] result = new int[156];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -84,10 +101,29 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\7\0\16\0\7\0\7\0\7\0\7\0\7";
+    "\0\0\0\60\0\140\0\220\0\300\0\360\0\u0120\0\u0150"+
+    "\0\u0180\0\u01b0\0\u01e0\0\u0210\0\60\0\60\0\60\0\60"+
+    "\0\60\0\60\0\u0240\0\60\0\60\0\60\0\60\0\60"+
+    "\0\60\0\60\0\60\0\u0270\0\u02a0\0\u02d0\0\u0300\0\u0330"+
+    "\0\u0360\0\u0390\0\u03c0\0\u03f0\0\60\0\u0420\0\u0450\0\60"+
+    "\0\u0480\0\u04b0\0\u04e0\0\u0510\0\u0540\0\u0570\0\u05a0\0\u05d0"+
+    "\0\u0600\0\u0630\0\u0660\0\u0690\0\u06c0\0\60\0\60\0\60"+
+    "\0\60\0\60\0\60\0\u06f0\0\u0720\0\u0750\0\u0780\0\u07b0"+
+    "\0\u0420\0\60\0\u07e0\0\u0810\0\u0840\0\u0870\0\u08a0\0\u08d0"+
+    "\0\u0900\0\u0930\0\u0960\0\u0990\0\u09c0\0\u09f0\0\u0a20\0\u0a50"+
+    "\0\u0a80\0\u0ab0\0\u0ae0\0\60\0\u0b10\0\u0b40\0\u0b70\0\u0ba0"+
+    "\0\u0bd0\0\u0c00\0\u0c30\0\60\0\u0c60\0\60\0\u0c90\0\u0cc0"+
+    "\0\u0cf0\0\60\0\u0d20\0\60\0\u0d50\0\u0d80\0\u0db0\0\u0de0"+
+    "\0\u0e10\0\u0e40\0\60\0\u0e70\0\u0ea0\0\u0ed0\0\u0f00\0\u0f30"+
+    "\0\60\0\u0f60\0\u0f90\0\u0fc0\0\60\0\u0ff0\0\u1020\0\60"+
+    "\0\60\0\u1050\0\u1080\0\u10b0\0\60\0\60\0\u10e0\0\u1110"+
+    "\0\u1140\0\u1170\0\60\0\60\0\60\0\u11a0\0\u11d0\0\u1200"+
+    "\0\u1230\0\u1260\0\u1290\0\u12c0\0\u12f0\0\u1320\0\u1350\0\u1380"+
+    "\0\60\0\u13b0\0\u13e0\0\u1410\0\u1440\0\u1470\0\u14a0\0\u14d0"+
+    "\0\60\0\60\0\u1500\0\60";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[8];
+    int [] result = new int[156];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -110,11 +146,45 @@ public class Analizador_Lexico {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\7\1\10\10\0"+
-    "\1\3\5\0";
+    "\1\2\1\3\1\2\1\4\1\5\1\6\1\7\2\2"+
+    "\1\10\1\2\1\11\1\12\3\2\1\13\1\14\1\15"+
+    "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
+    "\1\26\1\27\1\30\1\31\1\32\1\33\1\34\1\35"+
+    "\1\36\1\37\1\40\1\2\1\41\1\42\1\43\1\44"+
+    "\4\2\1\45\61\0\1\3\1\46\61\0\1\47\44\0"+
+    "\1\50\21\0\1\51\47\0\1\52\63\0\1\53\3\0"+
+    "\1\54\53\0\1\55\7\0\1\56\114\0\1\57\12\0"+
+    "\1\60\5\0\1\61\1\62\46\0\1\63\44\0\1\64"+
+    "\24\0\1\65\70\0\1\66\57\0\1\67\57\0\1\70"+
+    "\57\0\1\71\73\0\1\72\60\0\1\73\21\0\1\74"+
+    "\6\0\1\75\57\0\1\76\50\0\1\77\65\0\1\100"+
+    "\43\0\1\101\63\0\1\102\124\0\1\103\12\0\1\104"+
+    "\40\0\1\105\21\0\1\106\120\0\1\107\15\0\1\110"+
+    "\63\0\1\111\57\0\1\112\50\0\1\113\71\0\1\114"+
+    "\61\0\1\115\56\0\1\116\43\0\1\117\72\0\1\120"+
+    "\44\0\1\121\66\0\1\122\50\0\1\123\73\0\1\124"+
+    "\43\0\1\125\123\0\1\126\20\0\1\127\56\0\1\130"+
+    "\61\0\1\131\51\0\1\132\66\0\1\102\63\0\1\133"+
+    "\116\0\1\134\22\0\1\135\56\0\1\102\53\0\1\136"+
+    "\47\0\1\137\61\0\1\140\123\0\1\141\14\0\1\142"+
+    "\60\0\1\143\54\0\1\144\65\0\1\145\63\0\1\146"+
+    "\53\0\1\147\53\0\1\150\63\0\1\151\51\0\1\152"+
+    "\126\0\1\153\13\0\1\154\54\0\1\155\67\0\1\156"+
+    "\46\0\1\157\73\0\1\160\53\0\1\161\56\0\1\162"+
+    "\54\0\1\163\66\0\1\164\54\0\1\165\47\0\1\166"+
+    "\66\0\1\167\66\0\1\170\53\0\1\171\56\0\1\172"+
+    "\56\0\1\173\53\0\1\174\125\0\1\175\1\176\6\0"+
+    "\1\177\71\0\1\200\53\0\1\201\62\0\1\202\61\0"+
+    "\1\203\56\0\1\204\47\0\1\205\71\0\1\206\40\0"+
+    "\1\207\66\0\1\210\34\0\1\211\23\0\1\212\117\0"+
+    "\1\213\23\0\1\214\44\0\1\215\63\0\1\216\67\0"+
+    "\1\217\57\0\1\220\53\0\1\221\55\0\1\222\51\0"+
+    "\1\223\73\0\1\224\56\0\1\225\46\0\1\226\70\0"+
+    "\1\227\53\0\1\230\60\0\1\231\64\0\1\232\52\0"+
+    "\1\233\64\0\1\234\37\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[21];
+    int [] result = new int[5424];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -152,10 +222,15 @@ public class Analizador_Lexico {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\1\1\5\11";
+    "\1\0\1\11\12\1\6\11\1\1\10\11\11\1\1\11"+
+    "\2\0\1\11\2\0\1\1\12\0\6\11\5\0\1\1"+
+    "\1\11\21\0\1\11\7\0\1\11\1\0\1\11\3\0"+
+    "\1\11\1\0\1\11\6\0\1\11\5\0\1\11\1\0"+
+    "\1\1\1\0\1\11\2\0\2\11\3\0\2\11\4\0"+
+    "\3\11\13\0\1\11\7\0\2\11\1\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[8];
+    int [] result = new int[156];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -257,7 +332,7 @@ public class Analizador_Lexico {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 100) {
+    while (i < 256) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -627,31 +702,203 @@ public class Analizador_Lexico {
                 TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
             }
-          case 8: break;
+          case 51: break;
           case 2: 
-            { System.out.println("Reconocido " + yytext()+" numero");
+            { System.out.println("Reconocido " + yytext()+" numero"); tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn));
             }
-          case 9: break;
+          case 52: break;
           case 3: 
-            { System.out.println("Reconocido " + yytext()+" mas");  tabla_tokens.add(new Tokens(yytext() ," Simbolo_mas " ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" punto_coma");  tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
             }
-          case 10: break;
+          case 53: break;
           case 4: 
-            { System.out.println("Reconocido " + yytext()+" men");
+            { System.out.println("Reconocido " + yytext()+" dos_puntos");  tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
             }
-          case 11: break;
+          case 54: break;
           case 5: 
-            { System.out.println("Reconocido " + yytext()+" por");
+            { System.out.println("Reconocido " + yytext()+" open_pare");   tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
             }
-          case 12: break;
+          case 55: break;
           case 6: 
-            { System.out.println("Reconocido " + yytext()+" div");
+            { System.out.println("Reconocido " + yytext()+" close_pare");  tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
             }
-          case 13: break;
+          case 56: break;
           case 7: 
+            { System.out.println("Reconocido " + yytext()+" open_brace");  tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
+            }
+          case 57: break;
+          case 8: 
+            { System.out.println("Reconocido " + yytext()+" close_brace"); tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
+            }
+          case 58: break;
+          case 9: 
+            { System.out.println("Reconocido " + yytext()+" igual");       tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
+            }
+          case 59: break;
+          case 10: 
+            { System.out.println("Reconocido " + yytext()+" dollar");      tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
+            }
+          case 60: break;
+          case 11: 
+            { System.out.println("Reconocido " + yytext()+" open_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
+            }
+          case 61: break;
+          case 12: 
+            { System.out.println("Reconocido " + yytext()+" close_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
+            }
+          case 62: break;
+          case 13: 
+            { System.out.println("Reconocido " + yytext()+" coma");        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
+            }
+          case 63: break;
+          case 14: 
+            { System.out.println("Reconocido " + yytext()+" mas");   tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));
+            }
+          case 64: break;
+          case 15: 
+            { System.out.println("Reconocido " + yytext()+" menos"); tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));
+            }
+          case 65: break;
+          case 16: 
+            { System.out.println("Reconocido " + yytext()+" multi"); tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
+            }
+          case 66: break;
+          case 17: 
+            { System.out.println("Reconocido " + yytext()+" divi");  tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
+            }
+          case 67: break;
+          case 18: 
+            { System.out.println("Reconocido " + yytext()+" mayor");         tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
+            }
+          case 68: break;
+          case 19: 
+            { System.out.println("Reconocido " + yytext()+" menor");         tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
+            }
+          case 69: break;
+          case 20: 
+            { System.out.println("Reconocido " + yytext()+" not");           tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
+            }
+          case 70: break;
+          case 21: 
             { /* White spaces */
             }
-          case 14: break;
+          case 71: break;
+          case 22: 
+            { System.out.println("Reconocido " + yytext()+" reservada_if");          tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
+            }
+          case 72: break;
+          case 23: 
+            { System.out.println("Reconocido " + yytext()+" reservada_do");          tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));
+            }
+          case 73: break;
+          case 24: 
+            { System.out.println("Reconocido " + yytext()+" igual_relacional");         tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
+            }
+          case 74: break;
+          case 25: 
+            { System.out.println("Reconocido " + yytext()+" mayor_igual");   tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
+            }
+          case 75: break;
+          case 26: 
+            { System.out.println("Reconocido " + yytext()+" menor_igual");   tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
+            }
+          case 76: break;
+          case 27: 
+            { System.out.println("Reconocido " + yytext()+" distinto");      tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
+            }
+          case 77: break;
+          case 28: 
+            { System.out.println("Reconocido " + yytext()+" and");           tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
+            }
+          case 78: break;
+          case 29: 
+            { System.out.println("Reconocido " + yytext()+" or");            tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
+            }
+          case 79: break;
+          case 30: 
+            { System.out.println("Reconocido " + yytext()+" numero"); tabla_tokens.add(new Tokens(yytext() , "tipo_dato" ,yyline ,yycolumn));
+            }
+          case 80: break;
+          case 31: 
+            { System.out.println("Reconocido " + yytext()+" reservada_for");         tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));
+            }
+          case 81: break;
+          case 32: 
+            { System.out.println("Reconocido " + yytext()+" reservada_ejex");        tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
+            }
+          case 82: break;
+          case 33: 
+            { System.out.println("Reconocido " + yytext()+" reservada_case");        tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));
+            }
+          case 83: break;
+          case 34: 
+            { System.out.println("Reconocido " + yytext()+" reservada_void");        tabla_tokens.add(new Tokens(yytext() ,"reservada_void" ,yyline ,yycolumn));
+            }
+          case 84: break;
+          case 35: 
+            { System.out.println("Reconocido " + yytext()+" reservada_main");        tabla_tokens.add(new Tokens(yytext() ,"reservada_main" ,yyline ,yycolumn));
+            }
+          case 85: break;
+          case 36: 
+            { System.out.println("Reconocido " + yytext()+" reservada_break");       tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
+            }
+          case 86: break;
+          case 37: 
+            { System.out.println("Reconocido " + yytext()+" reservada_while");       tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));
+            }
+          case 87: break;
+          case 38: 
+            { System.out.println("Reconocido " + yytext()+" reservada_titulo");      tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
+            }
+          case 88: break;
+          case 39: 
+            { System.out.println("Reconocido " + yytext()+" reservada_double");      tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));
+            }
+          case 89: break;
+          case 40: 
+            { System.out.println("Reconocido " + yytext()+" reservada_string");      tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));
+            }
+          case 90: break;
+          case 41: 
+            { System.out.println("Reconocido " + yytext()+" reservada_switch");      tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));
+            }
+          case 91: break;
+          case 42: 
+            { System.out.println("Reconocido " + yytext()+" reservada_titulox");     tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));
+            }
+          case 92: break;
+          case 43: 
+            { System.out.println("Reconocido " + yytext()+" reservada_tituloy");     tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));
+            }
+          case 93: break;
+          case 44: 
+            { System.out.println("Reconocido " + yytext()+" reservada_valores");     tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
+            }
+          case 94: break;
+          case 45: 
+            { System.out.println("Reconocido " + yytext()+" reservada_newvalor");    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
+            }
+          case 95: break;
+          case 46: 
+            { System.out.println("Reconocido " + yytext()+" reservada_tipodato");    tabla_tokens.add(new Tokens(yytext() ,"reservada_tipodato" ,yyline ,yycolumn));
+            }
+          case 96: break;
+          case 47: 
+            { System.out.println("Reconocido " + yytext()+" reservada_graficapie");          tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
+            }
+          case 97: break;
+          case 48: 
+            { System.out.println("Reconocido " + yytext()+" reservada_console");     tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
+            }
+          case 98: break;
+          case 49: 
+            { System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
+            }
+          case 99: break;
+          case 50: 
+            { System.out.println("Reconocido " + yytext()+" reservada_definirglobales");     tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
+            }
+          case 100: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
