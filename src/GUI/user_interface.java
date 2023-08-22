@@ -197,8 +197,29 @@ public class user_interface extends javax.swing.JFrame {
             
     }//GEN-LAST:event_btn_togActionPerformed
 
+    private void ejecutar(String codigoFuente){
+        
+        try {
+            Analizador_Lexico scan = new Analizador_Lexico(new java.io.StringReader(codigoFuente));
+            analisis_sintactico parser = new analisis_sintactico(scan);
+            parser.parse();
+            //System.out.println(scan.tabla_tokens);
+            reporte_tokens(scan.tabla_tokens);
+            scan.tabla_tokens.clear();
+            
+            // Genera reporte de erroes lexicos en HTMl
+            reporte_errores_lexicos(scan.TablaEL);
+            scan.TablaEL.clear();
+            System.out.println("pues analizo esta mierda");
+        } catch (Exception ex) {
+            Logger.getLogger(user_interface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        File archivo = new File("archivo.txt");
+       
+        //ejecutar(" 5 + 10 / 10 * 30 ");
+        
+         File archivo = new File("archivo.txt");
         PrintWriter escribir;
         
         try {    
@@ -214,11 +235,8 @@ public class user_interface extends javax.swing.JFrame {
         try{
             lector = new BufferedReader(new FileReader("archivo.txt"));
             Analizador_Lexico lexer = new Analizador_Lexico(lector);
-            
-            int c;
-            while(-1 != (lector.read())){
-                lexer.yylex();
-            }
+            analisis_sintactico parser = new analisis_sintactico(lexer);
+            parser.parse();
             
             //System.out.println(lexer.TablaEL);
             System.out.println(lexer.tabla_tokens);

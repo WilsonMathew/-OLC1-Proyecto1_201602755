@@ -2,7 +2,7 @@
 
 //----------> Paquetes, importaciones
 package Analizadores;
-//import java_cup.runtime.*;
+import java_cup.runtime.*;
 import java.util.LinkedList;
 
 
@@ -27,15 +27,15 @@ import java.util.LinkedList;
 
 %public
 %class Analizador_Lexico
-//%cupsym Simbolos
-//%cup
+%cupsym Simbolos
+%cup
 %char
 %column
 %full
 %ignorecase
 %line
 %unicode
-%standalone
+//%standalone
 
 //---> Expresiones Regulares 
 comentario              = "//"[^\n]*\n 
@@ -51,8 +51,14 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
 
 /*------------------ 3ra Area: Reglas Lexicas            ------------------*/
 //---> Simbolos
-";"                     {System.out.println("Reconocido " + yytext()+" punto_coma");  tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));}
-":"                     {System.out.println("Reconocido " + yytext()+" dos_puntos");  tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));}
+<YYINITIAL> ";"         {System.out.println("Reconocido " + yytext()+" punto_coma");  
+                        tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.punto_coma, yycolumn, yyline, yytext()); }
+
+":"                     {System.out.println("Reconocido " + yytext()+" dos_puntos");  
+                        tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
+                        }
+
 "("                     {System.out.println("Reconocido " + yytext()+" open_pare");   tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));}
 ")"                     {System.out.println("Reconocido " + yytext()+" close_pare");  tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));}
 "{"                     {System.out.println("Reconocido " + yytext()+" open_brace");  tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));}
@@ -65,10 +71,22 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
 
 
 //---> Operadores aritmeticos
-"+"                     {System.out.println("Reconocido " + yytext()+" mas");   tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));}
-"-"                     {System.out.println("Reconocido " + yytext()+" menos"); tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));}
-"*"                     {System.out.println("Reconocido " + yytext()+" multi"); tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));}
-"/"                     {System.out.println("Reconocido " + yytext()+" divi");  tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));}
+<YYINITIAL> "+"                     {System.out.println("Reconocido " + yytext()+" mas");   
+                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.Simbolo_mas, yycolumn, yyline, yytext()); 
+                        }
+<YYINITIAL> "-"                     {System.out.println("Reconocido " + yytext()+" menos"); 
+                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.Simbolo_menos, yycolumn, yyline, yytext()); 
+                        }
+<YYINITIAL> "*"                     {System.out.println("Reconocido " + yytext()+" multi"); 
+                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.Simbolo_multi, yycolumn, yyline, yytext()); 
+                        }
+<YYINITIAL> "/"                     {System.out.println("Reconocido " + yytext()+" divi");  
+                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.Simbolo_divi, yycolumn, yyline, yytext()); 
+                        }
 
 //---> Operadores relacionales
 ">"                     {System.out.println("Reconocido " + yytext()+" mayor");         tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));}
@@ -113,7 +131,10 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
 
 
 //---> Simbolos ER
-{numero}                {System.out.println("Reconocido " + yytext()+" numero"); tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); }
+<YYINITIAL> {numero}    {System.out.println("Reconocido " + yytext()+" numero"); 
+                        tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
+                        return new Symbol(Simbolos.numero, yycolumn, yyline, yytext()); 
+                        }
 {comentario}            {System.out.println("Reconocido " + yytext()+" comentario"); tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); }
 {multi_comentario}      {System.out.println("Reconocido " + yytext()+" multi_comentario"); tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); }
 {id}                    {System.out.println("Reconocido " + yytext()+" id"); tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); }

@@ -15,18 +15,38 @@ import java.io.IOException;
 public class GLexico {
         
     public static void main(String[] args) throws Exception{
-        //String path = "C:/Users/mathew/Documents/NetBeansProjects/Proyecto 1/src/Analizadores/A_Lexico.jflex";
-        String path = "C:/Users/mathew/Documents/NetBeansProjects/[OLC1]Proyecto1_201602755/src/Analizadores/A_Lexico.jflex";
-        //String[] rutaS ={"-parser", "Sintax","C:/Users/mathew/Documents/NetBeansProjects/simple_lexical_analyzer/src/Analizadores/A_Sintactico.cup"};
-        generar(path);
-        
+        compilar();
     }
     
-    public static void generar(String path){
-        File file = new File(path);
-        jflex.Main.generate(file);
+    public static void compilar(){
+        try{
+            String ruta = "src/Analizadores/";
+            String opcFlex[] = {ruta + "A_Lexico.jflex", "-d", ruta};
+            jflex.Main.generate(opcFlex);
+            
+            String opcCup[] = {"-destdir", ruta, "-parser", "analisis_sintactico","-symbols", "Simbolos", ruta+"A_Sintactico.cup"};
+            java_cup.Main.main(opcCup);
+            /*
+            cd C:\Users\mathew\Desktop\Compi 1\JflexyCupEjemplo\src\Analizadores
+            java -jar C:\java-cup-11b.jar -parser analisis_sintactico -symbols Simbolos A_Sintactico.cup
+            pause
+
+
+
+            //String path = "C:/Users/mathew/Documents/NetBeansProjects/Proyecto 1/src/Analizadores/A_Lexico.jflex";
+            String path = "C:/Users/mathew/Documents/NetBeansProjects/[OLC1]Proyecto1_201602755/src/Analizadores/A_Lexico.jflex";
+            String[] rutaS ={"-parser", "Sintax","C:/Users/mathew/Documents/NetBeansProjects/[OLC1]Proyecto1_201602755/src/Analizadores/A_Sintactico.cup"};
+            //generar(path);
+             
+            File file = new File(path);
+            jflex.Main.generate(file);
+            java_cup.Main.main(rutaS);
+            */
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
         
-        //java_cup.Main.main(rutaS);
+        
     }
     
 }

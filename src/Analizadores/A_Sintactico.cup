@@ -1,0 +1,77 @@
+/*------------------------- 1ra Area: Codigo de Usuario -------------------------*/
+package Analizadores;
+import java_cup.runtime.Symbol;
+import java.util.LinkedList;
+import java.io.*;
+
+//---> Codigo para el parser, variables, metodos.
+parser code
+{:  
+     public static LinkedList<TError> TablaES = new LinkedList<TError>();
+
+    // Metodo al que se llama automaticamente ante algun error sintactico
+    public void syntax_error(Symbol s){
+
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+
+        System.out.println("!!! Error Sintactico Recuperado");
+        System.out.println("\t\tLexema: " + lexema);
+        System.out.println("\t\tFila: " + fila);
+        System.out.println("\t\tColumna: " + columna);
+
+        TError datos = new TError(lexema ,"Error Sintactico" ,fila,columna);
+        TablaES.add(datos);
+    }
+
+    // Metodo al que se llama en el momento en que ya no es posible una recuperacion de errores
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
+    {
+        String lexema = s.value.toString();
+        int fila = s.right;
+        int columna = s.left;
+
+        System.out.println("!!! Error Sintactico, Panic Mode");
+        System.out.println("\t\tLexema: " + lexema);
+        System.out.println("\t\tFila: " + fila);
+        System.out.println("\t\tColumna: " + columna);
+
+        TError datos = new TError(lexema ,"Error Sintactico" ,fila,columna);
+        TablaES.add(datos);
+    }
+:}
+
+//--->
+action code
+{:
+:}
+
+/*------------------------- 2da Area: Declaraciones     -------------------------*/
+//---> declaracion de terminales
+terminal punto_coma, Simbolo_mas,  Simbolo_menos, Simbolo_multi, Simbolo_divi;
+terminal String numero;
+
+//---> declaracion de NO terminales
+non terminal String INICIO, E, ME;
+
+//---> precedencia de menor a mayor
+precedence left Simbolo_mas, Simbolo_menos;
+precedence left Simbolo_multi, Simbolo_divi;
+start with INICIO;
+
+/*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
+
+ME ::= ME E:a {:System.out.println("VALOR: " + a); :}
+    | E:a {:System.out.println("VALOR: " + a); :}
+    ;
+
+
+E::=  E Simbolo_mas E    {:System.out.println("encontro una suma"); :}
+    | E Simbolo_menos E
+    | E Simbolo_multi E
+    | E Simbolo_divi E
+    | numero
+    ;
+
+INICIO ::=ME;
