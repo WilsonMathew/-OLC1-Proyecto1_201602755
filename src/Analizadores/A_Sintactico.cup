@@ -62,16 +62,16 @@ start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
 
-ME ::= ME E:a {:System.out.println("VALOR: " + a); :}
-    | E:a {:System.out.println("VALOR: " + a); :}
+ME ::= ME E
+    | E
     ;
 
 
-E::=  E Simbolo_mas E    {:System.out.println("encontro una suma"); :}
+E::=  E:a Simbolo_mas:b E:c    {: System.out.println("Suma: " + a + " " + b + " " + c ); :}
     | E Simbolo_menos E
     | E Simbolo_multi E
     | E Simbolo_divi E
-    | numero
+    | numero:a {: RESULT = a;:}
     ;
 
 INICIO ::=ME;

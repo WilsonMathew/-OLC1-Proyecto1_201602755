@@ -33,9 +33,9 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\011\000\002\002\004\000\002\002\003\000\002\004" +
-    "\004\000\002\004\003\000\002\003\005\000\002\003\005" +
-    "\000\002\003\005\000\002\003\005\000\002\003\003" });
+    "\000\011\000\002\002\004\000\002\004\004\000\002\004" +
+    "\003\000\002\003\005\000\002\003\005\000\002\003\005" +
+    "\000\002\003\005\000\002\003\003\000\002\002\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -43,19 +43,19 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\017\000\004\011\004\001\002\000\016\002\ufff9\005" +
-    "\ufff9\006\ufff9\007\ufff9\010\ufff9\011\ufff9\001\002\000\006" +
-    "\002\000\011\004\001\002\000\016\002\ufffe\005\014\006" +
-    "\012\007\013\010\011\011\ufffe\001\002\000\004\002\010" +
-    "\001\002\000\004\002\001\001\002\000\004\011\004\001" +
-    "\002\000\004\011\004\001\002\000\004\011\004\001\002" +
-    "\000\004\011\004\001\002\000\016\002\ufffd\005\ufffd\006" +
-    "\ufffd\007\013\010\011\011\ufffd\001\002\000\016\002\ufffb" +
-    "\005\ufffb\006\ufffb\007\ufffb\010\ufffb\011\ufffb\001\002\000" +
-    "\016\002\ufffc\005\ufffc\006\ufffc\007\013\010\011\011\ufffc" +
-    "\001\002\000\016\002\ufffa\005\ufffa\006\ufffa\007\ufffa\010" +
-    "\ufffa\011\ufffa\001\002\000\016\002\uffff\005\014\006\012" +
-    "\007\013\010\011\011\uffff\001\002" });
+    "\000\017\000\004\011\004\001\002\000\016\002\ufffa\005" +
+    "\ufffa\006\ufffa\007\ufffa\010\ufffa\011\ufffa\001\002\000\016" +
+    "\002\uffff\005\015\006\013\007\014\010\012\011\uffff\001" +
+    "\002\000\006\002\ufff9\011\004\001\002\000\004\002\010" +
+    "\001\002\000\004\002\001\001\002\000\016\002\000\005" +
+    "\015\006\013\007\014\010\012\011\000\001\002\000\004" +
+    "\011\004\001\002\000\004\011\004\001\002\000\004\011" +
+    "\004\001\002\000\004\011\004\001\002\000\016\002\ufffe" +
+    "\005\ufffe\006\ufffe\007\014\010\012\011\ufffe\001\002\000" +
+    "\016\002\ufffc\005\ufffc\006\ufffc\007\ufffc\010\ufffc\011\ufffc" +
+    "\001\002\000\016\002\ufffd\005\ufffd\006\ufffd\007\014\010" +
+    "\012\011\ufffd\001\002\000\016\002\ufffb\005\ufffb\006\ufffb" +
+    "\007\ufffb\010\ufffb\011\ufffb\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -63,11 +63,11 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\017\000\010\002\006\003\005\004\004\001\001\000" +
-    "\002\001\001\000\004\003\020\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\003\017\001" +
-    "\001\000\004\003\016\001\001\000\004\003\015\001\001" +
-    "\000\004\003\014\001\001\000\002\001\001\000\002\001" +
+    "\000\017\000\010\002\006\003\004\004\005\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\003\010\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\003\020\001\001\000\004\003\017\001\001\000\004" +
+    "\003\016\001\001\000\004\003\015\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "" });
 
@@ -185,67 +185,43 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // INICIO ::= ME 
+          case 1: // ME ::= ME E 
             {
               String RESULT =null;
 
-              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
-            }
-          return CUP$analisis_sintactico$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // ME ::= ME E 
-            {
-              String RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		System.out.println("VALOR: " + a); 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ME",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // ME ::= E 
+          case 2: // ME ::= E 
             {
               String RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		System.out.println("VALOR: " + a); 
+
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ME",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // E ::= E Simbolo_mas E 
+          case 3: // E ::= E Simbolo_mas E 
             {
               String RESULT =null;
-		System.out.println("encontro una suma"); 
+		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
+		String c = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
+		 System.out.println("Suma: " + a + " " + b + " " + c ); 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // E ::= E Simbolo_menos E 
-            {
-              String RESULT =null;
-
-              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
-            }
-          return CUP$analisis_sintactico$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // E ::= E Simbolo_multi E 
-            {
-              String RESULT =null;
-
-              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
-            }
-          return CUP$analisis_sintactico$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // E ::= E Simbolo_divi E 
+          case 4: // E ::= E Simbolo_menos E 
             {
               String RESULT =null;
 
@@ -254,11 +230,41 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // E ::= numero 
+          case 5: // E ::= E Simbolo_multi E 
             {
               String RESULT =null;
 
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // E ::= E Simbolo_divi E 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // E ::= numero 
+            {
+              String RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
+		 RESULT = a; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("E",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // INICIO ::= ME 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
 
