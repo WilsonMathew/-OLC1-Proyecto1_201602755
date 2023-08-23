@@ -53,12 +53,14 @@ terminal punto_coma, Simbolo_mas,  Simbolo_menos, Simbolo_multi, Simbolo_divi;
 terminal String reservada_int,id, igual;
 terminal String reservada_console, open_pare, close_pare, string_literal;
 terminal String numero;
+terminal String reservada_if, open_brace, close_brace;
+
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
 non terminal String STMS, STMSLIST ; 
 non terminal String E, ME, DECLARATION_STMTS, DECLARATION_STMT;
-non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG;
+non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -66,10 +68,14 @@ precedence left Simbolo_multi, Simbolo_divi;
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
+
 INICIO ::= STMSLIST;
+
+
 
 STMS::= PRINT_STMT 
     | DECLARATION_STMT
+    | IF_STM
 ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -78,7 +84,7 @@ STMSLIST ::= STMSLIST STMS
 ;
 
 //---> Declaracion y asignacion de variables
-/* ---> Stand alone 
+/* Stand alone 
 DECLARATION_STMTS ::= DECLARATION_STMTS DECLARATION_STMT
                 | DECLARATION_STMT;
 */
@@ -99,10 +105,10 @@ E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
     ;
 
 //---> Sentencias imprimir
-/* ---> Stand alone 
 PRINT_STMTS::= PRINT_STMTS PRINT_STMT
             | PRINT_STMT
-;*/
+;
+
 
 PRINT_STMT::= reservada_console open_pare ARGS:a close_pare punto_coma {:System.out.println("print(" + a + ")" ); :}
 ;
@@ -117,3 +123,6 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
     | string_literal:a                         {: RESULT = a; :}
 ;
 
+//---> Sentencias IF
+
+IF_STM ::= reservada_if open_pare id close_pare open_brace PRINT_STMTS close_brace;

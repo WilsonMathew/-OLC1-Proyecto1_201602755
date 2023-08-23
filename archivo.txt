@@ -1,6 +1,4 @@
- INT B;
-console.WRITE("TEST");
-int c = 80 + 90 /80*40;
-
-console.write("hello world");
-console.write("yeah fuck you");
+ if(a){
+console.write(test);
+console.write("shombre putos");
+} 

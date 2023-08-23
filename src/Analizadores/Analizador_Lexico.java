@@ -966,11 +966,15 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 67: break;
           case 12: 
-            { System.out.println("Reconocido " + yytext()+" open_brace");  tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" open_brace");  
+                        tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.open_brace, yycolumn, yyline, yytext());
             }
           case 68: break;
           case 13: 
-            { System.out.println("Reconocido " + yytext()+" close_brace"); tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" close_brace"); 
+                        tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.close_brace, yycolumn, yyline, yytext());
             }
           case 69: break;
           case 14: 
@@ -1044,7 +1048,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 85: break;
           case 30: 
-            { System.out.println("Reconocido " + yytext()+" reservada_if");          tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_if");          
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_if, yycolumn, yyline, yytext());
             }
           case 86: break;
           case 31: 
@@ -1143,8 +1149,8 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
           case 109: break;
           case 54: 
             { System.out.println("Reconocido " + yytext()+" reservada_console");     
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
-                        return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
+                                tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
+                                return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
             }
           case 110: break;
           case 55: 

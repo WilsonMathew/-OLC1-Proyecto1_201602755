@@ -33,13 +33,15 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\026\000\002\002\004\000\002\002\003\000\002\003" +
-    "\003\000\002\003\003\000\002\004\004\000\002\004\003" +
-    "\000\002\010\005\000\002\010\007\000\002\006\004\000" +
-    "\002\006\003\000\002\005\005\000\002\005\005\000\002" +
-    "\005\005\000\002\005\005\000\002\005\003\000\002\012" +
-    "\007\000\002\013\004\000\002\013\003\000\002\014\005" +
-    "\000\002\014\005\000\002\014\003\000\002\014\003" });
+    "\000\032\000\002\002\004\000\002\002\003\000\002\003" +
+    "\003\000\002\003\003\000\002\003\003\000\002\004\004" +
+    "\000\002\004\003\000\002\010\005\000\002\010\007\000" +
+    "\002\006\004\000\002\006\003\000\002\005\005\000\002" +
+    "\005\005\000\002\005\005\000\002\005\005\000\002\005" +
+    "\003\000\002\011\004\000\002\011\003\000\002\012\007" +
+    "\000\002\013\004\000\002\013\003\000\002\014\005\000" +
+    "\002\014\005\000\002\014\003\000\002\014\003\000\002" +
+    "\015\011" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -47,35 +49,43 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\045\000\006\011\012\014\004\001\002\000\004\015" +
-    "\035\001\002\000\010\002\ufffc\011\ufffc\014\ufffc\001\002" +
-    "\000\010\002\000\011\012\014\004\001\002\000\010\002" +
-    "\ufffe\011\ufffe\014\ufffe\001\002\000\004\002\033\001\002" +
-    "\000\010\002\uffff\011\uffff\014\uffff\001\002\000\004\012" +
-    "\013\001\002\000\006\004\015\013\014\001\002\000\004" +
-    "\020\016\001\002\000\010\002\ufffb\011\ufffb\014\ufffb\001" +
+    "\000\057\000\010\011\004\014\011\021\012\001\002\000" +
+    "\004\012\042\001\002\000\012\002\ufffd\011\ufffd\014\ufffd" +
+    "\021\ufffd\001\002\000\012\002\ufffb\011\ufffb\014\ufffb\021" +
+    "\ufffb\001\002\000\012\002\uffff\011\uffff\014\uffff\021\uffff" +
+    "\001\002\000\004\002\041\001\002\000\004\015\026\001" +
+    "\002\000\004\015\016\001\002\000\012\002\000\011\004" +
+    "\014\011\021\012\001\002\000\012\002\ufffe\011\ufffe\014" +
+    "\ufffe\021\ufffe\001\002\000\012\002\ufffc\011\ufffc\014\ufffc" +
+    "\021\ufffc\001\002\000\004\012\017\001\002\000\004\016" +
+    "\020\001\002\000\004\022\021\001\002\000\004\014\011" +
+    "\001\002\000\006\014\011\023\024\001\002\000\006\014" +
+    "\ufff0\023\ufff0\001\002\000\012\002\uffe8\011\uffe8\014\uffe8" +
+    "\021\uffe8\001\002\000\006\014\ufff1\023\ufff1\001\002\000" +
+    "\006\012\032\017\027\001\002\000\012\005\uffe9\012\uffe9" +
+    "\016\uffe9\017\uffe9\001\002\000\012\005\036\012\uffed\016" +
+    "\uffed\017\uffed\001\002\000\010\012\032\016\034\017\027" +
+    "\001\002\000\012\005\uffea\012\uffea\016\uffea\017\uffea\001" +
+    "\002\000\012\005\036\012\uffee\016\uffee\017\uffee\001\002" +
+    "\000\004\004\035\001\002\000\014\002\uffef\011\uffef\014" +
+    "\uffef\021\uffef\023\uffef\001\002\000\006\012\040\017\037" +
+    "\001\002\000\012\005\uffeb\012\uffeb\016\uffeb\017\uffeb\001" +
+    "\002\000\012\005\uffec\012\uffec\016\uffec\017\uffec\001\002" +
+    "\000\004\002\001\001\002\000\006\004\044\013\043\001" +
+    "\002\000\004\020\045\001\002\000\012\002\ufffa\011\ufffa" +
+    "\014\ufffa\021\ufffa\001\002\000\016\004\ufff2\005\ufff2\006" +
+    "\ufff2\007\ufff2\010\ufff2\020\ufff2\001\002\000\006\004\060" +
+    "\020\045\001\002\000\016\004\ufff7\005\053\006\051\007" +
+    "\052\010\050\020\ufff7\001\002\000\004\020\045\001\002" +
+    "\000\004\020\045\001\002\000\004\020\045\001\002\000" +
+    "\004\020\045\001\002\000\016\004\ufff6\005\ufff6\006\ufff6" +
+    "\007\052\010\050\020\ufff6\001\002\000\016\004\ufff4\005" +
+    "\ufff4\006\ufff4\007\ufff4\010\ufff4\020\ufff4\001\002\000\016" +
+    "\004\ufff5\005\ufff5\006\ufff5\007\052\010\050\020\ufff5\001" +
     "\002\000\016\004\ufff3\005\ufff3\006\ufff3\007\ufff3\010\ufff3" +
-    "\020\ufff3\001\002\000\016\004\ufff8\005\026\006\024\007" +
-    "\025\010\023\020\ufff8\001\002\000\006\004\022\020\016" +
-    "\001\002\000\016\004\ufff9\005\026\006\024\007\025\010" +
-    "\023\020\ufff9\001\002\000\010\002\ufffa\011\ufffa\014\ufffa" +
-    "\001\002\000\004\020\016\001\002\000\004\020\016\001" +
-    "\002\000\004\020\016\001\002\000\004\020\016\001\002" +
-    "\000\016\004\ufff7\005\ufff7\006\ufff7\007\025\010\023\020" +
-    "\ufff7\001\002\000\016\004\ufff5\005\ufff5\006\ufff5\007\ufff5" +
-    "\010\ufff5\020\ufff5\001\002\000\016\004\ufff6\005\ufff6\006" +
-    "\ufff6\007\025\010\023\020\ufff6\001\002\000\016\004\ufff4" +
-    "\005\ufff4\006\ufff4\007\ufff4\010\ufff4\020\ufff4\001\002\000" +
-    "\004\002\001\001\002\000\010\002\ufffd\011\ufffd\014\ufffd" +
-    "\001\002\000\006\012\041\017\036\001\002\000\012\005" +
-    "\uffec\012\uffec\016\uffec\017\uffec\001\002\000\010\012\041" +
-    "\016\046\017\036\001\002\000\012\005\042\012\ufff0\016" +
-    "\ufff0\017\ufff0\001\002\000\012\005\uffed\012\uffed\016\uffed" +
-    "\017\uffed\001\002\000\006\012\044\017\043\001\002\000" +
-    "\012\005\uffee\012\uffee\016\uffee\017\uffee\001\002\000\012" +
-    "\005\uffef\012\uffef\016\uffef\017\uffef\001\002\000\012\005" +
-    "\042\012\ufff1\016\ufff1\017\ufff1\001\002\000\004\004\047" +
-    "\001\002\000\010\002\ufff2\011\ufff2\014\ufff2\001\002" });
+    "\020\ufff3\001\002\000\012\002\ufff9\011\ufff9\014\ufff9\021" +
+    "\ufff9\001\002\000\016\004\ufff8\005\053\006\051\007\052" +
+    "\010\050\020\ufff8\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -83,21 +93,25 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\045\000\014\002\007\003\004\004\005\010\006\012" +
-    "\010\001\001\000\002\001\001\000\002\001\001\000\010" +
-    "\003\033\010\006\012\010\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\006\005\016\006\017\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\005\020" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\005" +
-    "\031\001\001\000\004\005\030\001\001\000\004\005\027" +
-    "\001\001\000\004\005\026\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\006\013\036\014\037\001" +
-    "\001\000\002\001\001\000\004\014\044\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\000\057\000\016\002\007\003\005\004\012\010\013\012" +
+    "\006\015\004\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\012\003\014\010\013" +
+    "\012\006\015\004\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001" });
+    "\000\006\011\021\012\022\001\001\000\004\012\024\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\006\013\030\014\027\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\014\032\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\005\046\006\045\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\005\060" +
+    "\001\001\000\002\001\001\000\004\005\056\001\001\000" +
+    "\004\005\055\001\001\000\004\005\054\001\001\000\004" +
+    "\005\053\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -240,7 +254,16 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // STMSLIST ::= STMSLIST STMS 
+          case 4: // STMS ::= IF_STM 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",1, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // STMSLIST ::= STMSLIST STMS 
             {
               String RESULT =null;
 
@@ -249,7 +272,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // STMSLIST ::= STMS 
+          case 6: // STMSLIST ::= STMS 
             {
               String RESULT =null;
 
@@ -258,7 +281,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // DECLARATION_STMT ::= reservada_int id punto_coma 
+          case 7: // DECLARATION_STMT ::= reservada_int id punto_coma 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
@@ -270,7 +293,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // DECLARATION_STMT ::= reservada_int id igual ME punto_coma 
+          case 8: // DECLARATION_STMT ::= reservada_int id igual ME punto_coma 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-3)).left;
@@ -285,7 +308,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // ME ::= ME E 
+          case 9: // ME ::= ME E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -297,7 +320,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // ME ::= E 
+          case 10: // ME ::= E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -309,7 +332,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // E ::= E Simbolo_mas E 
+          case 11: // E ::= E Simbolo_mas E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -324,7 +347,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // E ::= E Simbolo_menos E 
+          case 12: // E ::= E Simbolo_menos E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -339,7 +362,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // E ::= E Simbolo_multi E 
+          case 13: // E ::= E Simbolo_multi E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -354,7 +377,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // E ::= E Simbolo_divi E 
+          case 14: // E ::= E Simbolo_divi E 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -369,7 +392,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // E ::= numero 
+          case 15: // E ::= numero 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -381,7 +404,25 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // PRINT_STMT ::= reservada_console open_pare ARGS close_pare punto_coma 
+          case 16: // PRINT_STMTS ::= PRINT_STMTS PRINT_STMT 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT_STMTS",7, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // PRINT_STMTS ::= PRINT_STMT 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("PRINT_STMTS",7, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // PRINT_STMT ::= reservada_console open_pare ARGS close_pare punto_coma 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -393,7 +434,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // ARGS ::= ARGS ARG 
+          case 19: // ARGS ::= ARGS ARG 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -405,7 +446,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // ARGS ::= ARG 
+          case 20: // ARGS ::= ARG 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -417,7 +458,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // ARG ::= ARG Simbolo_mas id 
+          case 21: // ARG ::= ARG Simbolo_mas id 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -432,7 +473,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // ARG ::= ARG Simbolo_mas string_literal 
+          case 22: // ARG ::= ARG Simbolo_mas string_literal 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -447,7 +488,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // ARG ::= id 
+          case 23: // ARG ::= id 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -459,7 +500,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // ARG ::= string_literal 
+          case 24: // ARG ::= string_literal 
             {
               String RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
@@ -467,6 +508,15 @@ class CUP$analisis_sintactico$actions {
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
 		 RESULT = a; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARG",10, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
+            }
+          return CUP$analisis_sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // IF_STM ::= reservada_if open_pare id close_pare open_brace PRINT_STMTS close_brace 
+            {
+              String RESULT =null;
+
+              CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("IF_STM",11, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
 
