@@ -105,10 +105,11 @@ E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
     ;
 
 //---> Sentencias imprimir
+/*
 PRINT_STMTS::= PRINT_STMTS PRINT_STMT
             | PRINT_STMT
 ;
-
+*/
 
 PRINT_STMT::= reservada_console open_pare ARGS:a close_pare punto_coma {:System.out.println("print(" + a + ")" ); :}
 ;
@@ -128,4 +129,4 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
 IF_STM ::= IF_S0
         | IF_S0  reservada_else IF_S0  ;
 
-IF_S0 ::= reservada_if open_pare id close_pare open_brace PRINT_STMTS close_brace;
+IF_S0 ::= reservada_if open_pare id close_pare open_brace STMSLIST close_brace;

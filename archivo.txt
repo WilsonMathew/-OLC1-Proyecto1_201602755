@@ -1,5 +1,12 @@
- if (b ){
+ if (b){
 Console.Write("b mayor que a");
+int c;
+	if (b){
+	Console.Write("b mayor que a");
+	}else if(a){
+	Console.Write("a y b son iguales");
+	}
+	
 }else if(a){
 Console.Write("a y b son iguales");
 }
