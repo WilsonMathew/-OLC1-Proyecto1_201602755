@@ -926,12 +926,14 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
           case 60: break;
           case 5: 
             { System.out.println("Reconocido " + yytext()+" numero"); 
-                        tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
-                        return new Symbol(Simbolos.numero, yycolumn, yyline, yytext());
+                                tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.numero, yycolumn, yyline, yytext());
             }
           case 61: break;
           case 6: 
-            { System.out.println("Reconocido " + yytext()+" id"); tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" id"); 
+                                tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.id, yycolumn, yyline, yytext());
             }
           case 62: break;
           case 7: 
@@ -952,11 +954,15 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 65: break;
           case 10: 
-            { System.out.println("Reconocido " + yytext()+" open_pare");   tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" open_pare");   
+                        tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.open_pare, yycolumn, yyline, yytext());
             }
           case 66: break;
           case 11: 
-            { System.out.println("Reconocido " + yytext()+" close_pare");  tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" close_pare");  
+                        tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.close_pare, yycolumn, yyline, yytext());
             }
           case 67: break;
           case 12: 
@@ -968,7 +974,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 69: break;
           case 14: 
-            { System.out.println("Reconocido " + yytext()+" igual");       tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" igual");       
+                        tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());
             }
           case 70: break;
           case 15: 
@@ -1006,7 +1014,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 78: break;
           case 23: 
-            { System.out.println("Reconocido " + yytext()+" string_literal"); tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" string_literal"); 
+                                tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.string_literal, yycolumn, yyline, yytext());
             }
           case 79: break;
           case 24: 
@@ -1046,7 +1056,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 88: break;
           case 33: 
-            { System.out.println("Reconocido " + yytext()+" reservada_int");         tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_int");         
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_int, yycolumn, yyline, yytext());
             }
           case 89: break;
           case 34: 
@@ -1130,7 +1142,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 109: break;
           case 54: 
-            { System.out.println("Reconocido " + yytext()+" reservada_console");     tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_console");     
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
             }
           case 110: break;
           case 55: 

@@ -217,8 +217,8 @@ public class user_interface extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        ejecutar(" 5");
-        /*
+        //ejecutar("int test 5+80*90/70;");
+        
          File archivo = new File("archivo.txt");
         PrintWriter escribir;
         
@@ -252,7 +252,7 @@ public class user_interface extends javax.swing.JFrame {
             
             System.out.println("no lee esa mierda");
         }
-        */
+        
             
     }//GEN-LAST:event_jButton1ActionPerformed
 

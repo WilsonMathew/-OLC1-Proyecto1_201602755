@@ -50,10 +50,15 @@ action code
 /*------------------------- 2da Area: Declaraciones     -------------------------*/
 //---> declaracion de terminales
 terminal punto_coma, Simbolo_mas,  Simbolo_menos, Simbolo_multi, Simbolo_divi;
+terminal String reservada_int,id, igual;
+terminal String reservada_console, open_pare, close_pare, string_literal;
 terminal String numero;
 
 //---> declaracion de NO terminales
-non terminal String INICIO, E, ME;
+non terminal String INICIO; 
+non terminal String STMS, STMSLIST ; 
+non terminal String E, ME, DECLARATION_STMTS, DECLARATION_STMT;
+non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -61,17 +66,54 @@ precedence left Simbolo_multi, Simbolo_divi;
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
+INICIO ::= STMSLIST;
 
-ME ::= ME E
-    | E
+STMS::= PRINT_STMT 
+    | DECLARATION_STMT
+;
+
+// Makes it so it accepts any order of declarations and prints
+STMSLIST ::= STMSLIST STMS
+        | STMS
+;
+
+//---> Declaracion y asignacion de variables
+/* ---> Stand alone 
+DECLARATION_STMTS ::= DECLARATION_STMTS DECLARATION_STMT
+                | DECLARATION_STMT;
+*/
+
+DECLARATION_STMT ::= reservada_int id:a punto_coma          {: System.out.println("int " + a + " ; "); :}
+                | reservada_int id:a igual ME:b punto_coma  {: System.out.println("int " + a + " = " + b + ";"); :}
+;
+
+ME ::= ME E:a {: RESULT = a; :}
+    | E:a     {: RESULT = a; :}
     ;
 
-
-E::=  E:a Simbolo_mas:b E:c    {: System.out.println("Suma: " + a + " " + b + " " + c ); :}
-    | E Simbolo_menos E
-    | E Simbolo_multi E
-    | E Simbolo_divi E
-    | numero:a {: RESULT = a;:}
+E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
+    | E:a Simbolo_menos E:b {: RESULT = a + " - " + b; :}
+    | E:a Simbolo_multi E:b {: RESULT = a + " * " + b; :}
+    | E:a Simbolo_divi E:b  {: RESULT = a + " / " + b; :}
+    | numero:a              {: RESULT = a; :}
     ;
 
-INICIO ::=ME;
+//---> Sentencias imprimir
+/* ---> Stand alone 
+PRINT_STMTS::= PRINT_STMTS PRINT_STMT
+            | PRINT_STMT
+;*/
+
+PRINT_STMT::= reservada_console open_pare ARGS:a close_pare punto_coma {:System.out.println("print(" + a + ")" ); :}
+;
+
+ARGS ::= ARGS ARG:a     {: RESULT = a; :}
+    | ARG:a             {: RESULT = a; :}
+;
+
+ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
+    | ARG:a Simbolo_mas string_literal:b       {: RESULT = a + " , " + b; :}
+    | id:a                                     {: RESULT = a; :}
+    | string_literal:a                         {: RESULT = a; :}
+;
+

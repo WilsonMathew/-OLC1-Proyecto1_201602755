@@ -1,3 +1,6 @@
- 5+30/80
+ INT B;
+console.WRITE("TEST");
+int c = 80 + 90 /80*40;
 
-5-90+80
+console.write("hello world");
+console.write("yeah fuck you");
