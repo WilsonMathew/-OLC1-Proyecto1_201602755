@@ -53,14 +53,14 @@ terminal punto_coma, Simbolo_mas,  Simbolo_menos, Simbolo_multi, Simbolo_divi;
 terminal String reservada_int,id, igual;
 terminal String reservada_console, open_pare, close_pare, string_literal;
 terminal String numero;
-terminal String reservada_if, open_brace, close_brace;
+terminal String reservada_if,reservada_else ,open_brace, close_brace;
 
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
 non terminal String STMS, STMSLIST ; 
 non terminal String E, ME, DECLARATION_STMTS, DECLARATION_STMT;
-non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM;
+non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -125,4 +125,7 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
 
 //---> Sentencias IF
 
-IF_STM ::= reservada_if open_pare id close_pare open_brace PRINT_STMTS close_brace;
+IF_STM ::= IF_S0
+        | IF_S0  reservada_else IF_S0  ;
+
+IF_S0 ::= reservada_if open_pare id close_pare open_brace PRINT_STMTS close_brace;

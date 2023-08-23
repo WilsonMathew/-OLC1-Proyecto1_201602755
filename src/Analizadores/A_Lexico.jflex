@@ -124,6 +124,11 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_if, yycolumn, yyline, yytext());
                         }
+<YYINITIAL> "else"      {System.out.println("Reconocido " + yytext()+" reservada_else");          
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_else" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_else, yycolumn, yyline, yytext());
+                        }
+
 <YYINITIAL> "console.write"     {System.out.println("Reconocido " + yytext()+" reservada_console");     
                                 tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
                                 return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());

@@ -12,15 +12,16 @@ public class Simbolos {
   public static final int Simbolo_multi = 5;
   public static final int reservada_int = 7;
   public static final int numero = 14;
+  public static final int reservada_else = 16;
   public static final int Simbolo_mas = 3;
   public static final int reservada_if = 15;
   public static final int igual = 9;
   public static final int EOF = 0;
   public static final int id = 8;
   public static final int error = 1;
-  public static final int close_brace = 17;
+  public static final int close_brace = 18;
   public static final int string_literal = 13;
-  public static final int open_brace = 16;
+  public static final int open_brace = 17;
   public static final int close_pare = 12;
   public static final int open_pare = 11;
   public static final int Simbolo_divi = 6;
@@ -43,6 +44,7 @@ public class Simbolos {
   "string_literal",
   "numero",
   "reservada_if",
+  "reservada_else",
   "open_brace",
   "close_brace"
   };

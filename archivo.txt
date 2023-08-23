@@ -1,4 +1,5 @@
- if(a){
-console.write(test);
-console.write("shombre putos");
-} 
+ if (b ){
+Console.Write("b mayor que a");
+}else if(a){
+Console.Write("a y b son iguales");
+}
