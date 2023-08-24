@@ -54,28 +54,31 @@ terminal String reservada_int,id, igual;
 terminal String reservada_console, open_pare, close_pare, string_literal;
 terminal String numero;
 terminal String reservada_if,reservada_else ,open_brace, close_brace;
-
+terminal String mayor , menor, mayor_igual, menor_igual, igual_relacional, distinto;
+terminal String and, or, not;
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
 non terminal String STMS, STMSLIST ; 
-non terminal String E, ME, DECLARATION_STMTS, DECLARATION_STMT;
+non terminal String E, ME, R, L ;   // Operadores para las expresiones
+non terminal String DECLARATION_STMTS, DECLARATION_STMT;
 non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
 precedence left Simbolo_multi, Simbolo_divi;
+precedence left and, or, not;
+precedence left mayor , menor, mayor_igual, menor_igual, igual_relacional, distinto;
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
 
 INICIO ::= STMSLIST;
 
-
-
 STMS::= PRINT_STMT 
     | DECLARATION_STMT
     | IF_STM
+    | L
 ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -125,8 +128,27 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
 ;
 
 //---> Sentencias IF
-
 IF_STM ::= IF_S0
         | IF_S0  reservada_else IF_S0  ;
 
-IF_S0 ::= reservada_if open_pare id close_pare open_brace STMSLIST close_brace;
+IF_S0 ::= reservada_if open_pare R close_pare open_brace STMSLIST close_brace;
+
+//---> Operadores relacionales
+R::=  R:a mayor R:b                 {: RESULT = a + " > " + b; :}
+    | R:a menor R:b                 {: RESULT = a + " < " + b; :}
+    | R:a mayor_igual R:b           {: RESULT = a + " >= " + b; :}
+    | R:a menor_igual R:b           {: RESULT = a + " <= " + b; :}
+    | R:a igual_relacional R:b      {: RESULT = a + " != " + b; :}
+    | R:a distinto R:b              {: RESULT = a + " != " + b; :}
+    | numero:a                      {: RESULT = a; :}
+    | id:a                          {: RESULT = a; :}
+    ;
+
+//---> Operadores logicos
+L::=  L:a and L:b                 {: RESULT = a + " && " + b; :}
+    | L:a or L:b                 {: RESULT = a + " || " + b; :}
+    | not L:a               {: RESULT = " ! " + a; :}
+    | numero:a                      {: RESULT = a; :}
+    | id:a                          {: RESULT = a; :}
+    ;
+

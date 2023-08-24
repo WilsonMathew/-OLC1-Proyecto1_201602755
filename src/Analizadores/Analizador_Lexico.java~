@@ -1010,15 +1010,21 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 76: break;
           case 20: 
-            { System.out.println("Reconocido " + yytext()+" mayor");         tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" mayor");         
+                        tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.mayor, yycolumn, yyline, yytext());
             }
           case 77: break;
           case 21: 
-            { System.out.println("Reconocido " + yytext()+" menor");         tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" menor");         
+                        tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.menor, yycolumn, yyline, yytext());
             }
           case 78: break;
           case 22: 
-            { System.out.println("Reconocido " + yytext()+" not");           tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" not");           
+                        tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.not, yycolumn, yyline, yytext());
             }
           case 79: break;
           case 23: 
@@ -1028,27 +1034,39 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 80: break;
           case 24: 
-            { System.out.println("Reconocido " + yytext()+" igual_relacional");         tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" igual_relacional");         
+                        tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.igual_relacional, yycolumn, yyline, yytext());
             }
           case 81: break;
           case 25: 
-            { System.out.println("Reconocido " + yytext()+" mayor_igual");   tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" mayor_igual");   
+                        tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.mayor_igual, yycolumn, yyline, yytext());
             }
           case 82: break;
           case 26: 
-            { System.out.println("Reconocido " + yytext()+" menor_igual");   tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" menor_igual");   
+                        tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.menor_igual, yycolumn, yyline, yytext());
             }
           case 83: break;
           case 27: 
-            { System.out.println("Reconocido " + yytext()+" distinto");      tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" distinto");      
+                        tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.distinto, yycolumn, yyline, yytext());
             }
           case 84: break;
           case 28: 
-            { System.out.println("Reconocido " + yytext()+" and");           tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" and");           
+                        tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.and, yycolumn, yyline, yytext());
             }
           case 85: break;
           case 29: 
-            { System.out.println("Reconocido " + yytext()+" or");            tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" or");            
+                        tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.or, yycolumn, yyline, yytext());
             }
           case 86: break;
           case 30: 

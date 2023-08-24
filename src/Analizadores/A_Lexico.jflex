@@ -104,17 +104,44 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         }
 
 //---> Operadores relacionales
-">"                     {System.out.println("Reconocido " + yytext()+" mayor");         tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));}
-"<"                     {System.out.println("Reconocido " + yytext()+" menor");         tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));}
-">="                    {System.out.println("Reconocido " + yytext()+" mayor_igual");   tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));}
-"<="                    {System.out.println("Reconocido " + yytext()+" menor_igual");   tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));}
-"=="                    {System.out.println("Reconocido " + yytext()+" igual_relacional");         tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));}
-"!="                    {System.out.println("Reconocido " + yytext()+" distinto");      tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));}
+<YYINITIAL> ">"         {System.out.println("Reconocido " + yytext()+" mayor");         
+                        tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.mayor, yycolumn, yyline, yytext());
+                        }    
+<YYINITIAL> "<"         {System.out.println("Reconocido " + yytext()+" menor");         
+                        tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.menor, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> ">="        {System.out.println("Reconocido " + yytext()+" mayor_igual");   
+                        tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.mayor_igual, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "<="        {System.out.println("Reconocido " + yytext()+" menor_igual");   
+                        tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.menor_igual, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "=="        {System.out.println("Reconocido " + yytext()+" igual_relacional");         
+                        tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.igual_relacional, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "!="        {System.out.println("Reconocido " + yytext()+" distinto");      
+                        tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.distinto, yycolumn, yyline, yytext());
+                        }
 
 //---> Operadores logicos
-"&&"                    {System.out.println("Reconocido " + yytext()+" and");           tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));}
-"||"                    {System.out.println("Reconocido " + yytext()+" or");            tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));}
-"!"                     {System.out.println("Reconocido " + yytext()+" not");           tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));}
+<YYINITIAL> "&&"        {System.out.println("Reconocido " + yytext()+" and");           
+                        tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.and, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "||"        {System.out.println("Reconocido " + yytext()+" or");            
+                        tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.or, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "!"         {System.out.println("Reconocido " + yytext()+" not");           
+                        tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.not, yycolumn, yyline, yytext());
+                        }
 
 //---> Palabras reservadas
 "tipodato"              {System.out.println("Reconocido " + yytext()+" reservada_tipodato");    tabla_tokens.add(new Tokens(yytext() ,"reservada_tipodato" ,yyline ,yycolumn));}

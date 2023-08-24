@@ -8,11 +8,17 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
+  public static final int mayor_igual = 21;
   public static final int reservada_console = 10;
+  public static final int not = 27;
   public static final int Simbolo_multi = 5;
   public static final int reservada_int = 7;
   public static final int numero = 14;
+  public static final int igual_relacional = 23;
+  public static final int or = 26;
+  public static final int menor_igual = 22;
   public static final int reservada_else = 16;
+  public static final int menor = 20;
   public static final int Simbolo_mas = 3;
   public static final int reservada_if = 15;
   public static final int igual = 9;
@@ -26,6 +32,9 @@ public class Simbolos {
   public static final int open_pare = 11;
   public static final int Simbolo_divi = 6;
   public static final int punto_coma = 2;
+  public static final int distinto = 24;
+  public static final int and = 25;
+  public static final int mayor = 19;
   public static final int Simbolo_menos = 4;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -46,7 +55,16 @@ public class Simbolos {
   "reservada_if",
   "reservada_else",
   "open_brace",
-  "close_brace"
+  "close_brace",
+  "mayor",
+  "menor",
+  "mayor_igual",
+  "menor_igual",
+  "igual_relacional",
+  "distinto",
+  "and",
+  "or",
+  "not"
   };
 }
 
