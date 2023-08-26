@@ -57,7 +57,7 @@ terminal String reservada_if,reservada_else ,open_brace, close_brace;
 terminal String mayor , menor, mayor_igual, menor_igual, igual_relacional, distinto;
 terminal String and, or, not;
 terminal String reservada_for, reservada_while, reservada_do;
-terminal String reservada_switch, reservada_case, reservada_break;
+terminal String reservada_switch, reservada_case, reservada_break, dos_puntos, reservada_default;
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
@@ -66,6 +66,7 @@ non terminal String E, ME, R, L ;   // Operadores para las expresiones
 non terminal String DECLARATION_STMTS, DECLARATION_STMT;
 non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
 non terminal String FOR_STMT, INIT_FOR, UPDATE, WHILE_STMT, DO_STMT;
+non terminal String SWITCH_STMT, CASE_STATEMENT, DEFAULT_CASE, CASE_LIST, ASIG;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -81,9 +82,11 @@ INICIO ::= STMSLIST;
 STMS::= PRINT_STMT 
     | DECLARATION_STMT
     | IF_STM
+    | SWITCH_STMT
     | FOR_STMT
     | WHILE_STMT
     | DO_STMT
+    | ASIG
     | L
 ;
 
@@ -174,3 +177,22 @@ WHILE_STMT ::= reservada_while open_pare R close_pare open_brace STMSLIST close_
 DO_STMT ::= reservada_do open_brace STMSLIST close_brace reservada_while open_pare R close_pare punto_coma
     ;
 
+//---> Sentencias SWITCH reservada_switch, reservada_case, reservada_break;
+SWITCH_STMT ::= reservada_switch open_pare id close_pare open_brace CASE_LIST DEFAULT_CASE  close_brace
+    ; 
+
+CASE_LIST ::= CASE_LIST CASE_STATEMENT
+        | CASE_STATEMENT
+        ;
+
+CASE_STATEMENT ::= reservada_case numero dos_puntos STMSLIST reservada_break punto_coma
+               | reservada_case numero dos_puntos STMSLIST
+    ; 
+
+
+DEFAULT_CASE ::= reservada_default dos_puntos STMSLIST
+        ;
+
+
+ASIG ::= id igual ME punto_coma
+    ;

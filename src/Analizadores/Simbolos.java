@@ -8,40 +8,42 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int reservada_case = 32;
-  public static final int mayor_igual = 21;
-  public static final int reservada_console = 10;
-  public static final int not = 27;
-  public static final int Simbolo_multi = 5;
-  public static final int reservada_break = 33;
-  public static final int reservada_int = 7;
-  public static final int numero = 14;
-  public static final int igual_relacional = 23;
-  public static final int or = 26;
-  public static final int menor_igual = 22;
-  public static final int reservada_else = 16;
-  public static final int reservada_switch = 31;
-  public static final int menor = 20;
-  public static final int Simbolo_mas = 3;
-  public static final int reservada_if = 15;
-  public static final int igual = 9;
-  public static final int EOF = 0;
-  public static final int id = 8;
-  public static final int reservada_do = 30;
-  public static final int error = 1;
-  public static final int reservada_while = 29;
-  public static final int close_brace = 18;
-  public static final int string_literal = 13;
-  public static final int open_brace = 17;
-  public static final int close_pare = 12;
-  public static final int open_pare = 11;
-  public static final int Simbolo_divi = 6;
-  public static final int reservada_for = 28;
-  public static final int punto_coma = 2;
   public static final int distinto = 24;
-  public static final int and = 25;
-  public static final int mayor = 19;
+  public static final int close_pare = 12;
+  public static final int igual = 9;
   public static final int Simbolo_menos = 4;
+  public static final int reservada_else = 16;
+  public static final int Simbolo_mas = 3;
+  public static final int open_brace = 17;
+  public static final int reservada_int = 7;
+  public static final int reservada_do = 30;
+  public static final int dos_puntos = 34;
+  public static final int reservada_for = 28;
+  public static final int numero = 14;
+  public static final int Simbolo_divi = 6;
+  public static final int menor = 20;
+  public static final int EOF = 0;
+  public static final int Simbolo_multi = 5;
+  public static final int punto_coma = 2;
+  public static final int mayor_igual = 21;
+  public static final int error = 1;
+  public static final int mayor = 19;
+  public static final int open_pare = 11;
+  public static final int reservada_default = 35;
+  public static final int reservada_switch = 31;
+  public static final int or = 26;
+  public static final int close_brace = 18;
+  public static final int reservada_break = 33;
+  public static final int menor_igual = 22;
+  public static final int id = 8;
+  public static final int reservada_case = 32;
+  public static final int igual_relacional = 23;
+  public static final int reservada_console = 10;
+  public static final int reservada_while = 29;
+  public static final int string_literal = 13;
+  public static final int and = 25;
+  public static final int not = 27;
+  public static final int reservada_if = 15;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -76,7 +78,9 @@ public class Simbolos {
   "reservada_do",
   "reservada_switch",
   "reservada_case",
-  "reservada_break"
+  "reservada_break",
+  "dos_puntos",
+  "reservada_default"
   };
 }
 

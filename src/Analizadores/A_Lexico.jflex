@@ -55,8 +55,9 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.punto_coma, yycolumn, yyline, yytext()); 
                         }
-":"                     {System.out.println("Reconocido " + yytext()+" dos_puntos");  
+<YYINITIAL> ":"         {System.out.println("Reconocido " + yytext()+" dos_puntos");  
                         tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.dos_puntos, yycolumn, yyline, yytext()); 
                         }
 
 <YYINITIAL> "("         {System.out.println("Reconocido " + yytext()+" open_pare");   
@@ -171,6 +172,10 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
 <YYINITIAL> "break"     {System.out.println("Reconocido " + yytext()+" reservada_break");       
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_break, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "default"   {System.out.println("Reconocido " + yytext()+" reservada_default");       
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_default" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_default, yycolumn, yyline, yytext());
                         }
 <YYINITIAL> "for"       {System.out.println("Reconocido " + yytext()+" reservada_for");         
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));

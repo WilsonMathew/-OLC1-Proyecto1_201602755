@@ -1,4 +1,11 @@
- int a = 1;
-do {
-Console.Write("el valor de a es: " + a);
-} while(a < 5);
+ switch(valor){
+case 1:
+precio = 55;
+break;
+case 2:
+precio = 25;
+case 3:
+precio = 40;
+default:
+Console.Write("No válido. Escoja 1, 2, o 3.");
+}
