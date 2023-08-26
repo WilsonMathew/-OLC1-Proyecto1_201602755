@@ -160,12 +160,30 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                                 tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
                                 return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
                                 }
-"switch"                {System.out.println("Reconocido " + yytext()+" reservada_switch");      tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));}
-"case"                  {System.out.println("Reconocido " + yytext()+" reservada_case");        tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));}
-"break"                 {System.out.println("Reconocido " + yytext()+" reservada_break");       tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));}
-"for"                   {System.out.println("Reconocido " + yytext()+" reservada_for");         tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));}
-"while"                 {System.out.println("Reconocido " + yytext()+" reservada_while");       tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));}
-"do"                    {System.out.println("Reconocido " + yytext()+" reservada_do");          tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));}
+<YYINITIAL> "switch"    {System.out.println("Reconocido " + yytext()+" reservada_switch");      
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_switch, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "case"      {System.out.println("Reconocido " + yytext()+" reservada_case");        
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_case, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "break"     {System.out.println("Reconocido " + yytext()+" reservada_break");       
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_break, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "for"       {System.out.println("Reconocido " + yytext()+" reservada_for");         
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_for, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "while"     {System.out.println("Reconocido " + yytext()+" reservada_while");     
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_while, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "do"        {System.out.println("Reconocido " + yytext()+" reservada_do");          
+                        tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.reservada_do, yycolumn, yyline, yytext());
+                        }
 "definirglobales"       {System.out.println("Reconocido " + yytext()+" reservada_definirglobales");     tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));}
 "string"                {System.out.println("Reconocido " + yytext()+" reservada_string");      tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));}
 "double"                {System.out.println("Reconocido " + yytext()+" reservada_double");      tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));}

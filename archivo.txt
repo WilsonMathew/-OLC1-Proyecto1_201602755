@@ -1,3 +1,4 @@
- a and b or c 
-
-a && v 
+ int a = 1;
+do {
+Console.Write("el valor de a es: " + a);
+} while(a < 5);

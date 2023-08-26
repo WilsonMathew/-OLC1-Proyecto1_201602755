@@ -56,6 +56,8 @@ terminal String numero;
 terminal String reservada_if,reservada_else ,open_brace, close_brace;
 terminal String mayor , menor, mayor_igual, menor_igual, igual_relacional, distinto;
 terminal String and, or, not;
+terminal String reservada_for, reservada_while, reservada_do;
+terminal String reservada_switch, reservada_case, reservada_break;
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
@@ -63,6 +65,7 @@ non terminal String STMS, STMSLIST ;
 non terminal String E, ME, R, L ;   // Operadores para las expresiones
 non terminal String DECLARATION_STMTS, DECLARATION_STMT;
 non terminal String PRINT_STMTS, PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
+non terminal String FOR_STMT, INIT_FOR, UPDATE, WHILE_STMT, DO_STMT;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -78,6 +81,9 @@ INICIO ::= STMSLIST;
 STMS::= PRINT_STMT 
     | DECLARATION_STMT
     | IF_STM
+    | FOR_STMT
+    | WHILE_STMT
+    | DO_STMT
     | L
 ;
 
@@ -150,5 +156,21 @@ L::=  L:a and L:b                 {: RESULT = a + " && " + b; :}
     | not L:a               {: RESULT = " ! " + a; :}
     | numero:a                      {: RESULT = a; :}
     | id:a                          {: RESULT = a; :}
+    ;
+
+//---> Sentencias for
+FOR_STMT ::= reservada_for open_pare INIT_FOR punto_coma R punto_coma UPDATE close_pare open_brace STMSLIST close_brace
+    ;
+INIT_FOR ::= reservada_int id igual numero
+    ;
+UPDATE ::= id Simbolo_mas Simbolo_mas
+    ;
+
+//---> Sentencias while
+WHILE_STMT ::= reservada_while open_pare R close_pare open_brace STMSLIST close_brace
+    ;
+
+//---> Sentencias do while 
+DO_STMT ::= reservada_do open_brace STMSLIST close_brace reservada_while open_pare R close_pare punto_coma
     ;
 
