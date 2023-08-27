@@ -1,40 +1,11 @@
- void main ( ){
-	int b = 2;
-	int a =1;
-	int var1 = 5+8*9;
-	Console.Write("b mayor que a");
-	Console.Write("a y b son iguales");
+ /* ejemplo de carga 
 
-	if (b > a){
-		Console.Write("b mayor que a");
-	}else if(a == b){
-		Console.Write("a y b son iguales");
-	}
-
-for (int a=0; a<10; a++){
-Console.Write("el valor de a es: " + a);
-}
-
-while(a < 10){
-Console.Write("el valor de a es: " + a);
-}
-
-int a = 1;
-do {
-Console.Write("el valor de a es: " + a);
-} while(a < 5);
+   de objeto json */
 
 
-switch(valor){
-case 1:
-precio = 55;
-break;
-case 2:
-precio = 25;
-case 3:
-precio = 40;
-default:
-Console.Write("No válido. Escoja 1, 2, o 3.");
-}
-
+{
+	"Titulo":"titulo Pie",
+	"variable1": 4.5,
+	"Titulo2": "titulo barras",
+	"variable2": 5.0
 }

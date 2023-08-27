@@ -67,7 +67,7 @@ non terminal String PROGRAM, STMS, STMSLIST ;
 non terminal String E, ME, R, L ;   // Operadores para las expresiones
 non terminal String DECLARATION_STMT, TIPOS_DATOS;
 non terminal String PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
-non terminal String FOR_STMT, INIT_FOR, UPDATE, WHILE_STMT, DO_STMT;
+non terminal String FOR_STMT, UPDATE, WHILE_STMT, DO_STMT;
 non terminal String SWITCH_STMT, CASE_STATEMENT, DEFAULT_CASE, CASE_LIST, ASIG;
 
 //---> precedencia de menor a mayor

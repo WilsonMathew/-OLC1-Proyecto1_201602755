@@ -24,6 +24,9 @@ public class GLexico {
             String opcFlex[] = {ruta + "A_Lexico.jflex", "-d", ruta};
             jflex.Main.generate(opcFlex);
             
+            String opcFlexJson[] = { ruta + "json_lexico.jflex", "-d", ruta };
+            jflex.Main.generate(opcFlexJson);
+            
             String opcCup[] = {"-destdir", ruta, "-parser", "analisis_sintactico","-symbols", "Simbolos", ruta+"A_Sintactico.cup"};
             java_cup.Main.main(opcCup);
             /*

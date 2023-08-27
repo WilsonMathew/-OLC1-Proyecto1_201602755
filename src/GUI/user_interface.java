@@ -215,46 +215,6 @@ public class user_interface extends javax.swing.JFrame {
         
          File archivo = new File("archivo.txt");
         PrintWriter escribir;
-        text_entrada.setText("void main ( ){\n" +
-"	int b = 2;\n" +
-"	int a =1;\n" +
-"	int var1 = 5+8*9;\n" +
-"	Console.Write(\"b mayor que a\");\n" +
-"	Console.Write(\"a y b son iguales\");\n" +
-"\n" +
-"	if (b > a){\n" +
-"		Console.Write(\"b mayor que a\");\n" +
-"	}else if(a == b){\n" +
-"		Console.Write(\"a y b son iguales\");\n" +
-"	}\n" +
-"\n" +
-"for (int a=0; a<10; a++){\n" +
-"Console.Write(\"el valor de a es: \" + a);\n" +
-"}\n" +
-"\n" +
-"while(a < 10){\n" +
-"Console.Write(\"el valor de a es: \" + a);\n" +
-"}\n" +
-"\n" +
-"int a = 1;\n" +
-"do {\n" +
-"Console.Write(\"el valor de a es: \" + a);\n" +
-"} while(a < 5);\n" +
-"\n" +
-"\n" +
-"switch(valor){\n" +
-"case 1:\n" +
-"precio = 55;\n" +
-"break;\n" +
-"case 2:\n" +
-"precio = 25;\n" +
-"case 3:\n" +
-"precio = 40;\n" +
-"default:\n" +
-"Console.Write(\"No válido. Escoja 1, 2, o 3.\");\n" +
-"}\n" +
-"\n" +
-"}");
         
         try {    
             escribir = new PrintWriter(archivo);
@@ -267,7 +227,14 @@ public class user_interface extends javax.swing.JFrame {
         
         Reader lector;
         try{
+            
             lector = new BufferedReader(new FileReader("archivo.txt"));
+            Analizador_json   json_lexer = new Analizador_json(lector);
+            
+            json_lexer.yylex();
+            reporte_tokens(json_lexer.tabla_tokens);
+            
+            /*
             Analizador_Lexico lexer = new Analizador_Lexico(lector);
             analisis_sintactico parser = new analisis_sintactico(lexer);
             parser.parse();
@@ -290,10 +257,12 @@ public class user_interface extends javax.swing.JFrame {
             reporte_errores_lexicos(lexer.TablaEL);
             lexer.TablaEL.clear();
             //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
+            */
         }catch(Exception e){
             
             System.out.println("no lee esa mierda");
         }
+            
         
             
     }//GEN-LAST:event_jButton1ActionPerformed
