@@ -229,12 +229,13 @@ public class user_interface extends javax.swing.JFrame {
         try{
             
             lector = new BufferedReader(new FileReader("archivo.txt"));
+            /*
             Analizador_json   json_lexer = new Analizador_json(lector);
             
             json_lexer.yylex();
             reporte_tokens(json_lexer.tabla_tokens);
+            */
             
-            /*
             Analizador_Lexico lexer = new Analizador_Lexico(lector);
             analisis_sintactico parser = new analisis_sintactico(lexer);
             parser.parse();
@@ -257,7 +258,7 @@ public class user_interface extends javax.swing.JFrame {
             reporte_errores_lexicos(lexer.TablaEL);
             lexer.TablaEL.clear();
             //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
-            */
+            
         }catch(Exception e){
             
             System.out.println("no lee esa mierda");

@@ -1099,7 +1099,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 92: break;
           case 33: 
-            { System.out.println("Reconocido " + yytext()+" comentario"); tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" comentario"); 
+                                tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.comentario, yycolumn, yyline, yytext());
             }
           case 93: break;
           case 34: 
@@ -1115,7 +1117,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 95: break;
           case 36: 
-            { System.out.println("Reconocido " + yytext()+" multi_comentario"); tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" multi_comentario"); 
+                                tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.multi_comentario, yycolumn, yyline, yytext());
             }
           case 96: break;
           case 37: 

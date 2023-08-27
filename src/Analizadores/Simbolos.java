@@ -8,55 +8,59 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
-  public static final int distinto = 32;
-  public static final int reservada_double = 11;
+  public static final int distinto = 34;
+  public static final int reservada_double = 13;
   public static final int reservada_void = 3;
-  public static final int close_pare = 20;
-  public static final int igual = 15;
-  public static final int Simbolo_menos = 6;
-  public static final int reservada_else = 24;
-  public static final int reservada_write = 17;
-  public static final int Simbolo_mas = 5;
-  public static final int open_brace = 25;
-  public static final int reservada_int = 9;
-  public static final int dos_puntos = 42;
-  public static final int reservada_do = 38;
-  public static final int reservada_for = 36;
-  public static final int numero = 22;
-  public static final int Simbolo_divi = 8;
-  public static final int menor = 28;
+  public static final int close_pare = 22;
+  public static final int igual = 17;
+  public static final int Simbolo_menos = 8;
+  public static final int reservada_else = 26;
+  public static final int reservada_write = 19;
+  public static final int multi_comentario = 4;
+  public static final int Simbolo_mas = 7;
+  public static final int open_brace = 27;
+  public static final int reservada_int = 11;
+  public static final int dos_puntos = 44;
+  public static final int reservada_do = 40;
+  public static final int reservada_for = 38;
+  public static final int numero = 24;
+  public static final int Simbolo_divi = 10;
+  public static final int menor = 30;
   public static final int EOF = 0;
-  public static final int Simbolo_multi = 7;
-  public static final int punto_coma = 4;
-  public static final int mayor_igual = 29;
+  public static final int Simbolo_multi = 9;
+  public static final int punto_coma = 6;
+  public static final int mayor_igual = 31;
   public static final int error = 1;
-  public static final int mayor = 27;
-  public static final int open_pare = 19;
-  public static final int reservada_default = 43;
-  public static final int reservada_switch = 39;
-  public static final int or = 34;
-  public static final int reservada_char = 12;
-  public static final int close_brace = 26;
-  public static final int reservada_break = 41;
-  public static final int menor_igual = 30;
-  public static final int reservada_case = 40;
-  public static final int id = 14;
-  public static final int igual_relacional = 31;
-  public static final int reservada_console = 16;
-  public static final int reservada_string = 10;
-  public static final int reservada_while = 37;
-  public static final int string_literal = 21;
-  public static final int not = 35;
-  public static final int and = 33;
-  public static final int reservada_if = 23;
-  public static final int reservada_bool = 13;
+  public static final int mayor = 29;
+  public static final int open_pare = 21;
+  public static final int reservada_default = 45;
+  public static final int reservada_switch = 41;
+  public static final int or = 36;
+  public static final int reservada_char = 14;
+  public static final int close_brace = 28;
+  public static final int reservada_break = 43;
+  public static final int menor_igual = 32;
+  public static final int reservada_case = 42;
+  public static final int id = 16;
+  public static final int igual_relacional = 33;
+  public static final int reservada_console = 18;
+  public static final int reservada_string = 12;
+  public static final int reservada_while = 39;
+  public static final int string_literal = 23;
+  public static final int not = 37;
+  public static final int and = 35;
+  public static final int reservada_if = 25;
+  public static final int comentario = 5;
+  public static final int reservada_bool = 15;
   public static final int reservada_main = 2;
-  public static final int dot = 18;
+  public static final int dot = 20;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "reservada_main",
   "reservada_void",
+  "multi_comentario",
+  "comentario",
   "punto_coma",
   "Simbolo_mas",
   "Simbolo_menos",

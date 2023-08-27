@@ -50,7 +50,7 @@ action code
 
 /*------------------------- 2da Area: Declaraciones     -------------------------*/
 //---> declaracion de terminales
-terminal reservada_main, reservada_void;
+terminal reservada_main, reservada_void, multi_comentario, comentario;
 terminal punto_coma, Simbolo_mas,  Simbolo_menos, Simbolo_multi, Simbolo_divi;
 terminal String reservada_int, reservada_string, reservada_double, reservada_char, reservada_bool, id, igual;
 terminal String reservada_console, reservada_write, dot, open_pare, close_pare, string_literal;
@@ -63,7 +63,7 @@ terminal String reservada_switch, reservada_case, reservada_break, dos_puntos, r
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
-non terminal String PROGRAM, STMS, STMSLIST ; 
+non terminal String PROGRAM, STMS, STMSLIST, MAIN, CMTS, CMT, PROGRAMS ; 
 non terminal String E, ME, R, L ;   // Operadores para las expresiones
 non terminal String DECLARATION_STMT, TIPOS_DATOS;
 non terminal String PRINT_STMT, ARGS, ARG, IF_STM, IF_S0;
@@ -81,10 +81,23 @@ start with INICIO;
 
 INICIO ::= PROGRAM;
 
+PROGRAM ::= MAIN
+    | MAIN CMTS
+    | CMTS MAIN
+    | CMTS MAIN CMTS
+;
 
-PROGRAM ::= reservada_void reservada_main open_pare close_pare open_brace STMSLIST:a close_brace 
+MAIN ::= reservada_void reservada_main open_pare close_pare open_brace STMSLIST:a close_brace 
     {:  
         python.add("def main (): \n" + a + "\nif__name__ = \"__main__\": \n main()" + "\n");:}
+    ;
+
+CMTS ::= CMTS CMT
+    | CMT
+    ;
+
+CMT ::= multi_comentario
+    | comentario
     ;
 
 STMS::= PRINT_STMT:a        {: RESULT = (a); :}
@@ -95,6 +108,7 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | WHILE_STMT:a          {: RESULT = (a); :}
     | DO_STMT:a             {: RESULT = (a); :}
     | ASIG:a                {: RESULT = (a); :}
+    | CMT
     | L
     ;
 

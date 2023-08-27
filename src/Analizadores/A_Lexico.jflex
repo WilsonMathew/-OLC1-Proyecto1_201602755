@@ -99,7 +99,7 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_multi, yycolumn, yyline, yytext()); 
                         }
-<YYINITIAL> "/"         {System.out.println("Reconocido " + yytext()+" divi");  
+<YYINITIAL> "/"        {System.out.println("Reconocido " + yytext()+" divi");  
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_divi, yycolumn, yyline, yytext()); 
                         }
@@ -242,8 +242,14 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                                 tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.numero, yycolumn, yyline, yytext()); 
                                 }
-{comentario}                    {System.out.println("Reconocido " + yytext()+" comentario"); tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); }
-{multi_comentario}              {System.out.println("Reconocido " + yytext()+" multi_comentario"); tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); }
+<YYINITIAL> {comentario}        {System.out.println("Reconocido " + yytext()+" comentario"); 
+                                tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.comentario, yycolumn, yyline, yytext()); 
+                                }
+<YYINITIAL> {multi_comentario}  {System.out.println("Reconocido " + yytext()+" multi_comentario"); 
+                                tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.multi_comentario, yycolumn, yyline, yytext()); 
+                                }
 <YYINITIAL> {id}                {System.out.println("Reconocido " + yytext()+" id"); 
                                 tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.id, yycolumn, yyline, yytext());
