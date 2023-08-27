@@ -41,9 +41,9 @@ public class user_interface extends javax.swing.JFrame {
         btn_tog = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         text_entrada = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        text_salida = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text_salida = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -55,8 +55,6 @@ public class user_interface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROYECTO 1");
-        setMaximumSize(new java.awt.Dimension(900, 900));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Entrada:");
@@ -76,19 +74,19 @@ public class user_interface extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(text_entrada);
 
-        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
-
-        text_salida.setEditable(false);
-        text_salida.setBackground(new java.awt.Color(51, 51, 51));
-        text_salida.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setViewportView(text_salida);
-
         jButton1.setText("Ejecutar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        text_salida.setEditable(false);
+        text_salida.setBackground(new java.awt.Color(51, 51, 51));
+        text_salida.setColumns(20);
+        text_salida.setForeground(new java.awt.Color(255, 255, 255));
+        text_salida.setRows(5);
+        jScrollPane1.setViewportView(text_salida);
 
         jMenuBar1.setMaximumSize(new java.awt.Dimension(98, 300));
 
@@ -143,33 +141,27 @@ public class user_interface extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(424, 424, 424))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btn_tog)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label_analyzer)
-                            .addComponent(jButton1))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16)
+                .addComponent(btn_tog)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_analyzer)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(612, 612, 612))
         );
 
@@ -203,6 +195,8 @@ public class user_interface extends javax.swing.JFrame {
             Analizador_Lexico scan = new Analizador_Lexico(new java.io.StringReader(codigoFuente));
             analisis_sintactico parser = new analisis_sintactico(scan);
             parser.parse();
+            
+            
             //System.out.println(scan.tabla_tokens);
             reporte_tokens(scan.tabla_tokens);
             scan.tabla_tokens.clear();
@@ -221,6 +215,46 @@ public class user_interface extends javax.swing.JFrame {
         
          File archivo = new File("archivo.txt");
         PrintWriter escribir;
+        text_entrada.setText("void main ( ){\n" +
+"	int b = 2;\n" +
+"	int a =1;\n" +
+"	int var1 = 5+8*9;\n" +
+"	Console.Write(\"b mayor que a\");\n" +
+"	Console.Write(\"a y b son iguales\");\n" +
+"\n" +
+"	if (b > a){\n" +
+"		Console.Write(\"b mayor que a\");\n" +
+"	}else if(a == b){\n" +
+"		Console.Write(\"a y b son iguales\");\n" +
+"	}\n" +
+"\n" +
+"for (int a=0; a<10; a++){\n" +
+"Console.Write(\"el valor de a es: \" + a);\n" +
+"}\n" +
+"\n" +
+"while(a < 10){\n" +
+"Console.Write(\"el valor de a es: \" + a);\n" +
+"}\n" +
+"\n" +
+"int a = 1;\n" +
+"do {\n" +
+"Console.Write(\"el valor de a es: \" + a);\n" +
+"} while(a < 5);\n" +
+"\n" +
+"\n" +
+"switch(valor){\n" +
+"case 1:\n" +
+"precio = 55;\n" +
+"break;\n" +
+"case 2:\n" +
+"precio = 25;\n" +
+"case 3:\n" +
+"precio = 40;\n" +
+"default:\n" +
+"Console.Write(\"No válido. Escoja 1, 2, o 3.\");\n" +
+"}\n" +
+"\n" +
+"}");
         
         try {    
             escribir = new PrintWriter(archivo);
@@ -238,8 +272,16 @@ public class user_interface extends javax.swing.JFrame {
             analisis_sintactico parser = new analisis_sintactico(lexer);
             parser.parse();
             
+            //System.out.println(parser.python);
+            
+            for(String temp: parser.python){
+                text_salida.append(temp);
+            }
+            //text_salida.setText("" + parser.python);
+            //text_salida.setText("fuckign testing");
+            
             //System.out.println(lexer.TablaEL);
-            System.out.println(lexer.tabla_tokens);
+            //System.out.println(lexer.tabla_tokens);
             
             reporte_tokens(lexer.tabla_tokens);
             lexer.tabla_tokens.clear();
@@ -477,10 +519,10 @@ public class user_interface extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel label_analyzer;
     private javax.swing.JTextPane text_entrada;
-    private javax.swing.JTextPane text_salida;
+    private javax.swing.JTextArea text_salida;
     // End of variables declaration//GEN-END:variables
 }

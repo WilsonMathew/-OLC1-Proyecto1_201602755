@@ -1,24 +1,40 @@
 package Analizadores;
 
-
 import java.io.*;
 import java.util.LinkedList;
 
 public class tests {
-    
-      public static class objeto{
+
+    public static class objeto {
+
         String a, b, c, d;
- 
-        objeto( String a, String b, String c, String d){
+
+        objeto(String a, String b, String c, String d) {
             this.a = a;
             this.b = b;
-            this.c = c; 
+            this.c = c;
             this.d = d;
         }
 
     }
-   
-    public static void main(String[] args){
+    int indentacion = 0;
+
+    public static void main(String[] args) {
+
+        /*
+        objeto tmp2 = new objeto("lexema 3","test 3", "linea", "columna");
+                        gList.add(tmp);
+         */
+        LinkedList<String> idunno = new LinkedList<>();
+        idunno.add("test \n");
+        idunno.add("test 1 \n");
+        idunno.add("test 2 \n");
+        idunno.add("test 3 \n ");
+        idunno.add("test 4 \n ");
+
+        System.out.println("LinkedList: " + idunno);
+
+        /*
         try{
             PrintWriter file_out;
 
@@ -123,7 +139,7 @@ public class tests {
         }catch(FileNotFoundException e){
             System.out.println("not found");
         }
-
+         */
     }
-    
+
 }
