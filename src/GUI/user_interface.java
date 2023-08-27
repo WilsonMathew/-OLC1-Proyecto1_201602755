@@ -11,6 +11,9 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -46,9 +49,9 @@ public class user_interface extends javax.swing.JFrame {
         text_salida = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        open_file_menu = new javax.swing.JMenuItem();
+        save_menu = new javax.swing.JMenuItem();
+        save_as_menu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -92,19 +95,29 @@ public class user_interface extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Abrir Archivo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        open_file_menu.setText("Abrir Archivo");
+        open_file_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                open_file_menuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(open_file_menu);
 
-        jMenuItem2.setText("Guardar");
-        jMenu1.add(jMenuItem2);
+        save_menu.setText("Guardar");
+        save_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_menuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(save_menu);
 
-        jMenuItem3.setText("Guardar Como");
-        jMenu1.add(jMenuItem3);
+        save_as_menu.setText("Guardar Como");
+        save_as_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_as_menuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(save_as_menu);
 
         jMenuBar1.add(jMenu1);
 
@@ -168,10 +181,46 @@ public class user_interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    String path_current_file="";
+    private void open_file_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_open_file_menuActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+        try{
+            JFileChooser fileChooser = new JFileChooser();
+            //  Seteando filtros del programa en especifico
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Compi 1 archivos SP y JSON", "sp","json");
+            fileChooser.setFileFilter(filter);
+            
+            // Donde se abre por defecto 
+            fileChooser.setCurrentDirectory(new File("."));
+            
+            // Enum del resultado, si es OK, o cancel o lo que presione el usuario
+            int result = fileChooser.showOpenDialog(null);
+            
+            System.out.println("Result: " +  result);
+            
+            if(result == JFileChooser.APPROVE_OPTION){
+                File selectedFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                System.out.println("ruta: " + selectedFile);
+                path_current_file = String.valueOf(selectedFile);
+                
+                FileReader reader = new FileReader(selectedFile);
+                BufferedReader br = new BufferedReader(reader);
+                text_entrada.read(br,null);
+                br.close();
+                text_entrada.requestFocus();
+                
+            }else if (result == JFileChooser.CANCEL_OPTION){
+                System.out.println("se cancelo el puerto :( ");
+            }
+            
+            
+            
+        }catch (Exception e){
+            System.out.println(e);
+            System.out.println("Error tratando de abrir archivo, file chooser");
+        }
+    }//GEN-LAST:event_open_file_menuActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -213,7 +262,7 @@ public class user_interface extends javax.swing.JFrame {
        
         //ejecutar("int test 5+80*90/70;");
         
-         File archivo = new File("archivo.txt");
+        File archivo = new File("archivo.txt");
         PrintWriter escribir;
         
         try {    
@@ -268,6 +317,58 @@ public class user_interface extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void save_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_menuActionPerformed
+        // TODO add your handling code here:
+        save_general(path_current_file);
+    }//GEN-LAST:event_save_menuActionPerformed
+
+    private void save_as_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_as_menuActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            JFileChooser fileChooser = new JFileChooser();
+            //  Seteando filtros del programa en especifico
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Compi 1 archivos SP y JSON", "sp", "json");
+            fileChooser.setFileFilter(filter);
+
+            // Donde se abre por defecto 
+            fileChooser.setCurrentDirectory(new File("."));
+
+            // Enum del resultado, si es OK, o cancel o lo que presione el usuario
+            int result = fileChooser.showOpenDialog(null);
+
+            System.out.println("Result: " + result);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                System.out.println("ruta: " + selectedFile);
+                 save_general(String.valueOf(selectedFile));
+                 
+                 path_current_file = String.valueOf(selectedFile);
+                 System.out.println(path_current_file);
+
+            } else if (result == JFileChooser.CANCEL_OPTION) {
+                System.out.println("se cancelo el puerto :( ");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Error tratando de guardar el archivo como, file chooser");
+        }
+    }//GEN-LAST:event_save_as_menuActionPerformed
+
+    private void save_general(String path){
+        try{
+            FileWriter writer = new FileWriter(path);
+            BufferedWriter bw = new BufferedWriter(writer);
+            text_entrada.write(bw);
+            bw.close();
+            text_entrada.requestFocus();
+            JOptionPane.showMessageDialog(this, "se guardo con exito: " + path);
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     public void reporte_tokens(LinkedList<Tokens> tabla_tokens){
         try{
             PrintWriter file_out;
@@ -484,14 +585,14 @@ public class user_interface extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel label_analyzer;
+    private javax.swing.JMenuItem open_file_menu;
+    private javax.swing.JMenuItem save_as_menu;
+    private javax.swing.JMenuItem save_menu;
     private javax.swing.JTextPane text_entrada;
     private javax.swing.JTextArea text_salida;
     // End of variables declaration//GEN-END:variables
