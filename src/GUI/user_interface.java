@@ -158,6 +158,11 @@ public class user_interface extends javax.swing.JFrame {
         jMenu4.add(html_tokens_JSON);
 
         html_errores_JSON.setText("Errores_JSON");
+        html_errores_JSON.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                html_errores_JSONActionPerformed(evt);
+            }
+        });
         jMenu4.add(html_errores_JSON);
 
         jMenuBar1.add(jMenu4);
@@ -298,6 +303,7 @@ public class user_interface extends javax.swing.JFrame {
     }
     
     Hashtable<String, LinkedList<Tokens>> json_map = new Hashtable<>();
+    Hashtable<String, LinkedList<TError>> json_map_errores = new Hashtable<>();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         //ejecutar("int test 5+80*90/70;");
@@ -319,31 +325,22 @@ public class user_interface extends javax.swing.JFrame {
             try {
 
                 lector = new BufferedReader(new FileReader("archivo.txt"));
-                /*
-            Analizador_json   json_lexer = new Analizador_json(lector);
-            
-            json_lexer.yylex();
-            reporte_tokens(json_lexer.tabla_tokens);
-                 */
-
-                Analizador_Lexico lexer = new Analizador_Lexico(lector);
-                analisis_sintactico parser = new analisis_sintactico(lexer);
-                parser.parse();
+                Analizador_Lexico lexer = new Analizador_Lexico(lector);        // inicio del analisis lexico
+                analisis_sintactico parser = new analisis_sintactico(lexer);    
+                parser.parse();                                                 // se parse la lsita de tokens
                 //System.out.println(parser.python);
 
-                for (String temp : parser.python) {
+                for (String temp : parser.python) {                             // Se traduce a lenguaje python
                     text_salida.append(temp);
                 }
 
-                //System.out.println(lexer.TablaEL);
-                //System.out.println(lexer.tabla_tokens);
+                // Impresion de repotes lexicos html
                 reporte_tokens(lexer.tabla_tokens);
                 lexer.tabla_tokens.clear();
 
                 // Genera reporte de erroes lexicos en HTMl
                 reporte_errores_lexicos(lexer.TablaEL);
                 lexer.TablaEL.clear();
-                //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
 
             } catch (Exception e) {
 
@@ -361,8 +358,14 @@ public class user_interface extends javax.swing.JFrame {
                 json_map.put(jsonFileName[jsonFileName.length-1],(LinkedList)json_lexer.tabla_tokens.clone());  
                 // se guarda ese analis en el hashtable con String "nombre archivo" y Linskelist<Tokens>"lista"
                 // se crea una copia de la lista para que no se sobre escriba 
+                json_map_errores.put(jsonFileName[jsonFileName.length-1],(LinkedList)json_lexer.TablaEL.clone());
+                
                 json_lexer.tabla_tokens.clear();    // Se resetea la lista guardada en el analizador lexico
-                repote_tokens_json(json_map);       // Se genera el reporte de tokens HTML json                                            
+                json_lexer.TablaEL.clear();
+                reporte_tokens_json(json_map);       // Se genera el reporte de tokens HTML json
+                
+                reporte_errores_json(json_map_errores);
+                
             } catch (Exception e) {
                 System.out.println("no lee esa mierda");
             }
@@ -420,6 +423,12 @@ public class user_interface extends javax.swing.JFrame {
         abrir_html(ruta);
     }//GEN-LAST:event_html_tokens_JSONActionPerformed
 
+    private void html_errores_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_html_errores_JSONActionPerformed
+        // TODO add your handling code here:
+        String ruta = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\Tabla_de_errores_json.html";
+        abrir_html(ruta);
+    }//GEN-LAST:event_html_errores_JSONActionPerformed
+
     private void save_general(String path){
         try{
             FileWriter writer = new FileWriter(path);
@@ -434,7 +443,7 @@ public class user_interface extends javax.swing.JFrame {
         }
     }
     
-    public void repote_tokens_json(Hashtable<String, LinkedList<Tokens>> lista){
+    public void reporte_tokens_json(Hashtable<String, LinkedList<Tokens>> lista){
         try{
             PrintWriter file_out;
 
@@ -567,28 +576,28 @@ public class user_interface extends javax.swing.JFrame {
         
     }
     
-     public void repote_errores_json(Hashtable<String, LinkedList<Tokens>> lista){
+     public void reporte_errores_json(Hashtable<String, LinkedList<TError>> lista){
         try{
             PrintWriter file_out;
 
-            file_out =  new PrintWriter("Tabla_de_tokens_json.html");
+            file_out =  new PrintWriter("Tabla_de_errores_json.html");
 
             file_out.println(   "<!DOCTYPE html>\n" +
                                 "<html>\n" +
                                 "<head>\n" +
-                                "  <title> Reporte de Tokens JSON </title>\n" +
+                                "  <title> Reporte de Errores JSON </title>\n" +
                                 "  <style>\n" +
                                 "    body {\n" +
                                 "      font-family: Arial, sans-serif;\n" +
                                 "      margin: 0;\n" +
                                 "      padding: 0;\n" +
-                                "      background-color: #c4cef9;\n" +
+                                "      background-color: #008B95;\n" +
                                 "    }\n" +
                                 "    \n" +
                                 "    h2 {\n" +
                                 "      text-align: center;\n" +
                                 "      padding: 20px;\n" +
-                                "      color: #000000;\n" +
+                                "      color: #FFFFFF;\n" +
                                 "    }\n" +
                                 "    \n" +
                                 "    table {\n" +
@@ -607,9 +616,9 @@ public class user_interface extends javax.swing.JFrame {
                                 "    }\n" +
                                 "    \n" +
                                 "    th {\n" +
-                                "      background-color: #20B2AA;\n" +
+                                "      background-color: #ffcc80;\n" +
                                 "      color: #d84315;\n" +
-                                "       text-align: center;\n" +
+                                "      text-align: center;\n" +
                                 "    }\n" +
                                 "    \n" +
                                 "    tr:nth-child(even) {\n" +
@@ -619,13 +628,13 @@ public class user_interface extends javax.swing.JFrame {
                                 "</head>\n" +
                                 "<body>\n" +
                                 "\n" +
-                                "<h2> Reporte de Tokens JSON </h2>");
+                                "<h2> Reporte de Errores JSON </h2>");
                     
                     //Table 
                     file_out.println("<table>\n");
                     
                     // Recorriendo hashtable para escribirlo en el HTML
-                    for (Map.Entry<String, LinkedList<Tokens>> entry : lista.entrySet()) {
+                    for (Map.Entry<String, LinkedList<TError>> entry : lista.entrySet()) {
                         // nommbre del archivo
                         file_out.println(
                         "  <tr>\n" +
@@ -645,10 +654,10 @@ public class user_interface extends javax.swing.JFrame {
                         "  \n"
                         );
                         // Lista de tokens 
-                        for(Tokens item: entry.getValue()){
+                        for(TError item: entry.getValue()){
                             file_out.println("  <tr>\n" +
                                             "    <td>" + item.getLexema()       + "</td>\n" +
-                                            "    <td>" + item.getToken()        + "</td>\n" +
+                                            "    <td>" + item.getDescripcion()  + "</td>\n" +
                                             "    <td>" + item.getLinea()        + "</td>\n" +
                                             "    <td>" + item.getColumna()      + "</td>\n" +
                                             "  </tr>\n"
