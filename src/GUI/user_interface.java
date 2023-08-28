@@ -9,7 +9,10 @@ import java.awt.Color;
 import Analizadores.*;
 import java.awt.Desktop;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -147,6 +150,11 @@ public class user_interface extends javax.swing.JFrame {
         jMenu4.add(html_errores_STATPY);
 
         html_tokens_JSON.setText("Tokens_JSON");
+        html_tokens_JSON.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                html_tokens_JSONActionPerformed(evt);
+            }
+        });
         jMenu4.add(html_tokens_JSON);
 
         html_errores_JSON.setText("Errores_JSON");
@@ -267,7 +275,7 @@ public class user_interface extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_btn_togActionPerformed
-
+    
     private void ejecutar(String codigoFuente){
         
         try {
@@ -288,6 +296,8 @@ public class user_interface extends javax.swing.JFrame {
             Logger.getLogger(user_interface.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    Hashtable<String, LinkedList<Tokens>> json_map = new Hashtable<>();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         //ejecutar("int test 5+80*90/70;");
@@ -344,9 +354,11 @@ public class user_interface extends javax.swing.JFrame {
             try {
 
                 lector = new BufferedReader(new FileReader("archivo.txt"));
-                Analizador_json json_lexer = new Analizador_json(lector);
-                json_lexer.yylex();
-                reporte_tokens(json_lexer.tabla_tokens);
+                Analizador_json json_lexer = new Analizador_json(lector); // Se crea un objeto analizador json
+                json_lexer.yylex();                                       // se analiza      
+                json_map.put(path_current_file,json_lexer.tabla_tokens);  // se guarda ese analis en el hashtable con String "nombre archivo" y Linskelist<Tokens>"lista"  
+                repote_tokens_json(json_map);                             // Se genera el reporte de tokens HTML json  
+                json_lexer.tabla_tokens.clear();                          // Se resetea la lista guardada en el analizador lexico
             } catch (Exception e) {
                 System.out.println("no lee esa mierda");
             }
@@ -398,6 +410,11 @@ public class user_interface extends javax.swing.JFrame {
         abrir_html(ruta);
     }//GEN-LAST:event_html_errores_STATPYActionPerformed
 
+    private void html_tokens_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_html_tokens_JSONActionPerformed
+        // TODO add your handling code here:
+        System.out.println(json_map);
+    }//GEN-LAST:event_html_tokens_JSONActionPerformed
+
     private void save_general(String path){
         try{
             FileWriter writer = new FileWriter(path);
@@ -411,6 +428,102 @@ public class user_interface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    public void repote_tokens_json(Hashtable<String, LinkedList<Tokens>> tabla_tokens){
+        try{
+            PrintWriter file_out;
+
+            file_out =  new PrintWriter("Tabla_de_tokens_json.html");
+
+            file_out.println(   "<!DOCTYPE html>\n" +
+                                "<html>\n" +
+                                "<head>\n" +
+                                "  <title> Reporte de Tokens JSON </title>\n" +
+                                "  <style>\n" +
+                                "    body {\n" +
+                                "      font-family: Arial, sans-serif;\n" +
+                                "      margin: 0;\n" +
+                                "      padding: 0;\n" +
+                                "      background-color: #c4cef9;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    h2 {\n" +
+                                "      text-align: center;\n" +
+                                "      padding: 20px;\n" +
+                                "      color: #000000;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    table {\n" +
+                                "      border-collapse: collapse;\n" +
+                                "      width: 80%;\n" +
+                                "      margin: 20px auto;\n" +
+                                "      background-color: #fff3e0;\n" +
+                                "      border: 1px solid #e57373;\n" +
+                                "      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th, td {\n" +
+                                "      border: 1px solid #ffcdd2;\n" +
+                                "      padding: 10px;\n" +
+                                "      text-align: left;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th {\n" +
+                                "      background-color: #ffcc80;\n" +
+                                "      color: #d84315;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    tr:nth-child(even) {\n" +
+                                "      background-color: #ffecb3;\n" +
+                                "    }\n" +
+                                "  </style>\n" +
+                                "</head>\n" +
+                                "<body>\n" +
+                                "\n" +
+                                "<h2> Reporte de Tokens </h2>");
+                    
+                    //Table 
+                    file_out.println(   "<table>\n" +
+                                        "  <tr>\n" +
+                                        "    <th> Lexema </th>\n" +
+                                        "    <th> Descripcion </th>\n" +
+                                        "    <th> Linea </th>\n" +
+                                        "    <th> Columna </th>\n" +
+                                        "  </tr>\n" +
+                                        "  \n"
+                                        );
+                    
+                    for (Map.Entry<String, LinkedList<Tokens>> entry : tabla_tokens.entrySet()) {
+                                            file_out.println(
+                                        "  <tr>\n" +
+                                        "  <th colspan=\"4\"> " + entry.getKey() + "</th>\n" +
+                                        "  </tr>\n" +
+                                        "  \n"
+                                        );
+                        for(Tokens item: entry.getValue()){
+                            file_out.println("  <tr>\n" +
+                                            "    <td>" + item.getLexema()       + "</td>\n" +
+                                            "    <td>" + item.getToken()        + "</td>\n" +
+                                            "    <td>" + item.getLinea()        + "</td>\n" +
+                                            "    <td>" + item.getColumna()      + "</td>\n" +
+                                            "  </tr>\n"
+                                        );
+                        }
+                    }
+                    
+                    file_out.println(   "</table>\n" +
+                                        "</body>\n" +
+                                        "</html>");
+
+            System.out.println("Generated html for JSON");
+
+            file_out.close();
+        }catch(FileNotFoundException e){
+            System.out.println("not found");
+        }
+        
+    }
+    
     public void reporte_tokens(LinkedList<Tokens> tabla_tokens){
         try{
             PrintWriter file_out;

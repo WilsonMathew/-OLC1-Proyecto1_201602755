@@ -51,7 +51,7 @@ public class tests {
         
         
         
-        Map<String, LinkedList<objeto>> map = new HashMap<>();
+        Hashtable<String, LinkedList<objeto>> map = new Hashtable<>();
         map.put("A", idunno);
         map.put("B", idunno1);
        
