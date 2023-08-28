@@ -1,7 +1,12 @@
 package Analizadores;
 
 import java.io.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class tests {
 
@@ -15,7 +20,15 @@ public class tests {
             this.c = c;
             this.d = d;
         }
-
+        
+      @Override
+    public String toString(){
+        return "{" + "a: "     + this.a       + " "
+                   + "b: "     + this.b       + " "
+                   + "c: "     + this.c       + " " 
+                   + "d: "     + this.d       + " "
+                + "} \n";
+    }
     }
     int indentacion = 0;
 
@@ -25,14 +38,39 @@ public class tests {
         objeto tmp2 = new objeto("lexema 3","test 3", "linea", "columna");
                         gList.add(tmp);
          */
-        LinkedList<String> idunno = new LinkedList<>();
-        idunno.add("test \n");
-        idunno.add("test 1 \n");
-        idunno.add("test 2 \n");
-        idunno.add("test 3 \n ");
-        idunno.add("test 4 \n ");
+        LinkedList<objeto> idunno = new LinkedList<>();        
+        idunno.add(new objeto("lexema 1","test 1", "linea", "columna"));
+        idunno.add(new objeto("lexema 2","test 2", "linea", "columna"));
+        idunno.add(new objeto("lexema 3","test 3", "linea", "columna"));
 
-        System.out.println("LinkedList: " + idunno);
+        LinkedList<objeto> idunno1 = new LinkedList<>();        
+        idunno1.add(new objeto("lexema 1","test 1", "linea", "columna"));
+        idunno1.add(new objeto("lexema 2","test 2", "linea", "columna"));
+        idunno1.add(new objeto("lexema 3","test 3", "linea", "columna"));
+
+        
+        
+        
+        Map<String, LinkedList<objeto>> map = new HashMap<>();
+        map.put("A", idunno);
+        map.put("B", idunno1);
+       
+        System.out.println("LinkedList: " + map);
+
+        
+        for (Map.Entry<String, LinkedList<objeto>> entry : map.entrySet()) {
+            for(objeto item: entry.getValue() ){
+                        System.out.println( "  <tr>\n" +
+                                            "  <td>"   + item.a         + "</td>\n" +
+                                            "  <td>"   + item.b         + "</td>\n" +
+                                            "  <td>"   + item.c         + "</td>\n" +
+                                            "  <td>"   + item.d         + "</td>\n" +
+                                            "  </tr>\n"
+                                    );
+                    }
+        }
+         
+    }
 
         /*
         try{
@@ -142,4 +180,3 @@ public class tests {
          */
     }
 
-}
