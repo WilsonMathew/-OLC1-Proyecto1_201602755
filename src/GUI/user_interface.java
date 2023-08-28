@@ -355,10 +355,12 @@ public class user_interface extends javax.swing.JFrame {
 
                 lector = new BufferedReader(new FileReader("archivo.txt"));
                 Analizador_json json_lexer = new Analizador_json(lector); // Se crea un objeto analizador json
-                json_lexer.yylex();                                       // se analiza      
-                json_map.put(path_current_file,json_lexer.tabla_tokens);  // se guarda ese analis en el hashtable con String "nombre archivo" y Linskelist<Tokens>"lista"  
-                repote_tokens_json(json_map);                             // Se genera el reporte de tokens HTML json  
-                json_lexer.tabla_tokens.clear();                          // Se resetea la lista guardada en el analizador lexico
+                json_lexer.yylex();                                       // se analiza
+                json_map.put(path_current_file,(LinkedList)json_lexer.tabla_tokens.clone());  
+                // se guarda ese analis en el hashtable con String "nombre archivo" y Linskelist<Tokens>"lista"
+                // se crea una copia de la lista para que no se sobre escriba 
+                json_lexer.tabla_tokens.clear();    // Se resetea la lista guardada en el analizador lexico
+                repote_tokens_json(json_map);       // Se genera el reporte de tokens HTML json                                            
             } catch (Exception e) {
                 System.out.println("no lee esa mierda");
             }
@@ -429,7 +431,7 @@ public class user_interface extends javax.swing.JFrame {
         }
     }
     
-    public void repote_tokens_json(Hashtable<String, LinkedList<Tokens>> tabla_tokens){
+    public void repote_tokens_json(Hashtable<String, LinkedList<Tokens>> lista){
         try{
             PrintWriter file_out;
 
@@ -483,24 +485,29 @@ public class user_interface extends javax.swing.JFrame {
                                 "<h2> Reporte de Tokens </h2>");
                     
                     //Table 
-                    file_out.println(   "<table>\n" +
-                                        "  <tr>\n" +
-                                        "    <th> Lexema </th>\n" +
-                                        "    <th> Descripcion </th>\n" +
-                                        "    <th> Linea </th>\n" +
-                                        "    <th> Columna </th>\n" +
-                                        "  </tr>\n" +
-                                        "  \n"
-                                        );
+                    file_out.println("<table>\n");
                     
-                    for (Map.Entry<String, LinkedList<Tokens>> entry : tabla_tokens.entrySet()) {
-                                            file_out.println(
-                                        "  <tr>\n" +
-                                        "  <th colspan=\"4\"> " + entry.getKey() + "</th>\n" +
-                                        "  </tr>\n" +
-                                        "  \n"
-                                        );
-                        for(Tokens item: entry.getValue()){
+                    for (String key : lista.keySet() ) {
+                        // nommbre del archivo
+                        file_out.println(
+                        "  <tr>\n" +
+                        "  <th colspan=\"4\"> " + key + "</th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        
+                        // headers
+                        file_out.println(   
+                        "  <tr>\n" +
+                        "    <th> Lexema </th>\n" +
+                        "    <th> Descripcion </th>\n" +
+                        "    <th> Linea </th>\n" +
+                        "    <th> Columna </th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        // Lista de tokens 
+                        for(Tokens item: lista.get(key)){
                             file_out.println("  <tr>\n" +
                                             "    <td>" + item.getLexema()       + "</td>\n" +
                                             "    <td>" + item.getToken()        + "</td>\n" +
@@ -510,6 +517,38 @@ public class user_interface extends javax.swing.JFrame {
                                         );
                         }
                     }
+                    
+                    /*
+                    for (Map.Entry<String, LinkedList<Tokens>> entry : lista.entrySet()) {
+                        // nommbre del archivo
+                        file_out.println(
+                        "  <tr>\n" +
+                        "  <th colspan=\"4\"> " + entry.getKey() + "</th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        
+                        // headers
+                        file_out.println(   
+                        "  <tr>\n" +
+                        "    <th> Lexema </th>\n" +
+                        "    <th> Descripcion </th>\n" +
+                        "    <th> Linea </th>\n" +
+                        "    <th> Columna </th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        // Lista de tokens 
+                        for(Tokens item: entry.getValue()){
+                            file_out.println("  <tr>\n" +
+                                            "    <td>" + item.getLexema()       + "</td>\n" +
+                                            "    <td>" + item.getToken()        + "</td>\n" +
+                                            "    <td>" + item.getLinea()        + "</td>\n" +
+                                            "    <td>" + item.getColumna()      + "</td>\n" +
+                                            "  </tr>\n"
+                                        );
+                        }
+                    }*/
                     
                     file_out.println(   "</table>\n" +
                                         "</body>\n" +
