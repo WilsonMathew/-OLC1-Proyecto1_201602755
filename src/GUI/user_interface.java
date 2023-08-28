@@ -7,6 +7,7 @@ package GUI;
 
 import java.awt.Color;
 import Analizadores.*;
+import java.awt.Desktop;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -27,6 +28,8 @@ public class user_interface extends javax.swing.JFrame {
     public user_interface() {
         initComponents();
         this.setLocationRelativeTo(null);
+        btn_tog.setSelected(true);
+        btn_tog.setText("StatPy");
     }
 
     /**
@@ -53,11 +56,15 @@ public class user_interface extends javax.swing.JFrame {
         save_menu = new javax.swing.JMenuItem();
         save_as_menu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        html_tokens_STATPY = new javax.swing.JMenuItem();
+        html_errores_STATPY = new javax.swing.JMenuItem();
+        html_tokens_JSON = new javax.swing.JMenuItem();
+        html_errores_JSON = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROYECTO 1");
+        setMaximumSize(new java.awt.Dimension(2147483647, 900));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Entrada:");
@@ -123,16 +130,27 @@ public class user_interface extends javax.swing.JFrame {
 
         jMenu4.setText("Reporte");
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        html_tokens_STATPY.setText("Tokens_STATPY");
+        html_tokens_STATPY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                html_tokens_STATPYActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(html_tokens_STATPY);
 
-        jMenuItem5.setText("jMenuItem5");
-        jMenu4.add(jMenuItem5);
+        html_errores_STATPY.setText("Errores_STATPY");
+        html_errores_STATPY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                html_errores_STATPYActionPerformed(evt);
+            }
+        });
+        jMenu4.add(html_errores_STATPY);
+
+        html_tokens_JSON.setText("Tokens_JSON");
+        jMenu4.add(html_tokens_JSON);
+
+        html_errores_JSON.setText("Errores_JSON");
+        jMenu4.add(html_errores_JSON);
 
         jMenuBar1.add(jMenu4);
 
@@ -222,10 +240,22 @@ public class user_interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_open_file_menuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void html_tokens_STATPYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_html_tokens_STATPYActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        String ruta = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\Tabla_de_tokens.html";
+        abrir_html(ruta);
+    }//GEN-LAST:event_html_tokens_STATPYActionPerformed
 
+    private void abrir_html(String ruta) {
+        try {
+            File file = new File(ruta);
+            Desktop.getDesktop().browse(file.toURI());
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Error tratando de abrir HTML");
+        }
+    }
+    
     private void btn_togActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_togActionPerformed
         // TODO add your handling code here:
         if(btn_tog.isSelected()){
@@ -274,47 +304,53 @@ public class user_interface extends javax.swing.JFrame {
             Logger.getLogger(user_interface.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        Reader lector;
-        try{
-            
-            lector = new BufferedReader(new FileReader("archivo.txt"));
-            /*
+        if (btn_tog.isSelected()) {
+            Reader lector;
+            try {
+
+                lector = new BufferedReader(new FileReader("archivo.txt"));
+                /*
             Analizador_json   json_lexer = new Analizador_json(lector);
             
             json_lexer.yylex();
             reporte_tokens(json_lexer.tabla_tokens);
-            */
-            
-            Analizador_Lexico lexer = new Analizador_Lexico(lector);
-            analisis_sintactico parser = new analisis_sintactico(lexer);
-            parser.parse();
-            
-            //System.out.println(parser.python);
-            
-            for(String temp: parser.python){
-                text_salida.append(temp);
+                 */
+
+                Analizador_Lexico lexer = new Analizador_Lexico(lector);
+                analisis_sintactico parser = new analisis_sintactico(lexer);
+                parser.parse();
+                //System.out.println(parser.python);
+
+                for (String temp : parser.python) {
+                    text_salida.append(temp);
+                }
+
+                //System.out.println(lexer.TablaEL);
+                //System.out.println(lexer.tabla_tokens);
+                reporte_tokens(lexer.tabla_tokens);
+                lexer.tabla_tokens.clear();
+
+                // Genera reporte de erroes lexicos en HTMl
+                reporte_errores_lexicos(lexer.TablaEL);
+                lexer.TablaEL.clear();
+                //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
+
+            } catch (Exception e) {
+
+                System.out.println("no lee esa mierda");
             }
-            //text_salida.setText("" + parser.python);
-            //text_salida.setText("fuckign testing");
-            
-            //System.out.println(lexer.TablaEL);
-            //System.out.println(lexer.tabla_tokens);
-            
-            reporte_tokens(lexer.tabla_tokens);
-            lexer.tabla_tokens.clear();
-            
-            // Genera reporte de erroes lexicos en HTMl
-            reporte_errores_lexicos(lexer.TablaEL);
-            lexer.TablaEL.clear();
-            //public static LinkedList<TError> TablaEL = new LinkedList<TError>();
-            
-        }catch(Exception e){
-            
-            System.out.println("no lee esa mierda");
-        }
-            
-        
-            
+        } else {
+            Reader lector;
+            try {
+
+                lector = new BufferedReader(new FileReader("archivo.txt"));
+                Analizador_json json_lexer = new Analizador_json(lector);
+                json_lexer.yylex();
+                reporte_tokens(json_lexer.tabla_tokens);
+            } catch (Exception e) {
+                System.out.println("no lee esa mierda");
+            }
+        }           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void save_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_menuActionPerformed
@@ -356,6 +392,12 @@ public class user_interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_save_as_menuActionPerformed
 
+    private void html_errores_STATPYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_html_errores_STATPYActionPerformed
+        // TODO add your handling code here:
+        String ruta = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\Tabla_errores_lexicos.html";
+        abrir_html(ruta);
+    }//GEN-LAST:event_html_errores_STATPYActionPerformed
+
     private void save_general(String path){
         try{
             FileWriter writer = new FileWriter(path);
@@ -378,7 +420,7 @@ public class user_interface extends javax.swing.JFrame {
             file_out.println(   "<!DOCTYPE html>\n" +
                                 "<html>\n" +
                                 "<head>\n" +
-                                "  <title> Reporte de Tokens </title>\n" +
+                                "  <title> Reporte de Tokens STATPY </title>\n" +
                                 "  <style>\n" +
                                 "    body {\n" +
                                 "      font-family: Arial, sans-serif;\n" +
@@ -465,7 +507,7 @@ public class user_interface extends javax.swing.JFrame {
             file_out.println(   "<!DOCTYPE html>\n" +
                                 "<html>\n" +
                                 "<head>\n" +
-                                "  <title>Reporte de Errores</title>\n" +
+                                "  <title>Reporte de Errores STATPY </title>\n" +
                                 "  <style>\n" +
                                 "    body {\n" +
                                 "      font-family: Arial, sans-serif;\n" +
@@ -579,14 +621,16 @@ public class user_interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_tog;
+    private javax.swing.JMenuItem html_errores_JSON;
+    private javax.swing.JMenuItem html_errores_STATPY;
+    private javax.swing.JMenuItem html_tokens_JSON;
+    private javax.swing.JMenuItem html_tokens_STATPY;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel label_analyzer;
