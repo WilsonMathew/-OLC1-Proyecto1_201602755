@@ -18,6 +18,12 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -53,6 +59,7 @@ public class user_interface extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         text_salida = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         open_file_menu = new javax.swing.JMenuItem();
@@ -100,6 +107,13 @@ public class user_interface extends javax.swing.JFrame {
         text_salida.setForeground(new java.awt.Color(255, 255, 255));
         text_salida.setRows(5);
         jScrollPane1.setViewportView(text_salida);
+
+        jButton2.setText("piechart");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setMaximumSize(new java.awt.Dimension(98, 300));
 
@@ -177,7 +191,10 @@ public class user_interface extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(btn_tog)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_tog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label_analyzer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,7 +210,9 @@ public class user_interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(btn_tog)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_tog)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label_analyzer)
@@ -428,6 +447,23 @@ public class user_interface extends javax.swing.JFrame {
         String ruta = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\Tabla_de_errores_json.html";
         abrir_html(ruta);
     }//GEN-LAST:event_html_errores_JSONActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        pieDataset.setValue("One",      new Integer(10));
+        pieDataset.setValue("two",      new Integer(20));
+        pieDataset.setValue("there",    new Integer(30));
+        pieDataset.setValue("four",     new Integer(40));
+        
+        JFreeChart chart = ChartFactory.createPieChart(" Pie Chart ", pieDataset,true, true, true);
+        PiePlot P = (PiePlot)chart.getPlot();
+        //P.setForegroundAlpha(TOP_ALIGNMENT);
+        
+        ChartFrame frame = new ChartFrame("Pie Chart", chart);
+        frame.setVisible(true);
+        frame.setSize(450,500);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void save_general(String path){
         try{
@@ -893,6 +929,7 @@ public class user_interface extends javax.swing.JFrame {
     private javax.swing.JMenuItem html_tokens_JSON;
     private javax.swing.JMenuItem html_tokens_STATPY;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
