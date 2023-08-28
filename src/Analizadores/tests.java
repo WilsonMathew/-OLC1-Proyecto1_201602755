@@ -56,7 +56,11 @@ public class tests {
         map.put("B", idunno1);
        
         System.out.println("LinkedList: " + map);
-
+        String path_current_file = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\json1.json";
+        String [] jsonFileName = path_current_file.split("\\\\",0); // split array and get the last value
+        
+        for(String a : jsonFileName)
+            System.out.println(a);
         
         for (Map.Entry<String, LinkedList<objeto>> entry : map.entrySet()) {
             for(objeto item: entry.getValue() ){

@@ -356,7 +356,9 @@ public class user_interface extends javax.swing.JFrame {
                 lector = new BufferedReader(new FileReader("archivo.txt"));
                 Analizador_json json_lexer = new Analizador_json(lector); // Se crea un objeto analizador json
                 json_lexer.yylex();                                       // se analiza
-                json_map.put(path_current_file,(LinkedList)json_lexer.tabla_tokens.clone());  
+               
+                String [] jsonFileName = path_current_file.split("\\\\",0); // split array and get the last value
+                json_map.put(jsonFileName[jsonFileName.length-1],(LinkedList)json_lexer.tabla_tokens.clone());  
                 // se guarda ese analis en el hashtable con String "nombre archivo" y Linskelist<Tokens>"lista"
                 // se crea una copia de la lista para que no se sobre escriba 
                 json_lexer.tabla_tokens.clear();    // Se resetea la lista guardada en el analizador lexico
@@ -414,7 +416,8 @@ public class user_interface extends javax.swing.JFrame {
 
     private void html_tokens_JSONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_html_tokens_JSONActionPerformed
         // TODO add your handling code here:
-        System.out.println(json_map);
+        String ruta = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\Tabla_de_tokens_json.html";
+        abrir_html(ruta);
     }//GEN-LAST:event_html_tokens_JSONActionPerformed
 
     private void save_general(String path){
@@ -471,8 +474,9 @@ public class user_interface extends javax.swing.JFrame {
                                 "    }\n" +
                                 "    \n" +
                                 "    th {\n" +
-                                "      background-color: #ffcc80;\n" +
+                                "      background-color: #20B2AA;\n" +
                                 "      color: #d84315;\n" +
+                                "       text-align: center;\n" +
                                 "    }\n" +
                                 "    \n" +
                                 "    tr:nth-child(even) {\n" +
@@ -482,11 +486,11 @@ public class user_interface extends javax.swing.JFrame {
                                 "</head>\n" +
                                 "<body>\n" +
                                 "\n" +
-                                "<h2> Reporte de Tokens </h2>");
+                                "<h2> Reporte de Tokens JSON </h2>");
                     
                     //Table 
                     file_out.println("<table>\n");
-                    
+                    /*
                     for (String key : lista.keySet() ) {
                         // nommbre del archivo
                         file_out.println(
@@ -516,9 +520,9 @@ public class user_interface extends javax.swing.JFrame {
                                             "  </tr>\n"
                                         );
                         }
-                    }
+                    }*/
                     
-                    /*
+                    
                     for (Map.Entry<String, LinkedList<Tokens>> entry : lista.entrySet()) {
                         // nommbre del archivo
                         file_out.println(
@@ -548,7 +552,109 @@ public class user_interface extends javax.swing.JFrame {
                                             "  </tr>\n"
                                         );
                         }
-                    }*/
+                    }
+                    
+                    file_out.println(   "</table>\n" +
+                                        "</body>\n" +
+                                        "</html>");
+
+            System.out.println("Generated html for JSON");
+
+            file_out.close();
+        }catch(FileNotFoundException e){
+            System.out.println("not found");
+        }
+        
+    }
+    
+     public void repote_errores_json(Hashtable<String, LinkedList<Tokens>> lista){
+        try{
+            PrintWriter file_out;
+
+            file_out =  new PrintWriter("Tabla_de_tokens_json.html");
+
+            file_out.println(   "<!DOCTYPE html>\n" +
+                                "<html>\n" +
+                                "<head>\n" +
+                                "  <title> Reporte de Tokens JSON </title>\n" +
+                                "  <style>\n" +
+                                "    body {\n" +
+                                "      font-family: Arial, sans-serif;\n" +
+                                "      margin: 0;\n" +
+                                "      padding: 0;\n" +
+                                "      background-color: #c4cef9;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    h2 {\n" +
+                                "      text-align: center;\n" +
+                                "      padding: 20px;\n" +
+                                "      color: #000000;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    table {\n" +
+                                "      border-collapse: collapse;\n" +
+                                "      width: 80%;\n" +
+                                "      margin: 20px auto;\n" +
+                                "      background-color: #fff3e0;\n" +
+                                "      border: 1px solid #e57373;\n" +
+                                "      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th, td {\n" +
+                                "      border: 1px solid #ffcdd2;\n" +
+                                "      padding: 10px;\n" +
+                                "      text-align: left;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    th {\n" +
+                                "      background-color: #20B2AA;\n" +
+                                "      color: #d84315;\n" +
+                                "       text-align: center;\n" +
+                                "    }\n" +
+                                "    \n" +
+                                "    tr:nth-child(even) {\n" +
+                                "      background-color: #ffecb3;\n" +
+                                "    }\n" +
+                                "  </style>\n" +
+                                "</head>\n" +
+                                "<body>\n" +
+                                "\n" +
+                                "<h2> Reporte de Tokens JSON </h2>");
+                    
+                    //Table 
+                    file_out.println("<table>\n");
+                    
+                    // Recorriendo hashtable para escribirlo en el HTML
+                    for (Map.Entry<String, LinkedList<Tokens>> entry : lista.entrySet()) {
+                        // nommbre del archivo
+                        file_out.println(
+                        "  <tr>\n" +
+                        "  <th colspan=\"4\"> " + entry.getKey() + "</th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        
+                        // headers
+                        file_out.println(   
+                        "  <tr>\n" +
+                        "    <th> Lexema </th>\n" +
+                        "    <th> Descripcion </th>\n" +
+                        "    <th> Linea </th>\n" +
+                        "    <th> Columna </th>\n" +
+                        "  </tr>\n" +
+                        "  \n"
+                        );
+                        // Lista de tokens 
+                        for(Tokens item: entry.getValue()){
+                            file_out.println("  <tr>\n" +
+                                            "    <td>" + item.getLexema()       + "</td>\n" +
+                                            "    <td>" + item.getToken()        + "</td>\n" +
+                                            "    <td>" + item.getLinea()        + "</td>\n" +
+                                            "    <td>" + item.getColumna()      + "</td>\n" +
+                                            "  </tr>\n"
+                                        );
+                        }
+                    }
                     
                     file_out.println(   "</table>\n" +
                                         "</body>\n" +
