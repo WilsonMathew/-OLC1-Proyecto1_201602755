@@ -44,7 +44,7 @@ public class tests {
         idunno.add(new objeto("lexema 3","test 3", "linea", "columna"));
 
         LinkedList<objeto> idunno1 = new LinkedList<>();        
-        idunno1.add(new objeto("lexema 1","test 1", "linea", "columna"));
+        idunno1.add(new objeto("si pues","test 1", "linea", "columna"));
         idunno1.add(new objeto("lexema 2","test 2", "linea", "columna"));
         idunno1.add(new objeto("lexema 3","test 3", "linea", "columna"));
 
@@ -54,7 +54,9 @@ public class tests {
         Hashtable<String, LinkedList<objeto>> map = new Hashtable<>();
         map.put("A", idunno);
         map.put("B", idunno1);
-       
+        
+        System.out.println( map.get("B"));
+       /*
         System.out.println("LinkedList: " + map);
         String path_current_file = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\json1.json";
         String [] jsonFileName = path_current_file.split("\\\\",0); // split array and get the last value
@@ -73,6 +75,7 @@ public class tests {
                                     );
                     }
         }
+        */
          
     }
 

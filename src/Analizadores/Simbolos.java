@@ -8,12 +8,14 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
+  public static final int reservada_tituloy = 51;
   public static final int distinto = 34;
+  public static final int reservada_titulox = 52;
   public static final int reservada_double = 13;
   public static final int reservada_void = 3;
-  public static final int close_square_brackets = 52;
+  public static final int close_square_brackets = 54;
   public static final int close_pare = 22;
-  public static final int coma = 53;
+  public static final int coma = 55;
   public static final int igual = 17;
   public static final int Simbolo_menos = 8;
   public static final int reservada_else = 26;
@@ -21,6 +23,7 @@ public class Simbolos {
   public static final int reservada_write = 19;
   public static final int multi_comentario = 4;
   public static final int reservada_titulo = 48;
+  public static final int reservada_definirglobales = 56;
   public static final int reservada_graficapie = 46;
   public static final int Simbolo_mas = 7;
   public static final int open_brace = 27;
@@ -58,7 +61,7 @@ public class Simbolos {
   public static final int reservada_ejex = 49;
   public static final int reservada_if = 25;
   public static final int comentario = 5;
-  public static final int open_square_brackets = 51;
+  public static final int open_square_brackets = 53;
   public static final int reservada_bool = 15;
   public static final int reservada_main = 2;
   public static final int dot = 20;
@@ -114,9 +117,12 @@ public class Simbolos {
   "reservada_titulo",
   "reservada_ejex",
   "reservada_valores",
+  "reservada_tituloy",
+  "reservada_titulox",
   "open_square_brackets",
   "close_square_brackets",
-  "coma"
+  "coma",
+  "reservada_definirglobales"
   };
 }
 

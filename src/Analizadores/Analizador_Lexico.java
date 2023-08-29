@@ -73,22 +73,21 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
     "\1\7\1\40\3\7\2\0\7\7\1\0\4\7\1\41"+
     "\1\0\2\5\2\0\2\7\2\0\2\7\2\42\2\7"+
     "\1\0\2\7\1\43\2\0\3\7\1\0\2\7\1\0"+
-    "\1\7\1\0\1\7\2\0\5\7\1\44\1\0\2\45"+
+    "\1\7\1\0\1\7\1\0\4\7\1\44\1\0\2\45"+
     "\1\46\2\47\1\7\1\0\3\7\2\50\1\7\2\0"+
     "\2\7\1\0\1\7\2\51\1\52\1\0\1\7\1\0"+
-    "\1\7\2\0\2\7\1\53\3\7\1\0\4\7\2\0"+
-    "\2\7\1\0\1\7\2\54\2\55\2\0\2\7\2\56"+
+    "\1\7\1\0\1\7\1\53\3\7\1\0\4\7\2\0"+
+    "\2\7\1\0\1\7\2\54\2\55\1\0\1\7\2\56"+
     "\1\0\2\7\1\0\2\7\1\57\1\7\1\60\1\61"+
-    "\1\60\1\61\1\0\1\7\1\62\1\0\1\62\1\7"+
-    "\1\0\1\7\2\63\1\0\1\7\1\64\1\7\2\65"+
-    "\1\66\1\67\1\0\1\66\1\67\1\7\1\0\1\7"+
-    "\1\0\1\7\1\70\2\71\2\0\2\7\1\0\1\7"+
-    "\2\0\2\7\1\0\1\7\1\0\1\72\1\7\1\72"+
-    "\1\0\1\7\1\0\1\7\1\0\1\7\1\0\1\7"+
-    "\1\0\1\7\2\73\1\0\1\7\2\74";
+    "\1\60\1\61\1\0\1\7\2\62\1\0\1\7\2\63"+
+    "\1\0\1\7\1\64\1\7\2\65\1\66\1\67\1\66"+
+    "\1\67\1\0\1\7\1\0\1\7\1\70\2\0\2\7"+
+    "\1\0\1\7\2\0\2\7\1\0\1\7\1\0\1\71"+
+    "\1\7\1\71\1\0\1\7\1\0\1\7\1\0\1\7"+
+    "\1\0\1\7\1\0\1\7\2\72\1\0\1\7\2\73";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[252];
+    int [] result = new int[240];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -128,26 +127,24 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
     "\0\u0113\0\u0e9c\0\u0ed3\0\u0f0a\0\u0f41\0\u0f78\0\u0113\0\u0faf"+
     "\0\u0fe6\0\u101d\0\u1054\0\u108b\0\u10c2\0\u10f9\0\u1130\0\u1167"+
     "\0\u119e\0\u11d5\0\u120c\0\u1243\0\u127a\0\u12b1\0\u12e8\0\u131f"+
-    "\0\u1356\0\u138d\0\67\0\u13c4\0\67\0\u0113\0\u0113\0\67"+
-    "\0\u0113\0\u13fb\0\u1432\0\u1469\0\u14a0\0\u14d7\0\67\0\u0113"+
-    "\0\u150e\0\u1545\0\u157c\0\u15b3\0\u15ea\0\u1621\0\u1658\0\67"+
-    "\0\u0113\0\u0113\0\u168f\0\u16c6\0\u16fd\0\u1734\0\u176b\0\u17a2"+
-    "\0\u17d9\0\u1810\0\u0113\0\u1847\0\u187e\0\u18b5\0\u18ec\0\u1923"+
-    "\0\u195a\0\u1991\0\u19c8\0\u19ff\0\u1a36\0\u1a6d\0\u1aa4\0\u1adb"+
-    "\0\u1b12\0\67\0\u0113\0\67\0\u0113\0\u1b49\0\u1b80\0\u1bb7"+
-    "\0\u1bee\0\67\0\u0113\0\u1c25\0\u1c5c\0\u1c93\0\u1cca\0\u1d01"+
-    "\0\u1d38\0\u0113\0\u1d6f\0\67\0\67\0\u0113\0\u0113\0\u1da6"+
-    "\0\u1ddd\0\u1e14\0\u1e4b\0\u1e82\0\u1eb9\0\u1ef0\0\u1f27\0\67"+
-    "\0\u0113\0\u1f5e\0\u1f95\0\u0113\0\u1fcc\0\67\0\u0113\0\67"+
-    "\0\67\0\u2003\0\u0113\0\u0113\0\u203a\0\u2071\0\u20a8\0\u20df"+
-    "\0\u2116\0\u0113\0\67\0\u0113\0\u214d\0\u2184\0\u21bb\0\u21f2"+
+    "\0\67\0\u1356\0\67\0\u0113\0\u0113\0\67\0\u0113\0\u138d"+
+    "\0\u13c4\0\u13fb\0\u1432\0\u1469\0\67\0\u0113\0\u14a0\0\u14d7"+
+    "\0\u150e\0\u1545\0\u157c\0\u15b3\0\u15ea\0\67\0\u0113\0\u0113"+
+    "\0\u1621\0\u1658\0\u168f\0\u16c6\0\u16fd\0\u1734\0\u0113\0\u176b"+
+    "\0\u17a2\0\u17d9\0\u1810\0\u1847\0\u187e\0\u18b5\0\u18ec\0\u1923"+
+    "\0\u195a\0\u1991\0\u19c8\0\u19ff\0\u1a36\0\67\0\u0113\0\67"+
+    "\0\u0113\0\u1a6d\0\u1aa4\0\67\0\u0113\0\u1adb\0\u1b12\0\u1b49"+
+    "\0\u1b80\0\u1bb7\0\u1bee\0\u0113\0\u1c25\0\67\0\67\0\u0113"+
+    "\0\u0113\0\u1c5c\0\u1c93\0\u1cca\0\u1d01\0\u1d38\0\u1d6f\0\67"+
+    "\0\u0113\0\u1da6\0\u1ddd\0\u0113\0\u1e14\0\67\0\u0113\0\67"+
+    "\0\67\0\u0113\0\u0113\0\u1e4b\0\u1e82\0\u1eb9\0\u1ef0\0\u0113"+
+    "\0\u1f27\0\u1f5e\0\u1f95\0\u1fcc\0\u2003\0\u203a\0\u2071\0\u20a8"+
+    "\0\u20df\0\u2116\0\u214d\0\u2184\0\u21bb\0\67\0\u21f2\0\u0113"+
     "\0\u2229\0\u2260\0\u2297\0\u22ce\0\u2305\0\u233c\0\u2373\0\u23aa"+
-    "\0\u23e1\0\67\0\u2418\0\u0113\0\u244f\0\u2486\0\u24bd\0\u24f4"+
-    "\0\u252b\0\u2562\0\u2599\0\u25d0\0\u2607\0\u263e\0\67\0\u0113"+
-    "\0\u2675\0\u26ac\0\67\0\u0113";
+    "\0\u23e1\0\u2418\0\67\0\u0113\0\u244f\0\u2486\0\67\0\u0113";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[252];
+    int [] result = new int[240];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -245,169 +242,158 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
     "\1\12\1\0\1\12\23\0\2\12\1\160\1\161\6\12"+
     "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\12"+
     "\1\0\1\12\23\0\2\12\1\162\1\163\6\12\1\0"+
-    "\7\12\1\0\7\12\54\0\1\164\6\0\1\165\10\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\4\12\1\166\2\12\1\0\3\12\1\167"+
-    "\3\12\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
-    "\1\12\1\170\1\0\7\12\1\0\7\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\171\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\7\12\1\0\7\12\5\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\3\12"+
-    "\1\172\3\12\1\0\7\12\1\0\7\12\1\0\1\55"+
-    "\1\173\1\55\1\174\63\55\4\0\1\126\1\0\1\57"+
-    "\64\0\1\127\70\0\1\175\64\0\1\12\1\0\1\176"+
+    "\7\12\1\0\7\12\54\0\1\164\17\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
+    "\4\12\1\165\2\12\1\0\7\12\5\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\1\12\1\166\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\167"+
     "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\7\12"+
     "\1\0\7\12\5\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\0\7\12\1\0\7\12\1\0\5\12"+
-    "\1\177\1\12\13\0\1\63\114\0\1\200\32\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\1\12"+
-    "\1\201\5\12\1\0\7\12\1\0\7\12\5\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\1\12\1\202\1\0"+
-    "\7\12\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\203\1\204\2\12"+
-    "\1\205\3\12\1\0\7\12\1\0\7\12\5\0\1\12"+
+    "\23\0\2\12\1\0\3\12\1\170\3\12\1\0\7\12"+
+    "\1\0\7\12\1\0\1\55\1\171\1\55\1\172\63\55"+
+    "\4\0\1\126\1\0\1\57\64\0\1\127\70\0\1\173"+
+    "\64\0\1\12\1\0\1\174\1\0\1\12\23\0\2\12"+
+    "\1\0\7\12\1\0\7\12\1\0\7\12\5\0\1\12"+
     "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
-    "\1\0\6\12\1\206\1\0\7\12\44\0\1\207\27\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\4\12\1\210\2\12\1\0\7\12\1\0\7\12\5\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\1\211\1\12"+
-    "\1\0\7\12\1\0\7\12\1\0\7\12\54\0\1\212"+
-    "\51\0\2\213\33\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\0\7\12\1\0\4\12\1\214\2\12"+
+    "\1\0\7\12\1\0\5\12\1\175\1\12\13\0\1\63"+
+    "\114\0\1\176\32\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\1\12\1\177\5\12\1\0\7\12"+
     "\1\0\7\12\5\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\213\1\215\6\12\1\0\7\12\1\0"+
+    "\23\0\1\12\1\200\1\0\7\12\1\0\7\12\1\0"+
     "\7\12\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
-    "\2\12\1\0\7\12\1\216\1\217\6\12\1\0\7\12"+
-    "\7\0\1\220\64\0\1\12\1\0\1\221\1\0\1\12"+
-    "\23\0\2\12\1\0\7\12\1\0\7\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\3\12\1\222\3\12\1\0\7\12"+
-    "\54\0\1\223\17\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\0\7\12\1\0\4\12\1\224\2\12"+
-    "\1\0\7\12\46\0\1\225\25\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\6\12\1\226\1\0"+
-    "\7\12\1\0\7\12\61\0\1\227\43\0\1\230\35\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\7\12\1\0\1\12\1\231\5\12\5\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\1\12\1\232"+
-    "\1\0\7\12\1\0\7\12\1\0\7\12\5\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\6\12"+
-    "\1\233\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\3\12\1\234"+
-    "\3\12\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\5\12\1\235"+
-    "\1\12\1\0\7\12\1\0\7\12\1\0\1\55\1\0"+
-    "\1\55\1\174\63\55\4\0\1\12\1\0\1\12\1\0"+
-    "\1\12\23\0\2\12\1\0\7\12\1\0\3\12\1\236"+
-    "\3\12\1\0\7\12\44\0\1\237\27\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\4\12\1\240"+
-    "\2\12\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
-    "\7\12\1\0\1\12\1\241\5\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\6\12\1\242"+
-    "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\3\12\1\243\3\12"+
-    "\1\0\7\12\1\0\7\12\51\0\1\244\61\0\1\245"+
-    "\27\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\1\12\1\246\5\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\4\12\1\247\2\12\1\0\7\12\1\0\7\12"+
-    "\36\0\1\250\35\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\1\12\1\251\1\0\7\12\1\0\7\12\1\0"+
-    "\7\12\7\0\1\252\64\0\1\12\1\0\1\253\1\0"+
-    "\1\12\23\0\2\12\1\0\7\12\1\0\7\12\1\0"+
-    "\7\12\7\0\1\254\64\0\1\12\1\0\1\255\1\0"+
-    "\1\12\23\0\2\12\1\0\7\12\1\0\7\12\1\0"+
-    "\7\12\46\0\1\256\61\0\1\257\32\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\6\12\1\260"+
-    "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\1\12\1\261\5\12"+
-    "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\7\12"+
-    "\1\262\1\263\6\12\5\0\1\12\1\0\1\12\1\0"+
-    "\1\12\23\0\2\12\1\264\1\265\6\12\1\0\7\12"+
-    "\1\0\7\12\5\0\1\12\1\0\1\266\1\0\1\12"+
-    "\23\0\2\12\1\0\7\12\1\0\7\12\1\0\7\12"+
-    "\37\0\2\267\33\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\267\1\270\6\12\1\0\7\12\1\0"+
-    "\7\12\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
-    "\2\12\1\0\6\12\1\271\1\0\7\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\272\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\7\12\1\0\7\12\5\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\6\12"+
-    "\1\273\1\0\7\12\1\0\7\12\55\0\1\274\73\0"+
-    "\1\275\11\0\1\12\1\0\1\12\1\0\1\12\23\0"+
-    "\2\12\1\0\7\12\1\0\5\12\1\276\1\12\1\0"+
-    "\7\12\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
-    "\2\12\1\0\7\12\1\0\7\12\1\0\2\12\1\277"+
-    "\4\12\46\0\1\300\25\0\1\12\1\0\1\12\1\0"+
-    "\1\12\23\0\2\12\1\0\6\12\1\301\1\0\7\12"+
-    "\1\0\7\12\36\0\1\302\73\0\1\303\30\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\1\12\1\304\1\0"+
-    "\7\12\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\3\12\1\305"+
-    "\3\12\1\0\7\12\1\0\7\12\51\0\1\306\22\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\1\12\1\307\5\12\1\0\7\12\5\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\310\1\311\6\12\1\0\7\12\53\0\1\312"+
-    "\20\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\3\12\1\313\3\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\4\12\1\314\2\12\1\0\7\12"+
-    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\1\12"+
-    "\1\315\1\0\7\12\1\0\7\12\1\0\7\12\7\0"+
-    "\1\316\64\0\1\12\1\0\1\317\1\0\1\12\23\0"+
-    "\2\12\1\0\7\12\1\0\7\12\1\0\7\12\65\0"+
-    "\1\320\1\321\54\0\1\322\17\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\7\12"+
-    "\1\0\5\12\1\323\1\324\5\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\4\12"+
-    "\1\325\2\12\1\0\7\12\43\0\1\326\30\0\1\12"+
-    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\3\12"+
-    "\1\327\3\12\1\0\7\12\1\0\7\12\62\0\1\330"+
-    "\11\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\7\12\1\0\2\12\1\331\4\12"+
-    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\3\12\1\332\3\12\1\0\7\12"+
-    "\36\0\1\333\35\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\1\12\1\334\1\0\7\12\1\0\7\12\1\0"+
-    "\7\12\56\0\1\335\4\0\1\336\10\0\1\12\1\0"+
-    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
-    "\6\12\1\337\1\0\3\12\1\340\3\12\46\0\1\341"+
-    "\25\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\6\12\1\342\1\0\7\12\1\0\7\12\43\0"+
-    "\1\343\62\0\2\344\33\0\1\12\1\0\1\12\1\0"+
-    "\1\12\23\0\2\12\1\0\3\12\1\345\3\12\1\0"+
+    "\2\12\1\201\1\202\2\12\1\203\3\12\1\0\7\12"+
+    "\1\0\7\12\5\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\7\12\1\0\6\12\1\204\1\0"+
+    "\7\12\44\0\1\205\27\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\4\12\1\206\2\12\1\0"+
     "\7\12\1\0\7\12\5\0\1\12\1\0\1\12\1\0"+
-    "\1\12\23\0\2\12\1\344\1\346\6\12\1\0\7\12"+
-    "\1\0\7\12\36\0\1\347\35\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\1\12\1\350\1\0\7\12\1\0"+
-    "\7\12\1\0\7\12\53\0\1\351\22\0\1\352\64\0"+
+    "\1\12\23\0\1\207\1\12\1\0\7\12\1\0\7\12"+
+    "\1\0\7\12\54\0\1\210\51\0\2\211\33\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\4\12\1\212\2\12\1\0\7\12\5\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\211\1\213"+
+    "\6\12\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\214"+
+    "\1\215\6\12\1\0\7\12\7\0\1\216\64\0\1\12"+
+    "\1\0\1\217\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\5\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\3\12"+
+    "\1\220\3\12\1\0\7\12\54\0\1\221\17\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\4\12\1\222\2\12\1\0\7\12\46\0\1\223"+
+    "\25\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\6\12\1\224\1\0\7\12\1\0\7\12\61\0"+
+    "\1\225\12\0\1\12\1\0\1\12\1\0\1\12\23\0"+
+    "\2\12\1\0\7\12\1\0\7\12\1\0\1\12\1\226"+
+    "\5\12\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
+    "\2\12\1\0\6\12\1\227\1\0\7\12\1\0\7\12"+
+    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\3\12\1\230\3\12\1\0\7\12\1\0\7\12"+
+    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\5\12\1\231\1\12\1\0\7\12\1\0\7\12"+
+    "\1\0\1\55\1\0\1\55\1\172\63\55\4\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\3\12\1\232\3\12\1\0\7\12\44\0\1\233"+
+    "\27\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\4\12\1\234\2\12\1\0\7\12\1\0\7\12"+
+    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\7\12\1\0\7\12\1\0\1\12\1\235\5\12"+
+    "\5\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\6\12\1\236\1\0\7\12\1\0\7\12\5\0"+
     "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\3\12\1\353\3\12\1\0\7\12\5\0"+
-    "\1\12\1\0\1\354\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\7\12\1\0\7\12\56\0\1\355\15\0"+
-    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\0\6\12\1\356\1\0\7\12\53\0\1\357"+
-    "\20\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\3\12\1\360\3\12\1\0\7\12"+
-    "\43\0\1\361\30\0\1\12\1\0\1\12\1\0\1\12"+
-    "\23\0\2\12\1\0\3\12\1\362\3\12\1\0\7\12"+
-    "\1\0\7\12\43\0\1\363\30\0\1\12\1\0\1\12"+
-    "\1\0\1\12\23\0\2\12\1\0\3\12\1\364\3\12"+
-    "\1\0\7\12\1\0\7\12\46\0\1\365\25\0\1\12"+
+    "\3\12\1\237\3\12\1\0\7\12\1\0\7\12\51\0"+
+    "\1\240\61\0\1\241\27\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\0\1\12\1\242"+
+    "\5\12\1\0\7\12\5\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\4\12\1\243\2\12\1\0"+
+    "\7\12\1\0\7\12\36\0\1\244\35\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\1\12\1\245\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\7\0\1\246\64\0\1\12"+
+    "\1\0\1\247\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\7\0\1\250\64\0\1\12"+
+    "\1\0\1\251\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\46\0\1\252\25\0\1\12"+
     "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\6\12"+
-    "\1\366\1\0\7\12\1\0\7\12\47\0\2\367\23\0"+
+    "\1\253\1\0\7\12\1\0\7\12\5\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
+    "\7\12\1\254\1\255\6\12\5\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\256\1\257\6\12\1\0"+
+    "\7\12\1\0\7\12\5\0\1\12\1\0\1\260\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\0\7\12\1\0"+
+    "\7\12\37\0\2\261\33\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\261\1\262\6\12\1\0\7\12"+
+    "\1\0\7\12\5\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\6\12\1\263\1\0\7\12\1\0"+
+    "\7\12\5\0\1\12\1\0\1\264\1\0\1\12\23\0"+
+    "\2\12\1\0\7\12\1\0\7\12\1\0\7\12\5\0"+
     "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
-    "\7\12\1\367\1\370\6\12\1\0\7\12\7\0\1\371"+
-    "\64\0\1\12\1\0\1\372\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\0\7\12\1\0\7\12\47\0\2\373"+
-    "\23\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
-    "\1\0\7\12\1\373\1\374\6\12\1\0\7\12\1\0";
+    "\6\12\1\265\1\0\7\12\1\0\7\12\55\0\1\266"+
+    "\73\0\1\267\11\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\7\12\1\0\5\12\1\270\1\12"+
+    "\1\0\7\12\5\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\7\12\1\0\7\12\1\0\2\12"+
+    "\1\271\4\12\46\0\1\272\25\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\0\6\12\1\273\1\0"+
+    "\7\12\1\0\7\12\36\0\1\274\35\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\1\12\1\275\1\0\7\12"+
+    "\1\0\7\12\1\0\7\12\51\0\1\276\22\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\0\1\12\1\277\5\12\1\0\7\12\5\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\7\12"+
+    "\1\300\1\301\6\12\1\0\7\12\53\0\1\302\20\0"+
+    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
+    "\7\12\1\0\3\12\1\303\3\12\1\0\7\12\5\0"+
+    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
+    "\7\12\1\0\4\12\1\304\2\12\1\0\7\12\5\0"+
+    "\1\12\1\0\1\12\1\0\1\12\23\0\1\12\1\305"+
+    "\1\0\7\12\1\0\7\12\1\0\7\12\7\0\1\306"+
+    "\64\0\1\12\1\0\1\307\1\0\1\12\23\0\2\12"+
+    "\1\0\7\12\1\0\7\12\1\0\7\12\65\0\1\310"+
+    "\1\311\5\0\1\12\1\0\1\12\1\0\1\12\23\0"+
+    "\2\12\1\0\7\12\1\0\7\12\1\0\5\12\1\312"+
+    "\1\313\43\0\1\314\30\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\3\12\1\315\3\12\1\0"+
+    "\7\12\1\0\7\12\62\0\1\316\11\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
+    "\7\12\1\0\2\12\1\317\4\12\5\0\1\12\1\0"+
+    "\1\12\1\0\1\12\23\0\2\12\1\0\7\12\1\0"+
+    "\3\12\1\320\3\12\1\0\7\12\56\0\1\321\4\0"+
+    "\1\322\10\0\1\12\1\0\1\12\1\0\1\12\23\0"+
+    "\2\12\1\0\7\12\1\0\6\12\1\323\1\0\3\12"+
+    "\1\324\3\12\46\0\1\325\25\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\0\6\12\1\326\1\0"+
+    "\7\12\1\0\7\12\43\0\1\327\62\0\2\330\33\0"+
+    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\0"+
+    "\3\12\1\331\3\12\1\0\7\12\1\0\7\12\5\0"+
+    "\1\12\1\0\1\12\1\0\1\12\23\0\2\12\1\330"+
+    "\1\332\6\12\1\0\7\12\1\0\7\12\36\0\1\333"+
+    "\35\0\1\12\1\0\1\12\1\0\1\12\23\0\1\12"+
+    "\1\334\1\0\7\12\1\0\7\12\1\0\7\12\53\0"+
+    "\1\335\22\0\1\336\64\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\0\3\12\1\337"+
+    "\3\12\1\0\7\12\5\0\1\12\1\0\1\340\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\0\7\12\1\0"+
+    "\7\12\56\0\1\341\15\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\0\6\12\1\342"+
+    "\1\0\7\12\53\0\1\343\20\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\3\12"+
+    "\1\344\3\12\1\0\7\12\43\0\1\345\30\0\1\12"+
+    "\1\0\1\12\1\0\1\12\23\0\2\12\1\0\3\12"+
+    "\1\346\3\12\1\0\7\12\1\0\7\12\43\0\1\347"+
+    "\30\0\1\12\1\0\1\12\1\0\1\12\23\0\2\12"+
+    "\1\0\3\12\1\350\3\12\1\0\7\12\1\0\7\12"+
+    "\46\0\1\351\25\0\1\12\1\0\1\12\1\0\1\12"+
+    "\23\0\2\12\1\0\6\12\1\352\1\0\7\12\1\0"+
+    "\7\12\47\0\2\353\23\0\1\12\1\0\1\12\1\0"+
+    "\1\12\23\0\2\12\1\0\7\12\1\353\1\354\6\12"+
+    "\1\0\7\12\7\0\1\355\64\0\1\12\1\0\1\356"+
+    "\1\0\1\12\23\0\2\12\1\0\7\12\1\0\7\12"+
+    "\1\0\7\12\47\0\2\357\23\0\1\12\1\0\1\12"+
+    "\1\0\1\12\23\0\2\12\1\0\7\12\1\357\1\360"+
+    "\6\12\1\0\7\12\1\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[9955];
+    int [] result = new int[9405];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -450,22 +436,21 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
     "\1\11\1\0\6\11\2\1\1\0\1\11\7\1\2\0"+
     "\7\1\1\0\4\1\1\11\1\0\2\1\2\0\2\1"+
     "\2\0\2\1\1\11\3\1\1\0\3\1\2\0\3\1"+
-    "\1\0\2\1\1\0\1\1\1\0\1\1\2\0\5\1"+
+    "\1\0\2\1\1\0\1\1\1\0\1\1\1\0\4\1"+
     "\1\11\1\0\1\11\2\1\1\11\2\1\1\0\3\1"+
     "\1\11\2\1\2\0\2\1\1\0\1\1\1\11\2\1"+
-    "\1\0\1\1\1\0\1\1\2\0\6\1\1\0\4\1"+
+    "\1\0\1\1\1\0\1\1\1\0\5\1\1\0\4\1"+
     "\2\0\2\1\1\0\1\1\1\11\1\1\1\11\1\1"+
-    "\2\0\2\1\1\11\1\1\1\0\2\1\1\0\4\1"+
-    "\2\11\2\1\1\0\2\1\1\0\2\1\1\0\1\1"+
-    "\1\11\1\1\1\0\3\1\1\11\1\1\2\11\1\0"+
-    "\3\1\1\0\1\1\1\0\2\1\1\11\1\1\2\0"+
-    "\2\1\1\0\1\1\2\0\2\1\1\0\1\1\1\0"+
-    "\1\11\2\1\1\0\1\1\1\0\1\1\1\0\1\1"+
-    "\1\0\1\1\1\0\1\1\1\11\1\1\1\0\1\1"+
-    "\1\11\1\1";
+    "\1\0\1\1\1\11\1\1\1\0\2\1\1\0\4\1"+
+    "\2\11\2\1\1\0\3\1\1\0\1\1\1\11\1\1"+
+    "\1\0\3\1\1\11\1\1\2\11\2\1\1\0\1\1"+
+    "\1\0\2\1\2\0\2\1\1\0\1\1\2\0\2\1"+
+    "\1\0\1\1\1\0\1\11\2\1\1\0\1\1\1\0"+
+    "\1\1\1\0\1\1\1\0\1\1\1\0\1\1\1\11"+
+    "\1\1\1\0\1\1\1\11\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[252];
+    int [] result = new int[240];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -921,348 +906,349 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
                 TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
             }
-          case 61: break;
+          case 60: break;
           case 2: 
             { System.out.println("Reconocido " + yytext()+" divi");  
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_divi, yycolumn, yyline, yytext());
             }
-          case 62: break;
+          case 61: break;
           case 3: 
             { /* White spaces */
             }
-          case 63: break;
+          case 62: break;
           case 4: 
             { System.out.println("Reconocido " + yytext()+" multi"); 
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_multi, yycolumn, yyline, yytext());
             }
-          case 64: break;
+          case 63: break;
           case 5: 
             { System.out.println("Reconocido " + yytext()+" numero"); 
                                 tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.numero, yycolumn, yyline, yytext());
             }
-          case 65: break;
+          case 64: break;
           case 6: 
             { System.out.println("Reconocido " + yytext()+" dot");     
                         tabla_tokens.add(new Tokens(yytext() ,"dot" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.dot, yycolumn, yyline, yytext());
             }
-          case 66: break;
+          case 65: break;
           case 7: 
             { System.out.println("Reconocido " + yytext()+" id"); 
                                 tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.id, yycolumn, yyline, yytext());
             }
-          case 67: break;
+          case 66: break;
           case 8: 
             { System.out.println("Reconocido " + yytext()+" menos"); 
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_menos, yycolumn, yyline, yytext());
             }
-          case 68: break;
+          case 67: break;
           case 9: 
             { System.out.println("Reconocido " + yytext()+" punto_coma");  
                         tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.punto_coma, yycolumn, yyline, yytext());
             }
-          case 69: break;
+          case 68: break;
           case 10: 
             { System.out.println("Reconocido " + yytext()+" dos_puntos");  
                         tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.dos_puntos, yycolumn, yyline, yytext());
             }
-          case 70: break;
+          case 69: break;
           case 11: 
             { System.out.println("Reconocido " + yytext()+" open_pare");   
                         tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_pare, yycolumn, yyline, yytext());
             }
-          case 71: break;
+          case 70: break;
           case 12: 
             { System.out.println("Reconocido " + yytext()+" close_pare");  
                         tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_pare, yycolumn, yyline, yytext());
             }
-          case 72: break;
+          case 71: break;
           case 13: 
             { System.out.println("Reconocido " + yytext()+" open_brace");  
                         tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_brace, yycolumn, yyline, yytext());
             }
-          case 73: break;
+          case 72: break;
           case 14: 
             { System.out.println("Reconocido " + yytext()+" close_brace"); 
                         tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_brace, yycolumn, yyline, yytext());
             }
-          case 74: break;
+          case 73: break;
           case 15: 
             { System.out.println("Reconocido " + yytext()+" igual");       
                         tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());
             }
-          case 75: break;
+          case 74: break;
           case 16: 
             { System.out.println("Reconocido " + yytext()+" dollar");      tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
             }
-          case 76: break;
+          case 75: break;
           case 17: 
             { System.out.println("Reconocido " + yytext()+" open_square_brackets");  
                         tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_square_brackets, yycolumn, yyline, yytext());
             }
-          case 77: break;
+          case 76: break;
           case 18: 
             { System.out.println("Reconocido " + yytext()+" close_square_brackets");  
                         tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_square_brackets, yycolumn, yyline, yytext());
             }
-          case 78: break;
+          case 77: break;
           case 19: 
             { System.out.println("Reconocido " + yytext()+" coma");        
                         tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());
             }
-          case 79: break;
+          case 78: break;
           case 20: 
             { System.out.println("Reconocido " + yytext()+" mas");   
                         tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_mas, yycolumn, yyline, yytext());
             }
-          case 80: break;
+          case 79: break;
           case 21: 
             { System.out.println("Reconocido " + yytext()+" mayor");         
                         tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.mayor, yycolumn, yyline, yytext());
             }
-          case 81: break;
+          case 80: break;
           case 22: 
             { System.out.println("Reconocido " + yytext()+" menor");         
                         tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.menor, yycolumn, yyline, yytext());
             }
-          case 82: break;
+          case 81: break;
           case 23: 
             { System.out.println("Reconocido " + yytext()+" not");           
                         tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.not, yycolumn, yyline, yytext());
             }
-          case 83: break;
+          case 82: break;
           case 24: 
             { System.out.println("Reconocido " + yytext()+" string_literal"); 
                                 tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.string_literal, yycolumn, yyline, yytext());
             }
-          case 84: break;
+          case 83: break;
           case 25: 
             { System.out.println("Reconocido " + yytext()+" igual_relacional");         
                         tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.igual_relacional, yycolumn, yyline, yytext());
             }
-          case 85: break;
+          case 84: break;
           case 26: 
             { System.out.println("Reconocido " + yytext()+" mayor_igual");   
                         tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.mayor_igual, yycolumn, yyline, yytext());
             }
-          case 86: break;
+          case 85: break;
           case 27: 
             { System.out.println("Reconocido " + yytext()+" menor_igual");   
                         tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.menor_igual, yycolumn, yyline, yytext());
             }
-          case 87: break;
+          case 86: break;
           case 28: 
             { System.out.println("Reconocido " + yytext()+" distinto");      
                         tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.distinto, yycolumn, yyline, yytext());
             }
-          case 88: break;
+          case 87: break;
           case 29: 
             { System.out.println("Reconocido " + yytext()+" and");           
                         tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.and, yycolumn, yyline, yytext());
             }
-          case 89: break;
+          case 88: break;
           case 30: 
             { System.out.println("Reconocido " + yytext()+" or");            
                         tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.or, yycolumn, yyline, yytext());
             }
-          case 90: break;
+          case 89: break;
           case 31: 
             { System.out.println("Reconocido " + yytext()+" reservada_if");          
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_if, yycolumn, yyline, yytext());
             }
-          case 91: break;
+          case 90: break;
           case 32: 
             { System.out.println("Reconocido " + yytext()+" reservada_do");          
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_do, yycolumn, yyline, yytext());
             }
-          case 92: break;
+          case 91: break;
           case 33: 
             { System.out.println("Reconocido " + yytext()+" comentario"); 
                                 tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.comentario, yycolumn, yyline, yytext());
             }
-          case 93: break;
+          case 92: break;
           case 34: 
             { System.out.println("Reconocido " + yytext()+" reservada_int");         
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_int, yycolumn, yyline, yytext());
             }
-          case 94: break;
+          case 93: break;
           case 35: 
             { System.out.println("Reconocido " + yytext()+" reservada_for");         
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_for, yycolumn, yyline, yytext());
             }
-          case 95: break;
+          case 94: break;
           case 36: 
             { System.out.println("Reconocido " + yytext()+" multi_comentario"); 
                                 tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.multi_comentario, yycolumn, yyline, yytext());
             }
-          case 96: break;
+          case 95: break;
           case 37: 
             { System.out.println("Reconocido " + yytext()+" reservada_else");          
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_else" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_else, yycolumn, yyline, yytext());
             }
-          case 97: break;
+          case 96: break;
           case 38: 
             { System.out.println("Reconocido " + yytext()+" reservada_ejex");       
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_ejex, yycolumn, yyline, yytext());
             }
-          case 98: break;
+          case 97: break;
           case 39: 
             { System.out.println("Reconocido " + yytext()+" reservada_void");        
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_void" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_void, yycolumn, yyline, yytext());
             }
-          case 99: break;
+          case 98: break;
           case 40: 
             { System.out.println("Reconocido " + yytext()+" reservada_main");        
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_main" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_main, yycolumn, yyline, yytext());
             }
-          case 100: break;
+          case 99: break;
           case 41: 
             { System.out.println("Reconocido " + yytext()+" reservada_case");        
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_case, yycolumn, yyline, yytext());
             }
-          case 101: break;
+          case 100: break;
           case 42: 
             { System.out.println("Reconocido " + yytext()+" reservada_char");        
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_char" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_char, yycolumn, yyline, yytext());
             }
-          case 102: break;
+          case 101: break;
           case 43: 
             { System.out.println("Reconocido " + yytext()+" reservada_bool");        
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_bool" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_bool, yycolumn, yyline, yytext());
             }
-          case 103: break;
+          case 102: break;
           case 44: 
             { System.out.println("Reconocido " + yytext()+" reservada_write");     
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_write" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_write, yycolumn, yyline, yytext());
             }
-          case 104: break;
+          case 103: break;
           case 45: 
             { System.out.println("Reconocido " + yytext()+" reservada_while");     
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_while, yycolumn, yyline, yytext());
             }
-          case 105: break;
+          case 104: break;
           case 46: 
             { System.out.println("Reconocido " + yytext()+" reservada_break");       
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_break, yycolumn, yyline, yytext());
             }
-          case 106: break;
+          case 105: break;
           case 47: 
             { System.out.println("Reconocido " + yytext()+" reservada_double");      
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_double, yycolumn, yyline, yytext());
             }
-          case 107: break;
+          case 106: break;
           case 48: 
             { System.out.println("Reconocido " + yytext()+" reservada_switch");      
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_switch, yycolumn, yyline, yytext());
             }
-          case 108: break;
+          case 107: break;
           case 49: 
             { System.out.println("Reconocido " + yytext()+" reservada_string");      
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_string, yycolumn, yyline, yytext());
             }
-          case 109: break;
+          case 108: break;
           case 50: 
             { System.out.println("Reconocido " + yytext()+" reservada_titulo");      
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_titulo, yycolumn, yyline, yytext());
             }
-          case 110: break;
+          case 109: break;
           case 51: 
             { System.out.println("Reconocido " + yytext()+" reservada_valores");     
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_valores, yycolumn, yyline, yytext());
             }
-          case 111: break;
+          case 110: break;
           case 52: 
             { System.out.println("Reconocido " + yytext()+" reservada_default");       
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_default" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_default, yycolumn, yyline, yytext());
             }
-          case 112: break;
+          case 111: break;
           case 53: 
             { System.out.println("Reconocido " + yytext()+" reservada_console");     
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
             }
-          case 113: break;
+          case 112: break;
           case 54: 
-            { System.out.println("Reconocido " + yytext()+" reservada_titulox");     tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_titulox");     
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_titulox, yycolumn, yyline, yytext());
+            }
+          case 113: break;
+          case 55: 
+            { System.out.println("Reconocido " + yytext()+" reservada_tituloy");     
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_tituloy, yycolumn, yyline, yytext());
             }
           case 114: break;
-          case 55: 
-            { System.out.println("Reconocido " + yytext()+" reservada_tituloy");     tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));
-            }
-          case 115: break;
           case 56: 
             { System.out.println("Reconocido " + yytext()+" reservada_newvalor");    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
             }
-          case 116: break;
+          case 115: break;
           case 57: 
-            { System.out.println("Reconocido " + yytext()+" reservada_tipodato");    tabla_tokens.add(new Tokens(yytext() ,"reservada_tipodato" ,yyline ,yycolumn));
-            }
-          case 117: break;
-          case 58: 
             { System.out.println("Reconocido " + yytext()+" reservada_graficapie");          
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_graficapie, yycolumn, yyline, yytext());
             }
-          case 118: break;
-          case 59: 
+          case 116: break;
+          case 58: 
             { System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_graficabarras, yycolumn, yyline, yytext());
             }
-          case 119: break;
-          case 60: 
+          case 117: break;
+          case 59: 
             { System.out.println("Reconocido " + yytext()+" reservada_definirglobales");     
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_definirglobales, yycolumn, yyline, yytext());
             }
-          case 120: break;
+          case 118: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

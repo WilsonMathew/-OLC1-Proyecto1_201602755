@@ -3,20 +3,28 @@ package Analizadores;
 import java_cup.runtime.Symbol;
 import java.util.LinkedList;
 import java.io.*;
+import java.util.Hashtable;
 
 //---> Codigo para el parser, variables, metodos.
 parser code
 {:  
-     public static LinkedList<TError> TablaES = new LinkedList<TError>();
-     public static LinkedList<String> python = new LinkedList<String>();
+    public static LinkedList<TError> TablaES = new LinkedList<TError>();
+    public static LinkedList<String> python = new LinkedList<String>();
 
-     public static LinkedList<String> ejex_pie = new LinkedList<String>();
-     public static LinkedList<String> valores_pie = new LinkedList<String>();
-     public static String titulo_pie_graph="";
+    // Listas para pie graph
+    public static LinkedList<String> ejex_pie = new LinkedList<String>();
+    public static LinkedList<String> valores_pie = new LinkedList<String>();
+    public static String titulo_pie_graph="";
      
-     public static LinkedList<String> ejex_bar = new LinkedList<String>();
-     public static LinkedList<String> valores_bar = new LinkedList<String>();
-     public static String titulo_bar_graph="";
+    // Listas para bar graph
+    public static LinkedList<String> ejex_bar = new LinkedList<String>();
+    public static LinkedList<String> valores_bar = new LinkedList<String>();
+    public static String titulo_bar_graph="";
+    public static String tituloX_bar="";
+    public static String tituloY_bar="";
+    
+    // Variables globales
+    public static Hashtable<String, String> tabla_globales = new Hashtable<>();
 
     // Metodo al que se llama automaticamente ante algun error sintactico
     public void syntax_error(Symbol s){
@@ -70,8 +78,9 @@ terminal String reservada_for, reservada_while, reservada_do;
 terminal String reservada_switch, reservada_case, reservada_break, dos_puntos, reservada_default;
 //---> funciones y graficas
 terminal String reservada_graficapie, reservada_graficabarras;
-terminal String reservada_titulo, reservada_ejex, reservada_valores;
+terminal String reservada_titulo, reservada_ejex, reservada_valores, reservada_tituloy, reservada_titulox ;
 terminal String open_square_brackets, close_square_brackets, coma;
+terminal String reservada_definirglobales;
 
 
 //---> declaracion de NO terminales
@@ -84,6 +93,7 @@ non terminal String FOR_STMT, UPDATE, WHILE_STMT, DO_STMT;
 non terminal String SWITCH_STMT, CASE_STATEMENT, DEFAULT_CASE, CASE_LIST, ASIG;
 non terminal String G_PIE, STMS_PIE, TITULO_PIE, STMSLIST_PIE, EJEX, ARGS_EJEX, ARG_EJEX, DATO, VALOR, ARGS_VALOR, ARG_VALOR, DATO_VALOR;
 non terminal String G_BAR, TITULO_BAR, EJEX_BAR, ARG_EJEX_BAR, DATO_BAR, ARGS_EJEX_BAR, VALOR_BAR, ARG_VALOR_BAR, DATO_VALOR_BAR, ARGS_VALOR_BAR, STMS_BAR, STMSLIST_BAR;
+non terminal String DEF_GLOBAL, DEF_VAR, TD_DEF, VAL_DEF, DEF_LIST, TITULO_X, TITULO_Y;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -127,6 +137,7 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | L
     | G_PIE
     | G_BAR
+    | DEF_GLOBAL
     ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -248,33 +259,52 @@ G_PIE ::= reservada_void reservada_graficapie open_pare close_pare open_brace ST
     ;
 
 TITULO_PIE ::= reservada_string reservada_titulo igual  string_literal:a punto_coma   {:System.out.println("Titulo con string literal"); titulo_pie_graph = a; :}        
-        |  reservada_string reservada_titulo igual  id punto_coma                   {:System.out.println("Titulo con id");:}
+        |  reservada_string reservada_titulo igual  id:a punto_coma                   
+                    {:
+                        if(tabla_globales.containsKey(a)){
+                            String val = tabla_globales.get(a);
+                            titulo_pie_graph = val;
+                        }else {
+                            System.out.println("ERROR: No se declaro la variable: " + a);
+                        }
+                    :}
     ;
 EJEX ::= reservada_string open_square_brackets close_square_brackets reservada_ejex igual open_brace ARGS_EJEX:a close_brace punto_coma 
-        {: System.out.println(a); //ejex_pie.add(a); :}
+        {: System.out.println(a); :}
     ;
 
 ARG_EJEX ::= DATO:a coma        {: RESULT = a; ejex_pie.add(a); :}
-    | id
+    | id:a                      {: RESULT = a; ejex_pie.add(a); :}
     | string_literal:a          {: RESULT = a; ejex_pie.add(a); :}
     ;
 DATO ::= string_literal:a       {: RESULT = a; //ejex_pie.add(a); :}
-    | id
+    | id:a                      {: 
+                                    if(tabla_globales.containsKey(a)){
+                                        String val = tabla_globales.get(a); RESULT = val; 
+                                    }else {
+                                        System.out.println("ERROR: No se declaro la variable: " + a);
+                                    }
+                                :}
     ;
 ARGS_EJEX ::= ARGS_EJEX:a ARG_EJEX:b    {: RESULT = a + b;  :}
     | ARG_EJEX:a                        {: RESULT = a;      :}
     ;
 
 VALOR ::= reservada_double open_square_brackets close_square_brackets reservada_valores igual open_brace ARGS_VALOR:a close_brace punto_coma 
-            {:System.out.println("var valor "); //valores_pie.add(a); :}
+            {:System.out.println("var valor "); :}
     ;
-
 ARG_VALOR ::= DATO_VALOR:a coma     {: RESULT = a; valores_pie.add(a); :} 
-    | id
+    | id:a                          {: RESULT = a; valores_pie.add(a); :}
     | numero:a                      {: RESULT = a; valores_pie.add(a); :}
     ;
 DATO_VALOR ::= numero:a             {: RESULT = a;  :} 
-    | id
+    | id:a                          {: 
+                                        if(tabla_globales.containsKey(a)){
+                                            String val = tabla_globales.get(a); RESULT = val; 
+                                        }else {
+                                            System.out.println("ERROR: No se declaro la variable: " + a);
+                                        }
+                                    :}
     ;
 ARGS_VALOR ::= ARGS_VALOR:a ARG_VALOR:b     {: RESULT = a + b; :}
     | ARG_VALOR:a                           {: RESULT = a; :}            
@@ -290,41 +320,101 @@ STMSLIST_PIE ::= STMSLIST_PIE STMS_PIE
     ;
 
 // ---> Grafica barras
-G_BAR ::= reservada_void reservada_graficabarras open_pare close_pare open_brace STMSLIST_BAR close_brace  {:System.out.println("una grafica barras");:}
+G_BAR ::= reservada_void reservada_graficabarras open_pare close_pare open_brace STMSLIST_BAR close_brace  {:System.out.println("--------- GRAFICA DE BARRAS ---------");:}
     ;
-
 TITULO_BAR ::= reservada_string reservada_titulo igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); titulo_bar_graph = a; :}        
-        |  reservada_string reservada_titulo igual  id punto_coma                       {:System.out.println("Titulo con id");:}
-    ;
+        |  reservada_string reservada_titulo igual  id:a punto_coma                       
+                                        {:
+                                            if(tabla_globales.containsKey(a)){
+                                                String val = tabla_globales.get(a);
+                                                titulo_bar_graph = val;
+                                            }else {
+                                                System.out.println("ERROR: No se declaro la variable: " + a);
+                                            }
+                                        :}
+        ;
+TITULO_X ::= reservada_string reservada_titulox igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); tituloX_bar = a; :}        
+        |    reservada_string reservada_titulox igual  id:a punto_coma                       
+                                        {:
+                                            if(tabla_globales.containsKey(a)){
+                                                String val = tabla_globales.get(a);
+                                                tituloX_bar = val;
+                                            }else {
+                                                System.out.println("ERROR: No se declaro la variable: " + a);
+                                            }
+                                        :}
+        ;
+TITULO_Y ::= reservada_string reservada_tituloy igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); tituloY_bar = a; :}        
+        |    reservada_string reservada_tituloy igual  id:a punto_coma                       
+                                        {:
+                                            if(tabla_globales.containsKey(a)){
+                                                String val = tabla_globales.get(a);
+                                                tituloY_bar = val;
+                                            }else {
+                                                System.out.println("ERROR: No se declaro la variable: " + a);
+                                            }
+                                        :}
+        ;
 EJEX_BAR ::= reservada_string open_square_brackets close_square_brackets reservada_ejex igual open_brace ARGS_EJEX_BAR:a close_brace punto_coma 
-        {: System.out.println(a); //ejex_bar.add(a); :}
+        {: //System.out.println(a); //ejex_bar.add(a); :}
     ;
 ARG_EJEX_BAR ::= DATO_BAR:a coma        {: RESULT = a; ejex_bar.add(a); :}
-    | id
+    | id:a                              {: RESULT = a; //ejex_bar.add(a);
+                                            if(tabla_globales.containsKey(a)){
+                                                String val = tabla_globales.get(a); ejex_bar.add(val); 
+                                            }else {
+                                                System.out.println("ERROR: No se declaro la variable: " + a);
+                                            }
+                                        :}
     | string_literal:a                  {: RESULT = a; ejex_bar.add(a); :}
     ;
-DATO_BAR ::= string_literal:a           {: RESULT = a; //ejex_bar.add(a); :}
-    | id
+DATO_BAR ::= string_literal:a           {: RESULT = a; :}
+    | id:a                              {: //RESULT = tabla_globales.get(a);
+                                            
+                                            if(tabla_globales.containsKey(a)){
+                                                String val = tabla_globales.get(a); RESULT = val; 
+                                            }else {
+                                                System.out.println("ERROR: No se declaro la variable: " + a);
+                                            }
+                                        :}
     ;
-ARGS_EJEX_BAR ::= ARGS_EJEX_BAR:a ARG_EJEX_BAR:b    {: RESULT = a + b;  :}
-    | ARG_EJEX_BAR:a                                    {: RESULT = a;      :}
+ARGS_EJEX_BAR ::= ARGS_EJEX_BAR:a ARG_EJEX_BAR:b    
+                    {:   
+                        System.out.println("FLAG: a : " + a + " b : " + b);
+                        
+                    :}
+    | ARG_EJEX_BAR:a        
+                    {:   /*    
+                        if(a != null){
+                            String val1 = tabla_globales.get(a); ejex_bar.add(val1);
+                        }*/
+                    :}
     ;
 
 VALOR_BAR ::= reservada_double open_square_brackets close_square_brackets reservada_valores igual open_brace ARGS_VALOR_BAR:a close_brace punto_coma 
             {:System.out.println("var valor "); //valores_pie.add(a); :}
     ;
-ARG_VALOR_BAR ::= DATO_VALOR_BAR:a coma                 {: RESULT = a; valores_bar.add(a); :} 
-    | id
-    | numero:a                                          {: RESULT = a; valores_bar.add(a); :}
+ARG_VALOR_BAR ::= DATO_VALOR_BAR:a coma         {: RESULT = a; valores_bar.add(a); :} 
+    | id:a                                      {: RESULT = a; valores_bar.add(a); :} 
+    | numero:a                                  {: RESULT = a; valores_bar.add(a); :}
     ;
-DATO_VALOR_BAR ::= numero:a                             {: RESULT = a;  :} 
-    | id
+
+DATO_VALOR_BAR ::= numero:a                 {: RESULT = a;  :} 
+| id:a                                      {: 
+                                                if(tabla_globales.containsKey(a)){
+                                                    String val = tabla_globales.get(a); RESULT = val; 
+                                                }else {
+                                                    System.out.println("ERROR: No se declaro la variable: " + a);
+                                                }
+                                            :}
     ;
 ARGS_VALOR_BAR ::= ARGS_VALOR_BAR:a ARG_VALOR_BAR:b     {: RESULT = a + b; :}
     | ARG_VALOR_BAR:a                                   {: RESULT = a; :}            
     ;
 
 STMS_BAR ::= TITULO_BAR
+    | TITULO_X
+    | TITULO_Y
     | EJEX_BAR
     | VALOR_BAR
     ;
@@ -332,11 +422,22 @@ STMS_BAR ::= TITULO_BAR
 STMSLIST_BAR ::= STMSLIST_BAR STMS_BAR
         | STMS_BAR
     ;
-/*
-reservada_graficabarras
-terminal open_square_brackets, close_square_brackets, coma;
-terminal String reservada_titulo, reservada_ejex, reservada_valores;
-reservada_string, reservada_double
-reservada_bool, id, igual;
-string_literal
-*/
+
+// ---> Definir Globales
+DEF_GLOBAL ::= reservada_void reservada_definirglobales open_pare close_pare open_brace DEF_LIST close_brace  {:System.out.println("Metodo definir globales");:}
+    ;
+
+DEF_VAR ::= TD_DEF id:a igual VAL_DEF:b punto_coma  {: System.out.println("una variable"); tabla_globales.put(a,b); :}
+    ;
+
+TD_DEF ::= reservada_string
+    | reservada_double
+    ;
+
+VAL_DEF ::= string_literal:a            {: RESULT = a;  :} 
+    | numero:a                          {: RESULT = a;  :} 
+    ;
+
+DEF_LIST ::= DEF_LIST DEF_VAR
+    | DEF_VAR
+    ;
