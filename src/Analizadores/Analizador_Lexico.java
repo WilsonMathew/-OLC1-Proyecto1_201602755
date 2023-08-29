@@ -1253,7 +1253,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 118: break;
           case 59: 
-            { System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_graficabarras, yycolumn, yyline, yytext());
             }
           case 119: break;
           case 60: 

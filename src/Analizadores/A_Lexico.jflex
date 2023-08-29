@@ -237,8 +237,11 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
                         }
 "tipodato"              {System.out.println("Reconocido " + yytext()+" reservada_tipodato");    tabla_tokens.add(new Tokens(yytext() ,"reservada_tipodato" ,yyline ,yycolumn));}
-"graficabarras"         {System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));}
 
+<YYINITIAL> "graficabarras"         {System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_graficabarras, yycolumn, yyline, yytext());
+                                    }
 <YYINITIAL> "graficapie"            {System.out.println("Reconocido " + yytext()+" reservada_graficapie");          
                                     tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_graficapie, yycolumn, yyline, yytext());

@@ -11,16 +11,16 @@ public class Simbolos {
   public static final int distinto = 34;
   public static final int reservada_double = 13;
   public static final int reservada_void = 3;
-  public static final int close_square_brackets = 51;
+  public static final int close_square_brackets = 52;
   public static final int close_pare = 22;
-  public static final int coma = 52;
+  public static final int coma = 53;
   public static final int igual = 17;
   public static final int Simbolo_menos = 8;
   public static final int reservada_else = 26;
-  public static final int reservada_valores = 49;
+  public static final int reservada_valores = 50;
   public static final int reservada_write = 19;
   public static final int multi_comentario = 4;
-  public static final int reservada_titulo = 47;
+  public static final int reservada_titulo = 48;
   public static final int reservada_graficapie = 46;
   public static final int Simbolo_mas = 7;
   public static final int open_brace = 27;
@@ -49,15 +49,16 @@ public class Simbolos {
   public static final int id = 16;
   public static final int igual_relacional = 33;
   public static final int reservada_console = 18;
+  public static final int reservada_graficabarras = 47;
   public static final int reservada_string = 12;
   public static final int reservada_while = 39;
   public static final int string_literal = 23;
   public static final int not = 37;
   public static final int and = 35;
-  public static final int reservada_ejex = 48;
+  public static final int reservada_ejex = 49;
   public static final int reservada_if = 25;
   public static final int comentario = 5;
-  public static final int open_square_brackets = 50;
+  public static final int open_square_brackets = 51;
   public static final int reservada_bool = 15;
   public static final int reservada_main = 2;
   public static final int dot = 20;
@@ -109,6 +110,7 @@ public class Simbolos {
   "dos_puntos",
   "reservada_default",
   "reservada_graficapie",
+  "reservada_graficabarras",
   "reservada_titulo",
   "reservada_ejex",
   "reservada_valores",

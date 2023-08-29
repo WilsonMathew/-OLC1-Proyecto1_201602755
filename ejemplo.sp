@@ -24,4 +24,12 @@ void main ( ){
 		double [] Valores= { 0.5, 3.9, 4.8, 0.7, 6.7, 3.3};
 	
 	}
+	
+	void Graficabarras(){
+		string Titulo= "Reporte 2 maje emoa si sirve";
+		string [] Ejex= { 	"Probabilidad Esperada clase 1", "Probabilidad Obtenida Clase 1",
+							"Probabilidad Esperada clase 2", "Probabilidad Obtenida Clase 2",
+							"Probabilidad Esperada clase 3", "Probabilidad Obtenida Clase 3" };
+		double [] Valores= { 4.8, 4.8, 4.8, 4.8 , 4.8, 4.8};
+	}
 }

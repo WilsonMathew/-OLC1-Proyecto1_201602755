@@ -379,6 +379,19 @@ public class user_interface extends javax.swing.JFrame {
                 frame.setVisible(true);
                 frame.setSize(450,500);
                 
+                // grafica pie 2 testing barras
+                DefaultPieDataset pieDataset2 = new DefaultPieDataset();
+                System.out.println(parser.valores_bar);
+                for (int i = 0; i < parser.ejex_bar.size() ; i++) {
+                    pieDataset2.setValue(parser.ejex_bar.get(i), new Double(parser.valores_bar.get(i)));
+                }
+        
+                JFreeChart chart2 = ChartFactory.createPieChart(parser.titulo_bar_graph, pieDataset2,true, true, true);
+                PiePlot P2 = (PiePlot)chart2.getPlot();
+        
+                ChartFrame frame2 = new ChartFrame("Pie Chart 2 ", chart2);
+                frame2.setVisible(true);
+                frame2.setSize(450,500);
             } catch (Exception e) {
 
                 System.out.println("no lee esa mierda");
