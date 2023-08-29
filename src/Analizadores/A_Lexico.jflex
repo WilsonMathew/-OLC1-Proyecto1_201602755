@@ -81,9 +81,19 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());
                         }
 "$"                     {System.out.println("Reconocido " + yytext()+" dollar");      tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));}
-"["                     {System.out.println("Reconocido " + yytext()+" open_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));}
-"]"                     {System.out.println("Reconocido " + yytext()+" close_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));}
-","                     {System.out.println("Reconocido " + yytext()+" coma");        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));}
+
+<YYINITIAL> "["         {System.out.println("Reconocido " + yytext()+" open_square_brackets");  
+                        tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.open_square_brackets, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> "]"         {System.out.println("Reconocido " + yytext()+" close_square_brackets");  
+                        tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.close_square_brackets, yycolumn, yyline, yytext());
+                        }
+<YYINITIAL> ","         {System.out.println("Reconocido " + yytext()+" coma");        
+                        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());
+                        }
 
 
 //---> Operadores aritmeticos
@@ -228,10 +238,24 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         }
 "tipodato"              {System.out.println("Reconocido " + yytext()+" reservada_tipodato");    tabla_tokens.add(new Tokens(yytext() ,"reservada_tipodato" ,yyline ,yycolumn));}
 "graficabarras"         {System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));}
-"graficapie"            {System.out.println("Reconocido " + yytext()+" reservada_graficapie");          tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));}
-"titulo"                {System.out.println("Reconocido " + yytext()+" reservada_titulo");      tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));}
-"ejex"                  {System.out.println("Reconocido " + yytext()+" reservada_ejex");        tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));}
-"valores"               {System.out.println("Reconocido " + yytext()+" reservada_valores");     tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));}
+
+<YYINITIAL> "graficapie"            {System.out.println("Reconocido " + yytext()+" reservada_graficapie");          
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_graficapie, yycolumn, yyline, yytext());
+                                    }
+<YYINITIAL> "titulo"                {System.out.println("Reconocido " + yytext()+" reservada_titulo");      
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_titulo, yycolumn, yyline, yytext());
+                                    }
+<YYINITIAL> "ejex"                  {System.out.println("Reconocido " + yytext()+" reservada_ejex");       
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_ejex, yycolumn, yyline, yytext());
+                                    }
+<YYINITIAL> "valores"               {System.out.println("Reconocido " + yytext()+" reservada_valores");     
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_valores, yycolumn, yyline, yytext());
+                                    }
+
 "titulox"               {System.out.println("Reconocido " + yytext()+" reservada_titulox");     tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));}
 "tituloy"               {System.out.println("Reconocido " + yytext()+" reservada_tituloy");     tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));}
 "newvalor"              {System.out.println("Reconocido " + yytext()+" reservada_newvalor");    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));}

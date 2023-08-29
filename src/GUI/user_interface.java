@@ -348,11 +348,12 @@ public class user_interface extends javax.swing.JFrame {
                 analisis_sintactico parser = new analisis_sintactico(lexer);    
                 parser.parse();                                                 // se parse la lsita de tokens
                 //System.out.println(parser.python);
-
+                
+                
                 for (String temp : parser.python) {                             // Se traduce a lenguaje python
                     text_salida.append(temp);
                 }
-
+                
                 // Impresion de repotes lexicos html
                 reporte_tokens(lexer.tabla_tokens);
                 lexer.tabla_tokens.clear();
@@ -360,7 +361,24 @@ public class user_interface extends javax.swing.JFrame {
                 // Genera reporte de erroes lexicos en HTMl
                 reporte_errores_lexicos(lexer.TablaEL);
                 lexer.TablaEL.clear();
-
+                
+                
+                //System.out.println(parser.valores_pie);
+                //System.out.println(parser.ejex_pie);
+                
+                // grafica pie
+                DefaultPieDataset pieDataset = new DefaultPieDataset();
+                for (int i = 0; i < parser.ejex_pie.size() ; i++) {
+                    pieDataset.setValue(parser.ejex_pie.get(i), new Double(parser.valores_pie.get(i)));
+                }
+        
+                JFreeChart chart = ChartFactory.createPieChart(parser.titulo_pie_graph, pieDataset,true, true, true);
+                PiePlot P = (PiePlot)chart.getPlot();
+        
+                ChartFrame frame = new ChartFrame("Pie Chart", chart);
+                frame.setVisible(true);
+                frame.setSize(450,500);
+                
             } catch (Exception e) {
 
                 System.out.println("no lee esa mierda");
@@ -458,7 +476,6 @@ public class user_interface extends javax.swing.JFrame {
         
         JFreeChart chart = ChartFactory.createPieChart(" Pie Chart ", pieDataset,true, true, true);
         PiePlot P = (PiePlot)chart.getPlot();
-        //P.setForegroundAlpha(TOP_ALIGNMENT);
         
         ChartFrame frame = new ChartFrame("Pie Chart", chart);
         frame.setVisible(true);

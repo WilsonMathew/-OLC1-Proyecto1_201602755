@@ -1009,15 +1009,21 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 76: break;
           case 17: 
-            { System.out.println("Reconocido " + yytext()+" open_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" open_square_brackets");  
+                        tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.open_square_brackets, yycolumn, yyline, yytext());
             }
           case 77: break;
           case 18: 
-            { System.out.println("Reconocido " + yytext()+" close_square_brackets");  tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" close_square_brackets");  
+                        tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.close_square_brackets, yycolumn, yyline, yytext());
             }
           case 78: break;
           case 19: 
-            { System.out.println("Reconocido " + yytext()+" coma");        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" coma");        
+                        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());
             }
           case 79: break;
           case 20: 
@@ -1129,7 +1135,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 97: break;
           case 38: 
-            { System.out.println("Reconocido " + yytext()+" reservada_ejex");        tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_ejex");       
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_ejex, yycolumn, yyline, yytext());
             }
           case 98: break;
           case 39: 
@@ -1199,11 +1207,15 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 109: break;
           case 50: 
-            { System.out.println("Reconocido " + yytext()+" reservada_titulo");      tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_titulo");      
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_titulo, yycolumn, yyline, yytext());
             }
           case 110: break;
           case 51: 
-            { System.out.println("Reconocido " + yytext()+" reservada_valores");     tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_valores");     
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_valores, yycolumn, yyline, yytext());
             }
           case 111: break;
           case 52: 
@@ -1235,7 +1247,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 117: break;
           case 58: 
-            { System.out.println("Reconocido " + yytext()+" reservada_graficapie");          tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_graficapie");          
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_graficapie, yycolumn, yyline, yytext());
             }
           case 118: break;
           case 59: 

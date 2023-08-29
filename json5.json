@@ -8,3 +8,11 @@
 	"variable2": 5.0
 
 }
+
+	
+		string [] Ejex = {“Clase 1”, var1, “Método 1”};
+	
+		String Titulo = "puntaje general" ; 
+		
+		string [] Ejex = {“Clase 2”, var2};
+		string [] Ejex = {var1, var2, var3}; 
