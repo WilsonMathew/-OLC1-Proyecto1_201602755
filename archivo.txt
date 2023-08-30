@@ -18,14 +18,23 @@ void main ( ){
 		double po2 = 0.5;
 		string vart = "Valor Obtenido";
 		string var2 = "Valor Esperado clase 1";
+		string var20 = "Valor Esperado clase 11 nene";
 		string var22 = "Valor Obtenido clase 1";
 		string var3 = "Valore Esperado clase 2";
 		string var33 = "Valor Obtenido clase 2";
 	}
+
+	void GraficaPie(){
+		string Titulo= reporte1;
+		string [] Ejex= {var2, vart, "Probabilidad Esperada clase 2", var20 ,var3, var33 };
+		double [] Valores= { po2, 3.9, po1, 0.7, 6.7, 0.8};
+	
+	}
+
 	void GraficaBarras(){
 		string Titulo= reporte1;
-		string [] Ejex= { "Probabilidad Esperada clase 1", "Probabilidad Obtenida Clase 1", var2, var22, var3, var33};
-		double [] Valores= { pe1, po1, pe2, po2, pe3, 0.3 };
+		string [] Ejex= { var2, vart, var20, var22, var3, var33};
+		double [] Valores= { pe1, po1, pe2, po2, pe3,pe3 };
 		string TituloX= "Atributo";
 		string TituloY= "Puntaje";
 	}

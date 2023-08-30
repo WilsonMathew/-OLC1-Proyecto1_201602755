@@ -1671,7 +1671,13 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a; ejex_pie.add(a); 
+		 //RESULT = a; ejex_pie.add(a); 
+                                    if(tabla_globales.containsKey(a)){
+                                        String val = tabla_globales.get(a); ejex_pie.add(val); 
+                                    }else {
+                                        System.out.println("ERROR: No se declaro la variable: " + a);
+                                    }
+                                
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARG_EJEX",33, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -1776,7 +1782,13 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a; valores_pie.add(a); 
+		 //RESULT = a; valores_pie.add(a); 
+                                        if(tabla_globales.containsKey(a)){
+                                            String val = tabla_globales.get(a); valores_pie.add(val); 
+                                        }else {
+                                            System.out.println("ERROR: No se declaro la variable: " + a);
+                                        }
+                                    
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARG_VALOR",37, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -1800,7 +1812,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a;  
+		 RESULT = a; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("DATO_VALOR",38, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -2016,7 +2028,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
-		 RESULT = a; ejex_bar.add(a); 
+		 ejex_bar.add(a); 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARG_EJEX_BAR",42, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -2028,7 +2040,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a; //ejex_bar.add(a);
+		 
                                             if(tabla_globales.containsKey(a)){
                                                 String val = tabla_globales.get(a); ejex_bar.add(val); 
                                             }else {
@@ -2070,8 +2082,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 //RESULT = tabla_globales.get(a);
-                                            
+		  
                                             if(tabla_globales.containsKey(a)){
                                                 String val = tabla_globales.get(a); RESULT = val; 
                                             }else {
@@ -2086,16 +2097,7 @@ class CUP$analisis_sintactico$actions {
           case 111: // ARGS_EJEX_BAR ::= ARGS_EJEX_BAR ARG_EJEX_BAR 
             {
               String RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
-		int bleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
-		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
-		String b = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		   
-                        System.out.println("FLAG: a : " + a + " b : " + b);
-                        
-                    
+
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARGS_EJEX_BAR",44, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -2104,14 +2106,7 @@ class CUP$analisis_sintactico$actions {
           case 112: // ARGS_EJEX_BAR ::= ARG_EJEX_BAR 
             {
               String RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
-		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		   /*    
-                        if(a != null){
-                            String val1 = tabla_globales.get(a); ejex_bar.add(val1);
-                        }*/
-                    
+
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARGS_EJEX_BAR",44, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -2147,7 +2142,13 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a; valores_bar.add(a); 
+		 //RESULT = a; valores_bar.add(a);
+                                                    if(tabla_globales.containsKey(a)){
+                                                        String val = tabla_globales.get(a); valores_bar.add(val); 
+                                                    }else {
+                                                        System.out.println("ERROR: No se declaro la variable: " + a);
+                                                    }
+                                                
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("ARG_VALOR_BAR",46, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;

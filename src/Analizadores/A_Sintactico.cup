@@ -274,7 +274,13 @@ EJEX ::= reservada_string open_square_brackets close_square_brackets reservada_e
     ;
 
 ARG_EJEX ::= DATO:a coma        {: RESULT = a; ejex_pie.add(a); :}
-    | id:a                      {: RESULT = a; ejex_pie.add(a); :}
+    | id:a                      {: //RESULT = a; ejex_pie.add(a); 
+                                    if(tabla_globales.containsKey(a)){
+                                        String val = tabla_globales.get(a); ejex_pie.add(val); 
+                                    }else {
+                                        System.out.println("ERROR: No se declaro la variable: " + a);
+                                    }
+                                :}
     | string_literal:a          {: RESULT = a; ejex_pie.add(a); :}
     ;
 DATO ::= string_literal:a       {: RESULT = a; //ejex_pie.add(a); :}
@@ -294,10 +300,16 @@ VALOR ::= reservada_double open_square_brackets close_square_brackets reservada_
             {:System.out.println("var valor "); :}
     ;
 ARG_VALOR ::= DATO_VALOR:a coma     {: RESULT = a; valores_pie.add(a); :} 
-    | id:a                          {: RESULT = a; valores_pie.add(a); :}
+    | id:a                          {: //RESULT = a; valores_pie.add(a); 
+                                        if(tabla_globales.containsKey(a)){
+                                            String val = tabla_globales.get(a); valores_pie.add(val); 
+                                        }else {
+                                            System.out.println("ERROR: No se declaro la variable: " + a);
+                                        }
+                                    :}
     | numero:a                      {: RESULT = a; valores_pie.add(a); :}
     ;
-DATO_VALOR ::= numero:a             {: RESULT = a;  :} 
+DATO_VALOR ::= numero:a             {: RESULT = a; :} 
     | id:a                          {: 
                                         if(tabla_globales.containsKey(a)){
                                             String val = tabla_globales.get(a); RESULT = val; 
@@ -358,8 +370,8 @@ TITULO_Y ::= reservada_string reservada_tituloy igual  string_literal:a punto_co
 EJEX_BAR ::= reservada_string open_square_brackets close_square_brackets reservada_ejex igual open_brace ARGS_EJEX_BAR:a close_brace punto_coma 
         {: //System.out.println(a); //ejex_bar.add(a); :}
     ;
-ARG_EJEX_BAR ::= DATO_BAR:a coma        {: RESULT = a; ejex_bar.add(a); :}
-    | id:a                              {: RESULT = a; //ejex_bar.add(a);
+ARG_EJEX_BAR ::= DATO_BAR:a coma        {: ejex_bar.add(a); :}
+    | id:a                              {: 
                                             if(tabla_globales.containsKey(a)){
                                                 String val = tabla_globales.get(a); ejex_bar.add(val); 
                                             }else {
@@ -369,8 +381,7 @@ ARG_EJEX_BAR ::= DATO_BAR:a coma        {: RESULT = a; ejex_bar.add(a); :}
     | string_literal:a                  {: RESULT = a; ejex_bar.add(a); :}
     ;
 DATO_BAR ::= string_literal:a           {: RESULT = a; :}
-    | id:a                              {: //RESULT = tabla_globales.get(a);
-                                            
+    | id:a                              {:  
                                             if(tabla_globales.containsKey(a)){
                                                 String val = tabla_globales.get(a); RESULT = val; 
                                             }else {
@@ -378,24 +389,21 @@ DATO_BAR ::= string_literal:a           {: RESULT = a; :}
                                             }
                                         :}
     ;
-ARGS_EJEX_BAR ::= ARGS_EJEX_BAR:a ARG_EJEX_BAR:b    
-                    {:   
-                        System.out.println("FLAG: a : " + a + " b : " + b);
-                        
-                    :}
-    | ARG_EJEX_BAR:a        
-                    {:   /*    
-                        if(a != null){
-                            String val1 = tabla_globales.get(a); ejex_bar.add(val1);
-                        }*/
-                    :}
+ARGS_EJEX_BAR ::= ARGS_EJEX_BAR ARG_EJEX_BAR
+    | ARG_EJEX_BAR        
     ;
 
 VALOR_BAR ::= reservada_double open_square_brackets close_square_brackets reservada_valores igual open_brace ARGS_VALOR_BAR:a close_brace punto_coma 
             {:System.out.println("var valor "); //valores_pie.add(a); :}
     ;
 ARG_VALOR_BAR ::= DATO_VALOR_BAR:a coma         {: RESULT = a; valores_bar.add(a); :} 
-    | id:a                                      {: RESULT = a; valores_bar.add(a); :} 
+    | id:a                                      {: //RESULT = a; valores_bar.add(a);
+                                                    if(tabla_globales.containsKey(a)){
+                                                        String val = tabla_globales.get(a); valores_bar.add(val); 
+                                                    }else {
+                                                        System.out.println("ERROR: No se declaro la variable: " + a);
+                                                    }
+                                                :} 
     | numero:a                                  {: RESULT = a; valores_bar.add(a); :}
     ;
 

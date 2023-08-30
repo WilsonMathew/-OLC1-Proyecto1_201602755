@@ -369,50 +369,56 @@ public class user_interface extends javax.swing.JFrame {
                 //System.out.println(parser.valores_pie);
                 //System.out.println(parser.ejex_pie);
                 
-                // grafica pie
-                DefaultPieDataset pieDataset = new DefaultPieDataset();
-                for (int i = 0; i < parser.ejex_pie.size() ; i++) {
-                    pieDataset.setValue(parser.ejex_pie.get(i), new Double(parser.valores_pie.get(i)));
+                if(parser.ejex_pie.size() > 0){
+                    // grafica pie
+                    DefaultPieDataset pieDataset = new DefaultPieDataset();
+                    for (int i = 0; i < parser.ejex_pie.size() ; i++) {
+                        pieDataset.setValue(parser.ejex_pie.get(i), new Double(parser.valores_pie.get(i)));
+                    }
+
+                    JFreeChart chart = ChartFactory.createPieChart(parser.titulo_pie_graph, pieDataset,true, true, true);
+                    PiePlot P = (PiePlot)chart.getPlot();
+
+                    ChartFrame frame = new ChartFrame("Pie Chart", chart);
+                    frame.setVisible(true);
+                    frame.setSize(450,500);
+
+                    //Reseteando lista para correr una segunda vez
+                    parser.ejex_pie.clear();
+                    parser.valores_pie.clear();
+
+                    System.out.println("PIE: " + parser.valores_pie);
+                    System.out.println("X: " + parser.ejex_pie);
+
                 }
-        
-                JFreeChart chart = ChartFactory.createPieChart(parser.titulo_pie_graph, pieDataset,true, true, true);
-                PiePlot P = (PiePlot)chart.getPlot();
-        
-                ChartFrame frame = new ChartFrame("Pie Chart", chart);
-                frame.setVisible(true);
-                frame.setSize(450,500);
-                
-                //Reseteando lista para correr una segunda vez
-                parser.ejex_pie.clear();
-                parser.valores_pie.clear();
-                
-                System.out.println("PIE: " + parser.valores_pie);
-                System.out.println("X: " + parser.ejex_pie);
                 System.out.println("BAR: " + parser.valores_bar);
                 System.out.println("X: " + parser.ejex_bar);
-                                
+                           
+                if(parser.ejex_bar.size()>0){
                 // grafica barras
-                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-                for (int i = 0; i < parser.ejex_bar.size() ; i++) {
-                    dataset.setValue(new Double(parser.valores_bar.get(i))," Marks ", parser.ejex_bar.get(i) );
-                }
-        
-                JFreeChart chart2 = ChartFactory.createBarChart(parser.titulo_bar_graph, parser.tituloX_bar, parser.tituloY_bar, dataset,PlotOrientation.VERTICAL, false, true, false) ;
-                CategoryPlot P2 = chart2.getCategoryPlot();
-                // Cambio de angulos apra los labels para poder leerlo
-                org.jfree.chart.axis.CategoryAxis xAxis = P2.getDomainAxis();
-                xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
-                P2.setRangeGridlinePaint(Color.black);
-                
-                ChartFrame frame2 = new ChartFrame("Bar Chart", chart2);
-                frame2.setVisible(true);
-                frame2.setSize(600,500);
-                //Reseteando lista para correr una segunda vez
-                parser.ejex_bar.clear();
-                parser.valores_bar.clear();
+                    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                    for (int i = 0; i < parser.ejex_bar.size() ; i++) {
+                        dataset.setValue(new Double(parser.valores_bar.get(i))," Marks ", parser.ejex_bar.get(i) );
+                    }
+
+                    JFreeChart chart2 = ChartFactory.createBarChart(parser.titulo_bar_graph, parser.tituloX_bar, parser.tituloY_bar, dataset,PlotOrientation.VERTICAL, false, true, false) ;
+                    CategoryPlot P2 = chart2.getCategoryPlot();
+                    // Cambio de angulos apra los labels para poder leerlo
+                    org.jfree.chart.axis.CategoryAxis xAxis = P2.getDomainAxis();
+                    xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
+                    P2.setRangeGridlinePaint(Color.black);
+
+                    ChartFrame frame2 = new ChartFrame("Bar Chart", chart2);
+                    frame2.setVisible(true);
+                    frame2.setSize(600,500);
+                    //Reseteando lista para correr una segunda vez
+                    parser.ejex_bar.clear();
+                    parser.valores_bar.clear();
+                }                
                 
                 // Reseteando variables globales 
                 parser.tabla_globales.clear();
+                
             } catch (Exception e) {
 
                 System.out.println("no lee esa mierda");
