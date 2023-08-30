@@ -349,13 +349,21 @@ public class user_interface extends javax.swing.JFrame {
                 lector = new BufferedReader(new FileReader("archivo.txt"));
                 Analizador_Lexico lexer = new Analizador_Lexico(lector);        // inicio del analisis lexico
                 analisis_sintactico parser = new analisis_sintactico(lexer);    
-                parser.parse();                                                 // se parse la lsita de tokens
-                //System.out.println(parser.python);
+                                                                 // se parse la lsita de tokens
                 
+                if(json_map.size()>0){
+                    parser.test(json_map);
+                    //System.out.println(parser.json_data.get("archivo1.json"));
+                }else{
+                    System.out.println("no se a cargado ningun archivo JSON");
+                }
+                //System.out.println(parser.python);                
                 
                 for (String temp : parser.python) {                             // Se traduce a lenguaje python
                     text_salida.append(temp);
                 }
+                
+                parser.parse();
                 
                 // Impresion de repotes lexicos html
                 reporte_tokens(lexer.tabla_tokens);

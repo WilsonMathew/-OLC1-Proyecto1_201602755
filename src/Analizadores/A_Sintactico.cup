@@ -4,6 +4,7 @@ import java_cup.runtime.Symbol;
 import java.util.LinkedList;
 import java.io.*;
 import java.util.Hashtable;
+import java.util.Map;
 
 //---> Codigo para el parser, variables, metodos.
 parser code
@@ -25,6 +26,15 @@ parser code
     
     // Variables globales
     public static Hashtable<String, String> tabla_globales = new Hashtable<>();
+
+    // Variable JSON
+    public static Hashtable<String, LinkedList<Tokens>> json_data = new Hashtable<>();
+
+    public void test(Hashtable<String, LinkedList<Tokens>> tabla ){
+        System.out.println("Holi");
+        json_data = tabla;
+        //System.out.println(json_data.get("archivo1.json"));
+    }
 
     // Metodo al que se llama automaticamente ante algun error sintactico
     public void syntax_error(Symbol s){
@@ -81,6 +91,7 @@ terminal String reservada_graficapie, reservada_graficabarras;
 terminal String reservada_titulo, reservada_ejex, reservada_valores, reservada_tituloy, reservada_titulox ;
 terminal String open_square_brackets, close_square_brackets, coma;
 terminal String reservada_definirglobales;
+terminal String dollar, reservada_newvalor;
 
 
 //---> declaracion de NO terminales
@@ -94,6 +105,7 @@ non terminal String SWITCH_STMT, CASE_STATEMENT, DEFAULT_CASE, CASE_LIST, ASIG;
 non terminal String G_PIE, STMS_PIE, TITULO_PIE, STMSLIST_PIE, EJEX, ARGS_EJEX, ARG_EJEX, DATO, VALOR, ARGS_VALOR, ARG_VALOR, DATO_VALOR;
 non terminal String G_BAR, TITULO_BAR, EJEX_BAR, ARG_EJEX_BAR, DATO_BAR, ARGS_EJEX_BAR, VALOR_BAR, ARG_VALOR_BAR, DATO_VALOR_BAR, ARGS_VALOR_BAR, STMS_BAR, STMSLIST_BAR;
 non terminal String DEF_GLOBAL, DEF_VAR, TD_DEF, VAL_DEF, DEF_LIST, TITULO_X, TITULO_Y;
+non terminal String JSON_VAL;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -103,6 +115,33 @@ precedence left mayor , menor, mayor_igual, menor_igual, igual_relacional, disti
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
+//${ NewValor, “archivo2.json”, “valor1”};
+/*
+if(tabla_globales.containsKey(a)){
+    String val = tabla_globales.get(a); valores_bar.add(val); 
+}else {
+    System.out.println("ERROR: No se declaro la variable: " + a);
+}
+archivo1.json
+*/
+
+JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
+                {: 
+                    System.out.println("variable JSON " + "   file: " + a + "   var: " + b );
+                    String[] json_name = a.split("\"",5);
+                    System.out.println(json_name[1]);
+                    //System.out.println(json_data.get(json_name[1]));
+
+                    for(int i = 0; i < json_data.get(json_name[1]).size(); i++){
+                        if(json_data.get(json_name[1]).get(i).getLexema().equals(b) ) {
+                            System.out.println("FLAG: holi" );
+                            System.out.println(json_data.get(json_name[1]).get(i+2).getLexema());
+                        }
+                    }
+
+                    
+                :}
+    ;
 
 INICIO ::= PROGRAM;
 
@@ -138,6 +177,7 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | G_PIE
     | G_BAR
     | DEF_GLOBAL
+    | JSON_VAL
     ;
 
 // Makes it so it accepts any order of declarations and prints

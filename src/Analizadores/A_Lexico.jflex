@@ -80,8 +80,10 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                         tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());
                         }
-"$"                     {System.out.println("Reconocido " + yytext()+" dollar");      tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));}
-
+<YYINITIAL> "$"         {System.out.println("Reconocido " + yytext()+" dollar");      
+                        tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.dollar, yycolumn, yyline, yytext());
+                        }
 <YYINITIAL> "["         {System.out.println("Reconocido " + yytext()+" open_square_brackets");  
                         tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_square_brackets, yycolumn, yyline, yytext());
@@ -267,8 +269,10 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
                                     return new Symbol(Simbolos.reservada_tituloy, yycolumn, yyline, yytext());
                                     }
 
-"newvalor"              {System.out.println("Reconocido " + yytext()+" reservada_newvalor");    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));}
-
+<YYINITIAL> "newvalor"              {System.out.println("Reconocido " + yytext()+" reservada_newvalor");    
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_newvalor, yycolumn, yyline, yytext());
+                                    }
 
 //---> Simbolos ER
 <YYINITIAL> {numero}            {System.out.println("Reconocido " + yytext()+" numero"); 

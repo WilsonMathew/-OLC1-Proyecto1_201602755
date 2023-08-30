@@ -11,11 +11,13 @@ public class Simbolos {
   public static final int reservada_tituloy = 51;
   public static final int distinto = 34;
   public static final int reservada_titulox = 52;
+  public static final int reservada_newvalor = 58;
   public static final int reservada_double = 13;
   public static final int reservada_void = 3;
   public static final int close_square_brackets = 54;
   public static final int close_pare = 22;
   public static final int coma = 55;
+  public static final int dollar = 57;
   public static final int igual = 17;
   public static final int Simbolo_menos = 8;
   public static final int reservada_else = 26;
@@ -122,7 +124,9 @@ public class Simbolos {
   "open_square_brackets",
   "close_square_brackets",
   "coma",
-  "reservada_definirglobales"
+  "reservada_definirglobales",
+  "dollar",
+  "reservada_newvalor"
   };
 }
 

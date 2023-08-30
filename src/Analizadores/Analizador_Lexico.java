@@ -990,7 +990,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 74: break;
           case 16: 
-            { System.out.println("Reconocido " + yytext()+" dollar");      tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" dollar");      
+                        tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
+                        return new Symbol(Simbolos.dollar, yycolumn, yyline, yytext());
             }
           case 75: break;
           case 17: 
@@ -1228,7 +1230,9 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 114: break;
           case 56: 
-            { System.out.println("Reconocido " + yytext()+" reservada_newvalor");    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
+            { System.out.println("Reconocido " + yytext()+" reservada_newvalor");    
+                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
+                                    return new Symbol(Simbolos.reservada_newvalor, yycolumn, yyline, yytext());
             }
           case 115: break;
           case 57: 
