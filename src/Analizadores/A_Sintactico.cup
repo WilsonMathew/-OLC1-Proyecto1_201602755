@@ -115,16 +115,7 @@ precedence left mayor , menor, mayor_igual, menor_igual, igual_relacional, disti
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
-//${ NewValor, “archivo2.json”, “valor1”};
 /*
-if(tabla_globales.containsKey(a)){
-    String val = tabla_globales.get(a); valores_bar.add(val); 
-}else {
-    System.out.println("ERROR: No se declaro la variable: " + a);
-}
-archivo1.json
-*/
-
 JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
                 {: 
                     // split string to take off qoutes, " qoutes " [1]
@@ -140,6 +131,7 @@ JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma str
                     
                 :}
     ;
+*/
 
 INICIO ::= PROGRAM;
 
@@ -175,7 +167,6 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | G_PIE
     | G_BAR
     | DEF_GLOBAL
-    | JSON_VAL
     ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -417,6 +408,7 @@ ARG_EJEX_BAR ::= DATO_BAR:a coma        {: ejex_bar.add(a); :}
                                             }
                                         :}
     | string_literal:a                  {: RESULT = a; ejex_bar.add(a); :}
+    | JSON_VAL:a                        {: RESULT = a; ejex_bar.add(a); :} 
     ;
 DATO_BAR ::= string_literal:a           {: RESULT = a; :}
     | id:a                              {:  
@@ -426,6 +418,7 @@ DATO_BAR ::= string_literal:a           {: RESULT = a; :}
                                                 System.out.println("ERROR: No se declaro la variable: " + a);
                                             }
                                         :}
+    | JSON_VAL:a                        {: RESULT = a;  :} 
     ;
 ARGS_EJEX_BAR ::= ARGS_EJEX_BAR ARG_EJEX_BAR
     | ARG_EJEX_BAR        
@@ -443,16 +436,18 @@ ARG_VALOR_BAR ::= DATO_VALOR_BAR:a coma         {: RESULT = a; valores_bar.add(a
                                                     }
                                                 :} 
     | numero:a                                  {: RESULT = a; valores_bar.add(a); :}
+    | JSON_VAL:a                                {: RESULT = a; valores_bar.add(a); :}
     ;
 
 DATO_VALOR_BAR ::= numero:a                 {: RESULT = a;  :} 
-| id:a                                      {: 
+    | id:a                                  {: 
                                                 if(tabla_globales.containsKey(a)){
                                                     String val = tabla_globales.get(a); RESULT = val; 
                                                 }else {
                                                     System.out.println("ERROR: No se declaro la variable: " + a);
                                                 }
                                             :}
+     | JSON_VAL:a                           {: RESULT = a;  :}                                       
     ;
 ARGS_VALOR_BAR ::= ARGS_VALOR_BAR:a ARG_VALOR_BAR:b     {: RESULT = a + b; :}
     | ARG_VALOR_BAR:a                                   {: RESULT = a; :}            
@@ -479,11 +474,30 @@ DEF_VAR ::= TD_DEF id:a igual VAL_DEF:b punto_coma  {: System.out.println("una v
 TD_DEF ::= reservada_string
     | reservada_double
     ;
-
 VAL_DEF ::= string_literal:a            {: RESULT = a;  :} 
-    | numero:a                          {: RESULT = a;  :} 
+    | numero:a                          {: RESULT = a;  :}
+    | JSON_VAL:a                        {: RESULT = a;  :}
     ;
-
 DEF_LIST ::= DEF_LIST DEF_VAR
     | DEF_VAR
+    ;
+
+JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
+                {: 
+                    // split string to take off qoutes, " qoutes " [1]
+                    String[] json_name = a.split("\"",5);
+                    for(int i = 0; i < json_data.get(json_name[1]).size(); i++){
+                        if(json_data.get(json_name[1]).get(i).getLexema().equals(b) ) {
+                            System.out.println("FLAG: holi" );
+                            String val = json_data.get(json_name[1]).get(i+2).getLexema();
+                            System.out.println(json_data.get(json_name[1]).get(i+2).getLexema());
+                            RESULT = val;
+                            break;
+                        }else{
+                              System.out.println(a + "  NO EXISTE EN:  " + b );
+                        }
+                    }
+
+                    
+                :}
     ;
