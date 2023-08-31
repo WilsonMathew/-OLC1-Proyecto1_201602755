@@ -42,6 +42,7 @@ public class user_interface extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         btn_tog.setSelected(true);
         btn_tog.setText("StatPy");
+        this.getContentPane().setBackground( Color.yellow );
     }
 
     /**
@@ -76,6 +77,7 @@ public class user_interface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROYECTO 1");
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(2147483647, 900));
         setPreferredSize(new java.awt.Dimension(1000, 800));
 
@@ -296,9 +298,11 @@ public class user_interface extends javax.swing.JFrame {
         if(btn_tog.isSelected()){
             label_analyzer.setText("Analizador: StatPy");
             btn_tog.setText("StatPy");
+            this.getContentPane().setBackground(Color.yellow);
         }else{
             label_analyzer.setText("Analizador: JSON ");
             btn_tog.setText("JSON");
+            this.getContentPane().setBackground(Color.gray);
         }
             
     }//GEN-LAST:event_btn_togActionPerformed
@@ -392,16 +396,16 @@ public class user_interface extends javax.swing.JFrame {
                     frame.setVisible(true);
                     frame.setSize(450,500);
 
+                    System.out.println("PIE: " + parser.valores_pie);
+                    System.out.println("X: " + parser.ejex_pie);
+                    
                     //Reseteando lista para correr una segunda vez
                     parser.ejex_pie.clear();
                     parser.valores_pie.clear();
 
-                    System.out.println("PIE: " + parser.valores_pie);
-                    System.out.println("X: " + parser.ejex_pie);
-
                 }
-                System.out.println("BAR: " + parser.valores_bar);
-                System.out.println("X: " + parser.ejex_bar);
+                
+                
                            
                 if(parser.ejex_bar.size()>0){
                 // grafica barras
@@ -420,6 +424,9 @@ public class user_interface extends javax.swing.JFrame {
                     ChartFrame frame2 = new ChartFrame("Bar Chart", chart2);
                     frame2.setVisible(true);
                     frame2.setSize(600,500);
+                    
+                    System.out.println("BAR: " + parser.valores_bar);
+                    System.out.println("X: " + parser.ejex_bar);
                     //Reseteando lista para correr una segunda vez
                     parser.ejex_bar.clear();
                     parser.valores_bar.clear();
@@ -518,7 +525,7 @@ public class user_interface extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         DefaultPieDataset pieDataset = new DefaultPieDataset();
-        pieDataset.setValue("One",      new Integer(10));
+        pieDataset.setValue("One" + new Integer(10),      new Integer(10));
         pieDataset.setValue("two",      new Integer(20));
         pieDataset.setValue("there",    new Integer(30));
         pieDataset.setValue("four",     new Integer(40));
