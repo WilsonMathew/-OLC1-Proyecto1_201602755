@@ -737,15 +737,13 @@ class CUP$analisis_sintactico$actions {
 		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
 		String b = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
 		 
-                    System.out.println("variable JSON " + "   file: " + a + "   var: " + b );
+                    // split string to take off qoutes, " qoutes " [1]
                     String[] json_name = a.split("\"",5);
-                    System.out.println(json_name[1]);
-                    //System.out.println(json_data.get(json_name[1]));
-
                     for(int i = 0; i < json_data.get(json_name[1]).size(); i++){
                         if(json_data.get(json_name[1]).get(i).getLexema().equals(b) ) {
                             System.out.println("FLAG: holi" );
                             System.out.println(json_data.get(json_name[1]).get(i+2).getLexema());
+                            break;
                         }
                     }
 

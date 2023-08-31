@@ -359,11 +359,12 @@ public class user_interface extends javax.swing.JFrame {
                 }
                 //System.out.println(parser.python);                
                 
+                parser.parse();
                 for (String temp : parser.python) {                             // Se traduce a lenguaje python
                     text_salida.append(temp);
                 }
                 
-                parser.parse();
+                
                 
                 // Impresion de repotes lexicos html
                 reporte_tokens(lexer.tabla_tokens);
