@@ -1,4 +1,6 @@
- void main ( ){
+ // Ya salio compi1 :)
+
+void main ( ){
 	int b = 2;
 	int a =1;
 	int var1 = 5+8*9;
@@ -10,6 +12,7 @@
 
 	void DefinirGlobales(){
 		string reporte1 = "Reporte 1";
+		string reporte2 = ${ NewValor, "archivo1.json", "Titulo"};
 		double pe1 = 0.8;
 		double pe2 = 0.5;
 		double pe3 = 0.2;
@@ -23,11 +26,23 @@
 		string var33 = "Valor Obtenido clase 2";
 	}
 
-	void GraficaBarras(){
-		string Titulo= reporte1;
-		string [] Ejex= { var2, vart, var20, var22, var3, var33};
-		double [] Valores= { pe1, po1, pe2, po2, pe3, ${ NewValor, "archivo1.json", "variable1"} };
-		string TituloX= "Atributo";
-		string TituloY= "Puntaje";
+	void GraficaPie(){
+		string Titulo= ${ NewValor, "archivo2.json", "Titulo"};
+		string [] Ejex=    {var2, vart, "Probabilidad Esperada clase 2", var20, ${ NewValor, "archivo1.json", "Titulo2"}, var33 };
+		double [] Valores= { po2, 3.9, po1, 0.7, 6.7, ${ NewValor, "archivo1.json", "variable2"}};
+	
 	}
+
+	void GraficaBarras(){
+		string Titulo= ${ NewValor, "archivo2.json", "Titulo"};
+		string [] Ejex= { var2, vart, ${ NewValor, "archivo2.json", "Titulo"}, var22, ${ NewValor, "archivo2.json", "Titulo2"}, var33};
+		double [] Valores= { pe1, ${ NewValor, "archivo1.json", "variable2"}, pe2, po2, pe3, ${ NewValor, "archivo1.json", "variable1"} };
+		string TituloX= ${ NewValor, "archivo2.json", "Titulo"};
+		string TituloY= ${ NewValor, "archivo2.json", "Titulo"};
+	}
+	
+		while(a < 10){
+		Console.Write("el valor de a es: " + a);
+	}
+
 }

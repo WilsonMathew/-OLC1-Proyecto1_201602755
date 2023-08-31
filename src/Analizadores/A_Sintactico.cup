@@ -287,7 +287,7 @@ ASIG ::= id:a igual ME:b punto_coma
 G_PIE ::= reservada_void reservada_graficapie open_pare close_pare open_brace STMSLIST_PIE close_brace  {:System.out.println("una grafica pie");:}
     ;
 
-TITULO_PIE ::= reservada_string reservada_titulo igual  string_literal:a punto_coma   {:System.out.println("Titulo con string literal"); titulo_pie_graph = a; :}        
+TITULO_PIE ::= reservada_string reservada_titulo igual  string_literal:a punto_coma   {: titulo_pie_graph = a; :}        
         |  reservada_string reservada_titulo igual  id:a punto_coma                   
                     {:
                         if(tabla_globales.containsKey(a)){
@@ -297,6 +297,7 @@ TITULO_PIE ::= reservada_string reservada_titulo igual  string_literal:a punto_c
                             System.out.println("ERROR: No se declaro la variable: " + a);
                         }
                     :}
+        | reservada_string reservada_titulo igual  JSON_VAL:a punto_coma        {: titulo_pie_graph = a; :}
     ;
 EJEX ::= reservada_string open_square_brackets close_square_brackets reservada_ejex igual open_brace ARGS_EJEX:a close_brace punto_coma 
         {: System.out.println(a); :}
@@ -311,6 +312,7 @@ ARG_EJEX ::= DATO:a coma        {: RESULT = a; ejex_pie.add(a); :}
                                     }
                                 :}
     | string_literal:a          {: RESULT = a; ejex_pie.add(a); :}
+    | JSON_VAL:a                {: RESULT = a; ejex_pie.add(a); :}
     ;
 DATO ::= string_literal:a       {: RESULT = a; //ejex_pie.add(a); :}
     | id:a                      {: 
@@ -320,6 +322,7 @@ DATO ::= string_literal:a       {: RESULT = a; //ejex_pie.add(a); :}
                                         System.out.println("ERROR: No se declaro la variable: " + a);
                                     }
                                 :}
+    | JSON_VAL:a                {: RESULT = a;  :} 
     ;
 ARGS_EJEX ::= ARGS_EJEX:a ARG_EJEX:b    {: RESULT = a + b;  :}
     | ARG_EJEX:a                        {: RESULT = a;      :}
@@ -337,6 +340,7 @@ ARG_VALOR ::= DATO_VALOR:a coma     {: RESULT = a; valores_pie.add(a); :}
                                         }
                                     :}
     | numero:a                      {: RESULT = a; valores_pie.add(a); :}
+    | JSON_VAL:a                    {: RESULT = a; valores_pie.add(a); :}
     ;
 DATO_VALOR ::= numero:a             {: RESULT = a; :} 
     | id:a                          {: 
@@ -346,6 +350,7 @@ DATO_VALOR ::= numero:a             {: RESULT = a; :}
                                             System.out.println("ERROR: No se declaro la variable: " + a);
                                         }
                                     :}
+    | JSON_VAL:a                    {: RESULT = a;  :} 
     ;
 ARGS_VALOR ::= ARGS_VALOR:a ARG_VALOR:b     {: RESULT = a + b; :}
     | ARG_VALOR:a                           {: RESULT = a; :}            
@@ -363,7 +368,7 @@ STMSLIST_PIE ::= STMSLIST_PIE STMS_PIE
 // ---> Grafica barras
 G_BAR ::= reservada_void reservada_graficabarras open_pare close_pare open_brace STMSLIST_BAR close_brace  {:System.out.println("--------- GRAFICA DE BARRAS ---------");:}
     ;
-TITULO_BAR ::= reservada_string reservada_titulo igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); titulo_bar_graph = a; :}        
+TITULO_BAR ::= reservada_string reservada_titulo igual  string_literal:a punto_coma     {: titulo_bar_graph = a; :}        
         |  reservada_string reservada_titulo igual  id:a punto_coma                       
                                         {:
                                             if(tabla_globales.containsKey(a)){
@@ -373,8 +378,9 @@ TITULO_BAR ::= reservada_string reservada_titulo igual  string_literal:a punto_c
                                                 System.out.println("ERROR: No se declaro la variable: " + a);
                                             }
                                         :}
+        | reservada_string reservada_titulo igual  JSON_VAL:a punto_coma        {: titulo_bar_graph = a; :}
         ;
-TITULO_X ::= reservada_string reservada_titulox igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); tituloX_bar = a; :}        
+TITULO_X ::= reservada_string reservada_titulox igual  string_literal:a punto_coma     {: tituloX_bar = a; :}        
         |    reservada_string reservada_titulox igual  id:a punto_coma                       
                                         {:
                                             if(tabla_globales.containsKey(a)){
@@ -384,8 +390,9 @@ TITULO_X ::= reservada_string reservada_titulox igual  string_literal:a punto_co
                                                 System.out.println("ERROR: No se declaro la variable: " + a);
                                             }
                                         :}
+        |    reservada_string reservada_titulox igual  JSON_VAL:a punto_coma    {: tituloX_bar = a; :}
         ;
-TITULO_Y ::= reservada_string reservada_tituloy igual  string_literal:a punto_coma     {:System.out.println("Titulo con string literal"); tituloY_bar = a; :}        
+TITULO_Y ::= reservada_string reservada_tituloy igual  string_literal:a punto_coma     {: tituloY_bar = a; :}        
         |    reservada_string reservada_tituloy igual  id:a punto_coma                       
                                         {:
                                             if(tabla_globales.containsKey(a)){
@@ -395,6 +402,7 @@ TITULO_Y ::= reservada_string reservada_tituloy igual  string_literal:a punto_co
                                                 System.out.println("ERROR: No se declaro la variable: " + a);
                                             }
                                         :}
+        | reservada_string reservada_tituloy igual  JSON_VAL:a punto_coma       {: tituloY_bar = a; :}        
         ;
 EJEX_BAR ::= reservada_string open_square_brackets close_square_brackets reservada_ejex igual open_brace ARGS_EJEX_BAR:a close_brace punto_coma 
         {: //System.out.println(a); //ejex_bar.add(a); :}
