@@ -115,23 +115,6 @@ precedence left mayor , menor, mayor_igual, menor_igual, igual_relacional, disti
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
-/*
-JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
-                {: 
-                    // split string to take off qoutes, " qoutes " [1]
-                    String[] json_name = a.split("\"",5);
-                    for(int i = 0; i < json_data.get(json_name[1]).size(); i++){
-                        if(json_data.get(json_name[1]).get(i).getLexema().equals(b) ) {
-                            System.out.println("FLAG: holi" );
-                            System.out.println(json_data.get(json_name[1]).get(i+2).getLexema());
-                            break;
-                        }
-                    }
-
-                    
-                :}
-    ;
-*/
 
 INICIO ::= PROGRAM;
 
@@ -162,11 +145,11 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | WHILE_STMT:a          {: RESULT = (a); :}
     | DO_STMT:a             {: RESULT = (a); :}
     | ASIG:a                {: RESULT = (a); :}
-    | CMT
+    | CMT                   {: RESULT = ""; :}
     | L
-    | G_PIE
-    | G_BAR
-    | DEF_GLOBAL
+    | G_PIE                 {: RESULT = ""; :}
+    | G_BAR                 {: RESULT = ""; :}
+    | DEF_GLOBAL            {: RESULT = ""; :}
     ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -476,7 +459,7 @@ STMSLIST_BAR ::= STMSLIST_BAR STMS_BAR
 DEF_GLOBAL ::= reservada_void reservada_definirglobales open_pare close_pare open_brace DEF_LIST close_brace  {:System.out.println("Metodo definir globales");:}
     ;
 
-DEF_VAR ::= TD_DEF id:a igual VAL_DEF:b punto_coma  {: System.out.println("una variable"); tabla_globales.put(a,b); :}
+DEF_VAR ::= TD_DEF id:a igual VAL_DEF:b punto_coma  {: tabla_globales.put(a,b); :}
     ;
 
 TD_DEF ::= reservada_string
@@ -490,6 +473,7 @@ DEF_LIST ::= DEF_LIST DEF_VAR
     | DEF_VAR
     ;
 
+// Obtiene los dato cargados del JSOn
 JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
                 {: 
                     // split string to take off qoutes, " qoutes " [1]
@@ -509,3 +493,21 @@ JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma str
                     
                 :}
     ;
+
+/*
+JSON_VAL ::= dollar open_brace reservada_newvalor coma string_literal:a coma string_literal:b close_brace 
+                {: 
+                    // split string to take off qoutes, " qoutes " [1]
+                    String[] json_name = a.split("\"",5);
+                    for(int i = 0; i < json_data.get(json_name[1]).size(); i++){
+                        if(json_data.get(json_name[1]).get(i).getLexema().equals(b) ) {
+                            System.out.println("FLAG: holi" );
+                            System.out.println(json_data.get(json_name[1]).get(i+2).getLexema());
+                            break;
+                        }
+                    }
+
+                    
+                :}
+    ;
+*/

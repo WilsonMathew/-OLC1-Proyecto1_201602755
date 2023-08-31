@@ -9,15 +9,31 @@ void main ( ){
 	}else if(a == b){
 		Console.Write("a y b son iguales");
 	}
-
+	
 	void DefinirGlobales(){
 		string reporte1 = "Reporte 1";
-		string reporte2 = ${ NewValor, "archivo1.json", "Titulo"};
+		string reporte2 = "test";
 		double pe1 = 0.8;
 		double pe2 = 0.5;
 		double pe3 = 0.2;
-		double po1 = ${ NewValor, "archivo2.json", "variable1"};
-		double po2 = ${ NewValor, "archivo1.json", "variable2"};
+		double po1 = 0.3;
+		double po2 = 0.3;
+		string vart = "Valor Obtenido";
+		string var2 = "Valor Esperado clase 1";
+		string var20 = "Valor Esperado clase 111";
+		string var22 = "Valor Obtenido clase 1";
+		string var3 = "Valore Esperado clase 2";
+		string var33 = "Valor Obtenido clase 2";
+	}
+
+	void DefinirGlobales(){
+		string reporte1 = "Reporte 1";
+		string reporte2 = "test";
+		double pe1 = 0.8;
+		double pe2 = 0.5;
+		double pe3 = 0.2;
+		double po1 = 0.3;
+		double po2 = 0.3;
 		string vart = "Valor Obtenido";
 		string var2 = "Valor Esperado clase 1";
 		string var20 = "Valor Esperado clase 111";
@@ -40,9 +56,13 @@ void main ( ){
 		string TituloX= ${ NewValor, "archivo2.json", "Titulo"};
 		string TituloY= ${ NewValor, "archivo2.json", "Titulo"};
 	}
-	
-		while(a < 10){
+
+
+	while(a < 10){
 		Console.Write("el valor de a es: " + a);
 	}
 
+
 }
+
+	

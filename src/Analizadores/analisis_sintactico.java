@@ -929,7 +929,7 @@ class CUP$analisis_sintactico$actions {
           case 19: // STMS ::= CMT 
             {
               String RESULT =null;
-
+		 RESULT = ""; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -947,7 +947,7 @@ class CUP$analisis_sintactico$actions {
           case 21: // STMS ::= G_PIE 
             {
               String RESULT =null;
-
+		 RESULT = ""; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -956,7 +956,7 @@ class CUP$analisis_sintactico$actions {
           case 22: // STMS ::= G_BAR 
             {
               String RESULT =null;
-
+		 RESULT = ""; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -965,7 +965,7 @@ class CUP$analisis_sintactico$actions {
           case 23: // STMS ::= DEF_GLOBAL 
             {
               String RESULT =null;
-
+		 RESULT = ""; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -2491,7 +2491,7 @@ class CUP$analisis_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
 		String b = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
-		 System.out.println("una variable"); tabla_globales.put(a,b); 
+		 tabla_globales.put(a,b); 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("DEF_VAR",52, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;

@@ -366,6 +366,7 @@ public class user_interface extends javax.swing.JFrame {
                 parser.parse();
                 for (String temp : parser.python) {                             // Se traduce a lenguaje python
                     text_salida.append(temp);
+                    
                 }
                 
                 

@@ -34,10 +34,26 @@ public class tests {
 
     public static void main(String[] args) {
 
+        System.out.println(indentation(1) + "Holi");
+        System.out.println(indentation(2) + "nene");
+        System.out.println(indentation(3) + "adiosito");
+        
+
+    }
+    public static String indentation(int a){
+        String tab="";
+        for(int i = 0; i < a;i++ ){
+            tab = tab + "\t";
+        }
+        
+        return tab;
+    }
+    
         /*
         objeto tmp2 = new objeto("lexema 3","test 3", "linea", "columna");
                         gList.add(tmp);
          */
+        /*
         LinkedList<objeto> idunno = new LinkedList<>();        
         idunno.add(new objeto("lexema 1","test 1", "linea", "columna"));
         idunno.add(new objeto("lexema 2","test 2", "linea", "columna"));
@@ -56,6 +72,7 @@ public class tests {
         map.put("B", idunno1);
         
         System.out.println( map.get("B"));
+        */
        /*
         System.out.println("LinkedList: " + map);
         String path_current_file = "C:\\Users\\mathew\\Documents\\NetBeansProjects\\[OLC1]Proyecto1_201602755\\json1.json";
@@ -185,5 +202,4 @@ public class tests {
             System.out.println("not found");
         }
          */
-    }
 
