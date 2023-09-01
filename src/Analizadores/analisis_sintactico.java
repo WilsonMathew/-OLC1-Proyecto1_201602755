@@ -648,18 +648,34 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
     public static String titulo_bar_graph="";
     public static String tituloX_bar="";
     public static String tituloY_bar="";
-    
-    // Variables globales
+
+    // Variables globales statpy
     public static Hashtable<String, String> tabla_globales = new Hashtable<>();
 
     // Variable JSON
     public static Hashtable<String, LinkedList<Tokens>> json_data = new Hashtable<>();
+
+    // variable de tabulacion
+    int tab_n = 0;
+    
+//--------------------------------------------------------------------------------------------------
 
     public void test(Hashtable<String, LinkedList<Tokens>> tabla ){
         System.out.println("Holi");
         json_data = tabla;
         //System.out.println(json_data.get("archivo1.json"));
     }
+
+//--------------------------------------------------------------------------------------------------
+    public String indentation(int a){
+        String tab="";
+        for(int i = 0; i < a;i++ ){
+            tab = tab + "\t";
+        }
+        
+        return tab;
+    }
+//--------------------------------------------------------------------------------------------------
 
     // Metodo al que se llama automaticamente ante algun error sintactico
     public void syntax_error(Symbol s){
@@ -860,7 +876,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = (a); 
+		 tab_n--; RESULT = (a); 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("STMS",2, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -1262,7 +1278,7 @@ class CUP$analisis_sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a; 
+		  tab_n++; RESULT = indentation(tab_n) + a;  
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("IF_STM",16, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -1277,7 +1293,7 @@ class CUP$analisis_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()).right;
 		String b = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.peek()).value;
-		 RESULT = a +  "else " + b; 
+		  tab_n++; RESULT = indentation(tab_n) + a + indentation(tab_n) + "else " + b;  
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("IF_STM",16, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
@@ -1292,7 +1308,7 @@ class CUP$analisis_sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).right;
 		String b = (String)((java_cup.runtime.Symbol) CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-1)).value;
-		 RESULT = "if " + a  + " : " + " \n" + b; 
+		 RESULT =  "if " + a  + " : " + " \n" + b; 
               CUP$analisis_sintactico$result = parser.getSymbolFactory().newSymbol("IF_S0",17, ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.peek()), RESULT);
             }
           return CUP$analisis_sintactico$result;
