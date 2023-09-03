@@ -141,7 +141,7 @@ PROGRAM ::= MAIN
 
 MAIN ::= reservada_void reservada_main open_pare close_pare open_brace STMSLIST:a close_brace 
     {:  
-        python.add("def main (): \n" + a + "\nif__name__ = \"__main__\": \n main()" + "\n");:}
+        python.add("def main (): \n" + a + "\nif__name__ = \"__main__\": \n main()" + "\n"); tab_n--;:}
     ;
 
 CMTS ::= CMTS CMT
@@ -154,7 +154,7 @@ CMT ::= multi_comentario
 
 STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | DECLARATION_STMT:a    {: RESULT = (a); :}   
-    | IF_STM:a              {: tab_n--; RESULT = (a); :}   
+    | IF_STM:a              {: RESULT = (a); :}   
     | SWITCH_STMT:a         {: RESULT = (a); :}   
     | FOR_STMT:a            {: RESULT = (a); :}
     | WHILE_STMT:a          {: RESULT = (a); :}
@@ -211,10 +211,10 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
     ;
 
 //---> Sentencias IF
-IF_STM ::= IF_S0:a                              {:  tab_n++; RESULT = indentation(tab_n) + a;  :}
-        |  IF_S0:a  reservada_else IF_S0:b      {:  tab_n++; RESULT = indentation(tab_n) + a + indentation(tab_n) + "else " + b;  :}
+IF_STM ::= IF_S0:a                              {: RESULT = indentation(tab_n) + a; :}
+        |  IF_S0:a  reservada_else IF_S0:b      {: RESULT = indentation(tab_n) + a + indentation(tab_n) + "else " + b; :}
         ;
-IF_S0 ::= reservada_if open_pare R:a close_pare open_brace STMSLIST:b close_brace {: RESULT =  "if " + a  + " : " + " \n" + b; :}
+IF_S0 ::= reservada_if open_pare R:a close_pare open_brace STMSLIST:b close_brace {: tab_n++; System.out.println("FLAG IF_S0: " + tab_n); RESULT = "if " + a  + " : " + " \n" + indentation(tab_n) + b; :}
     ;
 
 //---> Operadores relacionales

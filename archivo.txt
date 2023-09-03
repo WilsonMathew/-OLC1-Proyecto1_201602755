@@ -2,28 +2,20 @@
 	int b = 2;
 	int a =1;
 	int var1 = 5+8*9;
+
 	if (b > a){
 		Console.Write("b mayor que a");
-		if (tu  > mami){
-		Console.Write("b mayor que a");
+		if (b > a){
+			Console.Write("b mayor que a");
 		}else if(a == b){
-		Console.Write("a y b son iguales");
+			Console.Write("a y b son iguales");
 		}
 	}
-	
-	if (b > a){
-		Console.Write("b mayor que a");
-	}else if(a == b){
-		Console.Write("a y b son iguales");
-	}
-	
+		
 	if (b > a){
 		Console.Write("b mayor que a");
 	}else if(a == b){
 		Console.Write("a y b son iguales");
 	}
 
-	while(a < 10){
-		Console.Write("el valor de a es: " + a);
-	}
 }

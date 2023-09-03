@@ -337,6 +337,28 @@ public class user_interface extends javax.swing.JFrame {
         File archivo = new File("archivo.txt");
         PrintWriter escribir;
         
+        text_entrada.setText("void main ( ){\n"
+                + "	int b = 2;\n"
+                + "	int a =1;\n"
+                + "	int var1 = 5+8*9;\n"
+                + "\n"
+                + "	if (b > a){\n"
+                + "		Console.Write(\"b mayor que a\");\n"
+                + "		if (b > a){\n"
+                + "			Console.Write(\"b mayor que a\");\n"
+                + "		}else if(a == b){\n"
+                + "			Console.Write(\"a y b son iguales\");\n"
+                + "		}\n"
+                + "	}\n"
+                + "		\n"
+                + "	if (b > a){\n"
+                + "		Console.Write(\"b mayor que a\");\n"
+                + "	}else if(a == b){\n"
+                + "		Console.Write(\"a y b son iguales\");\n"
+                + "	}\n"
+                + "\n"
+                + "}");
+        
         try {    
             escribir = new PrintWriter(archivo);
             escribir.print(" " + text_entrada.getText());
@@ -368,8 +390,6 @@ public class user_interface extends javax.swing.JFrame {
                     text_salida.append(temp);
                     
                 }
-                
-                
                 
                 // Impresion de repotes lexicos html
                 reporte_tokens(lexer.tabla_tokens);
