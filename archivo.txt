@@ -4,18 +4,13 @@
 	int var1 = 5+8*9;
 
 	if (b > a){
-		Console.Write("b mayor que a");
+		Console.Write("solo IF ");
 		if (b > a){
-			Console.Write("b mayor que a");
+			Console.Write("dentro de IF IF");
 		}else if(a == b){
-			Console.Write("a y b son iguales");
+			Console.Write("else if dentro de IF");
 		}
 	}
 		
-	if (b > a){
-		Console.Write("b mayor que a");
-	}else if(a == b){
-		Console.Write("a y b son iguales");
-	}
 
 }
