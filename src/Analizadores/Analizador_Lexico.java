@@ -902,14 +902,12 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println(" Error Lexico " + yytext() + " Linea " + yyline + " Columna " + yycolumn); 
-                TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
+            { TError datos = new TError(yytext() ,"Error Lexico" ,yyline ,yycolumn);
                 TablaEL.add(datos);
             }
           case 60: break;
           case 2: 
-            { System.out.println("Reconocido " + yytext()+" divi");  
-                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"Simbolo_divi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_divi, yycolumn, yyline, yytext());
             }
           case 61: break;
@@ -918,338 +916,282 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
             }
           case 62: break;
           case 4: 
-            { System.out.println("Reconocido " + yytext()+" multi"); 
-                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"Simbolo_multi" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_multi, yycolumn, yyline, yytext());
             }
           case 63: break;
           case 5: 
-            { System.out.println("Reconocido " + yytext()+" numero"); 
-                                tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
+            { tabla_tokens.add(new Tokens(yytext() , "numero" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.numero, yycolumn, yyline, yytext());
             }
           case 64: break;
           case 6: 
-            { System.out.println("Reconocido " + yytext()+" dot");     
-                        tabla_tokens.add(new Tokens(yytext() ,"dot" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"dot" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.dot, yycolumn, yyline, yytext());
             }
           case 65: break;
           case 7: 
-            { System.out.println("Reconocido " + yytext()+" id"); 
-                                tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); 
+            { tabla_tokens.add(new Tokens(yytext() , "id" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.id, yycolumn, yyline, yytext());
             }
           case 66: break;
           case 8: 
-            { System.out.println("Reconocido " + yytext()+" menos"); 
-                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"Simbolo_menos" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_menos, yycolumn, yyline, yytext());
             }
           case 67: break;
           case 9: 
-            { System.out.println("Reconocido " + yytext()+" punto_coma");  
-                        tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"punto_coma" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.punto_coma, yycolumn, yyline, yytext());
             }
           case 68: break;
           case 10: 
-            { System.out.println("Reconocido " + yytext()+" dos_puntos");  
-                        tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"dos_puntos" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.dos_puntos, yycolumn, yyline, yytext());
             }
           case 69: break;
           case 11: 
-            { System.out.println("Reconocido " + yytext()+" open_pare");   
-                        tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"open_pare" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_pare, yycolumn, yyline, yytext());
             }
           case 70: break;
           case 12: 
-            { System.out.println("Reconocido " + yytext()+" close_pare");  
-                        tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"close_pare" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_pare, yycolumn, yyline, yytext());
             }
           case 71: break;
           case 13: 
-            { System.out.println("Reconocido " + yytext()+" open_brace");  
-                        tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"open_brace" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_brace, yycolumn, yyline, yytext());
             }
           case 72: break;
           case 14: 
-            { System.out.println("Reconocido " + yytext()+" close_brace"); 
-                        tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"close_brace" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_brace, yycolumn, yyline, yytext());
             }
           case 73: break;
           case 15: 
-            { System.out.println("Reconocido " + yytext()+" igual");       
-                        tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.igual, yycolumn, yyline, yytext());
             }
           case 74: break;
           case 16: 
-            { System.out.println("Reconocido " + yytext()+" dollar");      
-                        tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"dollar" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.dollar, yycolumn, yyline, yytext());
             }
           case 75: break;
           case 17: 
-            { System.out.println("Reconocido " + yytext()+" open_square_brackets");  
-                        tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"open_square_brackets" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.open_square_brackets, yycolumn, yyline, yytext());
             }
           case 76: break;
           case 18: 
-            { System.out.println("Reconocido " + yytext()+" close_square_brackets");  
-                        tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"close_square_brackets" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.close_square_brackets, yycolumn, yyline, yytext());
             }
           case 77: break;
           case 19: 
-            { System.out.println("Reconocido " + yytext()+" coma");        
-                        tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"coma" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.coma, yycolumn, yyline, yytext());
             }
           case 78: break;
           case 20: 
-            { System.out.println("Reconocido " + yytext()+" mas");   
-                        tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"Simbolo_mas" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.Simbolo_mas, yycolumn, yyline, yytext());
             }
           case 79: break;
           case 21: 
-            { System.out.println("Reconocido " + yytext()+" mayor");         
-                        tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"mayor" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.mayor, yycolumn, yyline, yytext());
             }
           case 80: break;
           case 22: 
-            { System.out.println("Reconocido " + yytext()+" menor");         
-                        tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"menor" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.menor, yycolumn, yyline, yytext());
             }
           case 81: break;
           case 23: 
-            { System.out.println("Reconocido " + yytext()+" not");           
-                        tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"not" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.not, yycolumn, yyline, yytext());
             }
           case 82: break;
           case 24: 
-            { System.out.println("Reconocido " + yytext()+" string_literal"); 
-                                tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); 
+            { tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.string_literal, yycolumn, yyline, yytext());
             }
           case 83: break;
           case 25: 
-            { System.out.println("Reconocido " + yytext()+" igual_relacional");         
-                        tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"igual_relacional" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.igual_relacional, yycolumn, yyline, yytext());
             }
           case 84: break;
           case 26: 
-            { System.out.println("Reconocido " + yytext()+" mayor_igual");   
-                        tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"mayor_igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.mayor_igual, yycolumn, yyline, yytext());
             }
           case 85: break;
           case 27: 
-            { System.out.println("Reconocido " + yytext()+" menor_igual");   
-                        tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"menor_igual" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.menor_igual, yycolumn, yyline, yytext());
             }
           case 86: break;
           case 28: 
-            { System.out.println("Reconocido " + yytext()+" distinto");      
-                        tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"distinto" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.distinto, yycolumn, yyline, yytext());
             }
           case 87: break;
           case 29: 
-            { System.out.println("Reconocido " + yytext()+" and");           
-                        tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"and" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.and, yycolumn, yyline, yytext());
             }
           case 88: break;
           case 30: 
-            { System.out.println("Reconocido " + yytext()+" or");            
-                        tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"or" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.or, yycolumn, yyline, yytext());
             }
           case 89: break;
           case 31: 
-            { System.out.println("Reconocido " + yytext()+" reservada_if");          
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_if" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_if, yycolumn, yyline, yytext());
             }
           case 90: break;
           case 32: 
-            { System.out.println("Reconocido " + yytext()+" reservada_do");          
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_do" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_do, yycolumn, yyline, yytext());
             }
           case 91: break;
           case 33: 
-            { System.out.println("Reconocido " + yytext()+" comentario"); 
-                                tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); 
+            { tabla_tokens.add(new Tokens(yytext() , "comentario" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.comentario, yycolumn, yyline, yytext());
             }
           case 92: break;
           case 34: 
-            { System.out.println("Reconocido " + yytext()+" reservada_int");         
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_int" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_int, yycolumn, yyline, yytext());
             }
           case 93: break;
           case 35: 
-            { System.out.println("Reconocido " + yytext()+" reservada_for");         
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_for" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_for, yycolumn, yyline, yytext());
             }
           case 94: break;
           case 36: 
-            { System.out.println("Reconocido " + yytext()+" multi_comentario"); 
-                                tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); 
+            { tabla_tokens.add(new Tokens(yytext() , "multi_comentario" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.multi_comentario, yycolumn, yyline, yytext());
             }
           case 95: break;
           case 37: 
-            { System.out.println("Reconocido " + yytext()+" reservada_else");          
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_else" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_else" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_else, yycolumn, yyline, yytext());
             }
           case 96: break;
           case 38: 
-            { System.out.println("Reconocido " + yytext()+" reservada_ejex");       
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_ejex" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_ejex, yycolumn, yyline, yytext());
             }
           case 97: break;
           case 39: 
-            { System.out.println("Reconocido " + yytext()+" reservada_void");        
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_void" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_void" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_void, yycolumn, yyline, yytext());
             }
           case 98: break;
           case 40: 
-            { System.out.println("Reconocido " + yytext()+" reservada_main");        
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_main" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_main" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_main, yycolumn, yyline, yytext());
             }
           case 99: break;
           case 41: 
-            { System.out.println("Reconocido " + yytext()+" reservada_case");        
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_case" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_case, yycolumn, yyline, yytext());
             }
           case 100: break;
           case 42: 
-            { System.out.println("Reconocido " + yytext()+" reservada_char");        
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_char" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_char" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_char, yycolumn, yyline, yytext());
             }
           case 101: break;
           case 43: 
-            { System.out.println("Reconocido " + yytext()+" reservada_bool");        
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_bool" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_bool" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_bool, yycolumn, yyline, yytext());
             }
           case 102: break;
           case 44: 
-            { System.out.println("Reconocido " + yytext()+" reservada_write");     
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_write" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_write" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_write, yycolumn, yyline, yytext());
             }
           case 103: break;
           case 45: 
-            { System.out.println("Reconocido " + yytext()+" reservada_while");     
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_while" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_while, yycolumn, yyline, yytext());
             }
           case 104: break;
           case 46: 
-            { System.out.println("Reconocido " + yytext()+" reservada_break");       
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_break" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_break, yycolumn, yyline, yytext());
             }
           case 105: break;
           case 47: 
-            { System.out.println("Reconocido " + yytext()+" reservada_double");      
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_double" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_double, yycolumn, yyline, yytext());
             }
           case 106: break;
           case 48: 
-            { System.out.println("Reconocido " + yytext()+" reservada_switch");      
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_switch" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_switch, yycolumn, yyline, yytext());
             }
           case 107: break;
           case 49: 
-            { System.out.println("Reconocido " + yytext()+" reservada_string");      
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_string" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_string, yycolumn, yyline, yytext());
             }
           case 108: break;
           case 50: 
-            { System.out.println("Reconocido " + yytext()+" reservada_titulo");      
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_titulo" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_titulo, yycolumn, yyline, yytext());
             }
           case 109: break;
           case 51: 
-            { System.out.println("Reconocido " + yytext()+" reservada_valores");     
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_valores" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_valores, yycolumn, yyline, yytext());
             }
           case 110: break;
           case 52: 
-            { System.out.println("Reconocido " + yytext()+" reservada_default");       
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_default" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_default" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_default, yycolumn, yyline, yytext());
             }
           case 111: break;
           case 53: 
-            { System.out.println("Reconocido " + yytext()+" reservada_console");     
-                        tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_console" ,yyline ,yycolumn));
                         return new Symbol(Simbolos.reservada_console, yycolumn, yyline, yytext());
             }
           case 112: break;
           case 54: 
-            { System.out.println("Reconocido " + yytext()+" reservada_titulox");     
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_titulox" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_titulox, yycolumn, yyline, yytext());
             }
           case 113: break;
           case 55: 
-            { System.out.println("Reconocido " + yytext()+" reservada_tituloy");     
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_tituloy" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_tituloy, yycolumn, yyline, yytext());
             }
           case 114: break;
           case 56: 
-            { System.out.println("Reconocido " + yytext()+" reservada_newvalor");    
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_newvalor" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_newvalor, yycolumn, yyline, yytext());
             }
           case 115: break;
           case 57: 
-            { System.out.println("Reconocido " + yytext()+" reservada_graficapie");          
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_graficapie" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_graficapie, yycolumn, yyline, yytext());
             }
           case 116: break;
           case 58: 
-            { System.out.println("Reconocido " + yytext()+" reservada_graficabarras");       
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_graficabarras" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_graficabarras, yycolumn, yyline, yytext());
             }
           case 117: break;
           case 59: 
-            { System.out.println("Reconocido " + yytext()+" reservada_definirglobales");     
-                                    tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
+            { tabla_tokens.add(new Tokens(yytext() ,"reservada_definirglobales" ,yyline ,yycolumn));
                                     return new Symbol(Simbolos.reservada_definirglobales, yycolumn, yyline, yytext());
             }
           case 118: break;

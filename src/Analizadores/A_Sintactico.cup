@@ -173,8 +173,8 @@ STMSLIST ::= STMSLIST:a STMS:b {:RESULT = a + b ; :}
 ;
 
 //---> Declaracion y asignacion de variables
-DECLARATION_STMT ::= TIPOS_DATOS id:a punto_coma          {: System.out.println("int " + a + " ; ");              RESULT = a+ "\n"; :}
-                | TIPOS_DATOS id:a igual ME:b punto_coma  {: System.out.println("int " + a + " = " + b + ";");    RESULT = a + " = " + b + "\n"; :}
+DECLARATION_STMT ::= TIPOS_DATOS id:a punto_coma          {: RESULT = a+ "\n"; :}
+                | TIPOS_DATOS id:a igual ME:b punto_coma  {: RESULT = a + " = " + b + "\n"; :}
 ;
 
 TIPOS_DATOS ::= reservada_int
@@ -197,7 +197,7 @@ E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
     ;
 
 //---> Sentencias imprimir 
-PRINT_STMT::= reservada_console dot reservada_write open_pare ARGS:a close_pare punto_coma {:System.out.println("print(" + a + ")" ); RESULT = "print(" + a + ")" + "\n"; :}
+PRINT_STMT::= reservada_console dot reservada_write open_pare ARGS:a close_pare punto_coma {: RESULT = "print(" + a + ")" + "\n"; :}
     ;
 
 ARGS ::= ARGS ARG:a     {: RESULT = a; :}
@@ -214,7 +214,12 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
 IF_STM ::= IF_S0:a                              {: RESULT = indentation(tab_n) + a; :}
         |  IF_S0:a  reservada_else IF_S0:b      {: RESULT = indentation(tab_n) + a + indentation(tab_n) + "else " + b; :}
         ;
-IF_S0 ::= reservada_if open_pare R:a close_pare open_brace STMSLIST:b close_brace {: tab_n++; System.out.println("FLAG IF_S0: " + tab_n); RESULT = "if " + a  + " : " + " \n" + indentation(tab_n) + b; :}
+IF_S0 ::= reservada_if open_pare R:a close_pare open_brace STMSLIST:b close_brace 
+        {: 
+            tab_n++; System.out.println("FLAG IF_S0: " + tab_n); 
+            RESULT = "if " + a  + " : " + " \n" + indentation(tab_n) + b; 
+            tab_n--; System.out.println("FLAG IF_S0 menos: " + tab_n); 
+        :}
     ;
 
 //---> Operadores relacionales
