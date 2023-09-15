@@ -124,6 +124,10 @@ non terminal String G_PIE, STMS_PIE, TITULO_PIE, STMSLIST_PIE, EJEX, ARGS_EJEX, 
 non terminal String G_BAR, TITULO_BAR, EJEX_BAR, ARG_EJEX_BAR, DATO_BAR, ARGS_EJEX_BAR, VALOR_BAR, ARG_VALOR_BAR, DATO_VALOR_BAR, ARGS_VALOR_BAR, STMS_BAR, STMSLIST_BAR;
 non terminal String DEF_GLOBAL, DEF_VAR, TD_DEF, VAL_DEF, DEF_LIST, TITULO_X, TITULO_Y;
 non terminal String JSON_VAL;
+non terminal String LST_STRING;
+non terminal String LE;
+non terminal String RE;
+non terminal String DECLA_LE,ELSE_IFSTM, ELSE_STM;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -155,7 +159,8 @@ CMT ::= multi_comentario
     ;
 
 STMS::= PRINT_STMT:a        {: RESULT = (a); :}
-    | DECLARATION_STMT:a    {: RESULT = (a); :}   
+    | DECLARATION_STMT:a    {: RESULT = (a); :}
+    | DECLA_LE:a            {: RESULT = (a); :}
     | IF_STM:a              {: RESULT = (a); :}   
     | SWITCH_STMT:a         {: RESULT = (a); :}   
     | FOR_STMT:a            {: RESULT = (a); :}
@@ -163,10 +168,10 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | DO_STMT:a             {: RESULT = (a); :}
     | ASIG:a                {: RESULT = (a); :}
     | CMT                   {: RESULT = ""; :}
-    | L
     | G_PIE                 {: RESULT = ""; :}
     | G_BAR                 {: RESULT = ""; :}
     | DEF_GLOBAL            {: RESULT = ""; :}
+    | error punto_coma      {::}
     ;
 
 // Makes it so it accepts any order of declarations and prints
@@ -181,19 +186,27 @@ STMS ::= INDENT STMS DEDENT
 
 
 //---> Declaracion y asignacion de variables
-DECLARATION_STMT ::= TIPOS_DATOS id:a punto_coma          {: RESULT = a+ "\n"; :}
-                | TIPOS_DATOS id:a igual ME:b punto_coma  {: RESULT = a + " = " + b + "\n"; :}
+DECLARATION_STMT ::= TIPOS_DATOS id:a punto_coma                        {: RESULT = a+ "\n"; :}
+                | TIPOS_DATOS id:a igual ME:b punto_coma                {: RESULT = a + " = " + b + "\n"; :}
+                | TIPOS_DATOS id:a igual LST_STRING:b punto_coma        {: RESULT = a + " = " + b + "\n"; :}                              
 ;
+
+DECLA_LE ::= reservada_bool id:a igual LE:b punto_coma                 {: RESULT = a + " = " + b + "\n"; :}                              
+    ;
+
+LST_STRING ::= LST_STRING Simbolo_mas string_literal:a          {: RESULT = " + " + a; :} 
+            |  LST_STRING Simbolo_mas id:a                      {: RESULT = " + " + a; :}
+            | string_literal:a                                  {: RESULT = a; :}
+    ;
 
 TIPOS_DATOS ::= reservada_int
     | reservada_string
     | reservada_double
     | reservada_char 
-    | reservada_bool
     ;
 
 
-ME ::= ME E:a {: RESULT = a; :}
+ME ::= ME:a E:b {: RESULT = a + b; :}
     | E:a     {: RESULT = a; :}
     ;
 
@@ -202,15 +215,17 @@ E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
     | E:a Simbolo_multi E:b {: RESULT = a + " * " + b; :}
     | E:a Simbolo_divi E:b  {: RESULT = a + " / " + b; :}
     | numero:a              {: RESULT = a; :}
+    | id:a                  {: RESULT = a; :}
     ;
 
 //---> Sentencias imprimir 
 PRINT_STMT::= reservada_console dot reservada_write open_pare ARGS:a close_pare punto_coma {: RESULT = "print(" + a + ")" + "\n"; :}
     ;
 
-ARGS ::= ARGS ARG:a     {: RESULT = a; :}
-    | ARG:a             {: RESULT = a; :}
+ARGS ::= ARGS:a ARG:b     {: RESULT = a + b; :}
+    | ARG:a               {: RESULT = a; :}
     ;
+
 
 ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
     | ARG:a Simbolo_mas string_literal:b       {: RESULT = a + " , " + b; :}
@@ -219,10 +234,17 @@ ARG ::= ARG:a Simbolo_mas id:b                 {: RESULT = a + " , " + b; :}
     ;
 
 //---> Sentencias IF
-IF_STM ::= IF_S0:a {: RESULT =  a; :}
-        |  IF_S0:a  reservada_else IF_S0:b {: RESULT = a + "else " + b; :}
+IF_STM ::= IF_S0:a                  {: RESULT =  a; :}
+        |  IF_S0:a ELSE_IFSTM:b     {: RESULT =  a + b; :}
         ;
-IF_S0 ::= reservada_if open_pare R:a close_pare open_brace STMSLIST:b close_brace 
+
+ELSE_IFSTM ::= ELSE_IFSTM:a reservada_else reservada_if open_pare LE:b close_pare open_brace STMSLIST:c close_brace  {: RESULT = a + "else if " + b + ":" + "\n" + c ;   :}
+        |  reservada_else reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace                   {: RESULT = "else if " + a + ":" + "\n" + b ;   :} 
+        ;
+
+ 
+
+IF_S0 ::= reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace 
         {: RESULT = "if " + a  + " : " + " \n" + b; :}
     ;
 
@@ -237,16 +259,22 @@ R::=  R:a mayor R:b                 {: RESULT = a + " > " + b; :}
     | id:a                          {: RESULT = a; :}
     ;
 
+
 //---> Operadores logicos
-L::=  L:a and L:b                   {: RESULT = a + " && " + b; :}
-    | L:a or L:b                    {: RESULT = a + " || " + b; :}
-    | not L:a                       {: RESULT = " ! " + a; :}
-    | numero:a                      {: RESULT = a; :}
-    | id:a                          {: RESULT = a; :}
+L::=  R:a and R:b                   {: RESULT = a + " && " + b; :}
+    | R:a or R:b                    {: RESULT = a + " || " + b; :}
+    | not R:a                       {: RESULT = " ! " + a; :}
+    | R:a                           {: RESULT = a; :}
+    | and R:a                       {: RESULT = " && " + a; :}
+    | or  R:a                       {: RESULT = " || " + a; :}
+    ;
+
+LE ::= LE:a L:b {: RESULT = a + b; :}
+    | L:a     {: RESULT = a; :}
     ;
 
 //---> Sentencias for
-FOR_STMT ::= reservada_for open_pare reservada_int id:a igual numero:b punto_coma R:c punto_coma UPDATE close_pare open_brace STMSLIST:d close_brace
+FOR_STMT ::= reservada_for open_pare reservada_int id:a igual numero:b punto_coma LE:c punto_coma UPDATE close_pare open_brace STMSLIST:d close_brace
     
         {:
             int val1 = Integer.parseInt(b) + 1;                             // add 1 to the initial number
@@ -259,12 +287,12 @@ UPDATE ::= id Simbolo_mas Simbolo_mas
     ;
 
 //---> Sentencias while
-WHILE_STMT ::= reservada_while open_pare R:a close_pare open_brace STMSLIST:b close_brace
+WHILE_STMT ::= reservada_while open_pare LE:a close_pare open_brace STMSLIST:b close_brace
         {:RESULT = "while " +  a + " :\n" + b; :}
     ;
 
 //---> Sentencias do while 
-DO_STMT ::= reservada_do open_brace STMSLIST:a close_brace reservada_while open_pare R:b close_pare punto_coma
+DO_STMT ::= reservada_do open_brace STMSLIST:a close_brace reservada_while open_pare LE:b close_pare punto_coma
         {:RESULT = "while True:\n " + a + "if(" + b + "):\n"+ "break\n"; :}
     ;
 
@@ -277,11 +305,14 @@ CASE_LIST ::= CASE_LIST:a CASE_STATEMENT:b      {:RESULT = a + b; :}
         | CASE_STATEMENT:a                      {:RESULT = a; :}
         ;
 
-CASE_STATEMENT ::= reservada_case numero:a dos_puntos STMSLIST:b reservada_break punto_coma     {:RESULT = a + " : " + b + ",\n"; :}
-               | reservada_case numero:a dos_puntos STMSLIST:b                                  {:RESULT = a + " : " + b + ",\n"; :}
+CASE_STATEMENT ::= reservada_case numero:a dos_puntos STMSLIST:b reservada_break punto_coma             {: RESULT = a + " : " + b + ",\n"; :}
+               |   reservada_case numero:a dos_puntos STMSLIST:b                                        {: RESULT = a + " : " + b + ",\n"; :}
+               |   reservada_case string_literal:a dos_puntos STMSLIST:b reservada_break punto_coma     {: RESULT = a + " : " + b + ",\n"; :}
+               |   reservada_case string_literal:a dos_puntos STMSLIST:b                                {: RESULT = a + " : " + b + ",\n"; :}
     ; 
 
-DEFAULT_CASE ::= reservada_default dos_puntos STMSLIST:a      {: RESULT = "n : " + a ; :}
+DEFAULT_CASE ::= reservada_default dos_puntos STMSLIST:a reservada_break punto_coma                     {: RESULT = "n : " + a ; :}
+               | reservada_default dos_puntos STMSLIST:a                                                {: RESULT = "n : " + a ; :}
         ;
 
 

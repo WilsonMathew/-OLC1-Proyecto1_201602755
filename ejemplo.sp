@@ -4,6 +4,9 @@ void main ( ){
 	int b = 2;
 	int a =1;
 	int var1 = 5+8*9;
+	bool simple_flag = 6 < 9898;
+    bool flag = 5 > 9 || 7 > 10 && 20 > 12;
+
 	if (b > a){
 		Console.Write("b mayor que a");
 	}else if(a == b){

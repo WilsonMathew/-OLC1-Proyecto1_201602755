@@ -337,7 +337,7 @@ public class user_interface extends javax.swing.JFrame {
         File archivo = new File("archivo.txt");
         PrintWriter escribir;
         
-        text_entrada.setText("void main ( ){\n"
+        /*    text_entrada.setText("void main ( ){\n"
                 + "	int b = 2;\n"
                 + "	int a =1;\n"
                 + "	int var1 = 5+8*9;\n"
@@ -353,7 +353,8 @@ public class user_interface extends javax.swing.JFrame {
                 + "		\n"
                 + "\n"
                 + "}");
-        
+        */
+        //text_entrada.setText();
         try {    
             escribir = new PrintWriter(archivo);
             escribir.print(" " + text_entrada.getText());
