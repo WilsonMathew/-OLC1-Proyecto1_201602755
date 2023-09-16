@@ -1,4 +1,4 @@
- void main () {
+void main () {
 	// Test de numeros
 	int simpleEntero = 10;
 	int enteros = simpleEntero + 2 - 2 * 2 / 2;

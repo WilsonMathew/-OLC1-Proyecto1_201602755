@@ -454,7 +454,7 @@ public class user_interface extends javax.swing.JFrame {
                 
             } catch (Exception e) {
 
-                System.out.println("no lee esa mierda");
+                System.out.println("no se puede ejectuar correctamente");
             }
         } else {
             Reader lector;
