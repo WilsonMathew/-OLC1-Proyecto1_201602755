@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.io.*;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Scanner;
 
 //---> Codigo para el parser, variables, metodos.
 parser code
@@ -31,7 +32,7 @@ parser code
     public static Hashtable<String, LinkedList<Tokens>> json_data = new Hashtable<>();
 
     // variable de tabulacion
-    int tab_n = 0;
+    int tab_n = 1;
     
 //--------------------------------------------------------------------------------------------------
 
@@ -45,10 +46,23 @@ parser code
     public String indentation(int a){
         String tab="";
         for(int i = 0; i < a;i++ ){
-            tab = tab + "\t";
+            tab = tab + "       ";
         }
         
         return tab;
+    }
+
+    public String indentar(String str){
+        
+        String[] stringArray = str.split("\n");
+        
+        String resultado = "";
+        for(int i = 0; i<stringArray.length;i++){
+            resultado += indentation(tab_n) + stringArray[i] + "\n";
+        }
+        return resultado;
+
+        //System.out.println(resultado);
     }
 //--------------------------------------------------------------------------------------------------
 
@@ -109,8 +123,6 @@ terminal String open_square_brackets, close_square_brackets, coma;
 terminal String reservada_definirglobales;
 terminal String dollar, reservada_newvalor;
 
-terminal INDENT, DEDENT;
-
 
 //---> declaracion de NO terminales
 non terminal String INICIO; 
@@ -127,6 +139,7 @@ non terminal String JSON_VAL;
 non terminal String LST_STRING;
 non terminal String LE;
 non terminal String DECLA_LE,ELSE_IFSTM;
+non terminal String BREAK_STM;
 
 //---> precedencia de menor a mayor
 precedence left Simbolo_mas, Simbolo_menos;
@@ -146,7 +159,8 @@ PROGRAM ::= MAIN
 
 MAIN ::= reservada_void reservada_main open_pare close_pare open_brace STMSLIST:a close_brace 
     {:  
-        python.add("def main (): \n" + a + "\nif__name__ = \"__main__\": \n main()" + "\n"); tab_n--;:}
+        //indentar(a);
+        python.add("def main (): \n" + indentar(a) + "\nif__name__ = \"__main__\": \n main()" + "\n"); tab_n--;:}
     ;
 
 CMTS ::= CMTS CMT
@@ -166,10 +180,11 @@ STMS::= PRINT_STMT:a        {: RESULT = (a); :}
     | WHILE_STMT:a          {: RESULT = (a); :}
     | DO_STMT:a             {: RESULT = (a); :}
     | ASIG:a                {: RESULT = (a); :}
-    | CMT                   {: RESULT = ""; :}
-    | G_PIE                 {: RESULT = ""; :}
-    | G_BAR                 {: RESULT = ""; :}
-    | DEF_GLOBAL            {: RESULT = ""; :}
+    | CMT                   {: RESULT = "";  :}
+    | G_PIE                 {: RESULT = "";  :}
+    | G_BAR                 {: RESULT = "";  :}
+    | DEF_GLOBAL            {: RESULT = "";  :}
+    | BREAK_STM:a           {: RESULT = (a); :}
     | error punto_coma      {::}
     ;
 
@@ -178,8 +193,7 @@ STMSLIST ::= STMSLIST:a STMS:b {:RESULT = a + b ; :}
         | STMS:a               {:RESULT = a; :}   
 ;
 
-// test de indentation
-STMS ::= INDENT STMS DEDENT
+BREAK_STM ::= reservada_break:a punto_coma    {:RESULT = a; :}
     ;
 
 //---> Declaracion y asignacion de variables
@@ -239,12 +253,12 @@ IF_STM ::= IF_S0:a                  {: RESULT =  a; :}
         |  IF_S0:a ELSE_IFSTM:b     {: RESULT =  a + b; :}
         ;
 
-ELSE_IFSTM ::= ELSE_IFSTM:a reservada_else reservada_if open_pare LE:b close_pare open_brace STMSLIST:c close_brace  {: RESULT = a + "else if " + b + ":" + "\n" + c ;   :}
-        |  reservada_else reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace                   {: RESULT = "else if " + a + ":" + "\n" + b ;   :} 
+ELSE_IFSTM ::= ELSE_IFSTM:a reservada_else reservada_if open_pare LE:b close_pare open_brace STMSLIST:c close_brace  {: RESULT = a + "else if " + b + ":" + "\n" + indentar(c) ;   :}
+        |  reservada_else reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace                   {: RESULT = "else if " + a + ":" + "\n" + indentar(b) ;   :} 
         |  reservada_else reservada_if open_pare LE:a close_pare open_brace close_brace                              {: RESULT = "else if " + a + ":" + "\n" ;   :} 
         ;
 
-IF_S0 ::= reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace                  {: RESULT = "if " + a  + " : " + " \n" + b ; :}
+IF_S0 ::= reservada_if open_pare LE:a close_pare open_brace STMSLIST:b close_brace                  {: RESULT = "if " + a  + " : " + " \n" + indentar(b) ; :}
         | reservada_if open_pare LE:a close_pare open_brace  close_brace                            {: RESULT = "if " + a  + " : " + " \n" ; :}
     ;
 
@@ -280,7 +294,7 @@ FOR_STMT ::= reservada_for open_pare reservada_int id:a igual numero:b punto_com
         {:
             int val1 = Integer.parseInt(b) + 1;                             // add 1 to the initial number
             String [] arrOfStr = c.split("< | > | <= | >= | == | != ", 0); // split array and get the last value
-            RESULT = "for " + a + " in range(" + val1 + "," + arrOfStr[arrOfStr.length-1] + "):\n" + d ;
+            RESULT = "for " + a + " in range(" + val1 + "," + arrOfStr[arrOfStr.length-1] + "):\n" + indentar(d) ;
         :}
     ;
 
@@ -289,12 +303,12 @@ UPDATE ::= id Simbolo_mas Simbolo_mas
 
 //---> Sentencias while
 WHILE_STMT ::= reservada_while open_pare LE:a close_pare open_brace STMSLIST:b close_brace
-        {: RESULT = "while " +  a + " : \n" + b ; :}
+        {: RESULT = "while " +  a + " : \n" + indentar(b) ; :}
     ;
 
 //---> Sentencias do while 
 DO_STMT ::= reservada_do open_brace STMSLIST:a close_brace reservada_while open_pare LE:b close_pare punto_coma
-        {:RESULT = "while True:\n " + a + "if(" + b + "):\n"+ "break\n"; :}
+        {:RESULT = "while True:\n " + indentar(a) + "if(" + b + "):\n"+ "break\n"; :}
     ;
 
 //---> Sentencias SWITCH reservada_switch, reservada_case, reservada_break;
@@ -306,14 +320,14 @@ CASE_LIST ::= CASE_LIST:a CASE_STATEMENT:b      {:RESULT = a + b; :}
         | CASE_STATEMENT:a                      {:RESULT = a; :}
         ;
 
-CASE_STATEMENT ::= reservada_case numero:a dos_puntos STMSLIST:b reservada_break punto_coma             {: RESULT = a + " : " + b + ",\n"; :}
-               |   reservada_case numero:a dos_puntos STMSLIST:b                                        {: RESULT = a + " : " + b + ",\n"; :}
-               |   reservada_case string_literal:a dos_puntos STMSLIST:b reservada_break punto_coma     {: RESULT = a + " : " + b + ",\n"; :}
-               |   reservada_case string_literal:a dos_puntos STMSLIST:b                                {: RESULT = a + " : " + b + ",\n"; :}
+CASE_STATEMENT ::= //reservada_case numero:a dos_puntos STMSLIST:b reservada_break punto_coma               {: RESULT = indentar(a + " : \n" + indentar(b) + ", "); :}
+                 reservada_case numero:a dos_puntos STMSLIST:b                                              {: RESULT = indentar(a + " : \n" + indentar(b) + ", "); :}
+               //|   reservada_case string_literal:a dos_puntos STMSLIST:b reservada_break punto_coma       {: RESULT = indentar(a + " : \n" + indentar(b) + ", "); :}
+               |   reservada_case string_literal:a dos_puntos STMSLIST:b                                    {: RESULT = indentar(a + " : \n" + indentar(b) + ", "); :}
     ; 
 
-DEFAULT_CASE ::= reservada_default dos_puntos STMSLIST:a reservada_break punto_coma                     {: RESULT = "n : " + a ; :}
-               | reservada_default dos_puntos STMSLIST:a                                                {: RESULT = "n : " + a ; :}
+DEFAULT_CASE ::= //reservada_default dos_puntos STMSLIST:a reservada_break punto_coma                       {: RESULT = indentar("n : \n" + indentar(a) ) ; :}
+               reservada_default dos_puntos STMSLIST:a                                                      {: RESULT = indentar("n : \n" + indentar(a) ) ; :}
         ;
 
 

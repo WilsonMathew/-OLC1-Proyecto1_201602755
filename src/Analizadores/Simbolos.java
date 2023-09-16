@@ -54,7 +54,6 @@ public class Simbolos {
   public static final int id = 16;
   public static final int igual_relacional = 33;
   public static final int reservada_console = 18;
-  public static final int DEDENT = 60;
   public static final int reservada_graficabarras = 47;
   public static final int reservada_string = 12;
   public static final int reservada_while = 39;
@@ -66,7 +65,6 @@ public class Simbolos {
   public static final int comentario = 5;
   public static final int open_square_brackets = 53;
   public static final int reservada_bool = 15;
-  public static final int INDENT = 59;
   public static final int reservada_main = 2;
   public static final int dot = 20;
   public static final String[] terminalNames = new String[] {
@@ -128,9 +126,7 @@ public class Simbolos {
   "coma",
   "reservada_definirglobales",
   "dollar",
-  "reservada_newvalor",
-  "INDENT",
-  "DEDENT"
+  "reservada_newvalor"
   };
 }
 
