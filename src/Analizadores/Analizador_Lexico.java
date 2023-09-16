@@ -744,7 +744,7 @@ public class Analizador_Lexico implements java_cup.runtime.Scanner {
   private void zzDoEOF() throws java.io.IOException {
     if (!zzEOFDone) {
       zzEOFDone = true;
-        System.out.println("Llegamos al final de esta mierda");
+        System.out.println("Llegamos al final del lexico");
     //System.out.println(TablaEL.toString());
   yyclose();
     }

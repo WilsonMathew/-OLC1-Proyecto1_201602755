@@ -16,7 +16,7 @@ import java.util.LinkedList;
 %}
 
 %eof{
-    System.out.println("Llegamos al final de esta mierda");
+    System.out.println("Llegamos al final del lexico");
     //System.out.println(TablaEL.toString());
 %eof}
 
@@ -44,6 +44,7 @@ DIGIT                   = [0-9]
 numero                  = {DIGIT}+(\.{DIGIT}+)?([eE][+-]?{DIGIT}+)?
 id                      = [a-zA-Z_][a-zA-Z0-9_]*
 string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
+char_er                 = '[^']'
 
  
 //---> Estados
@@ -291,6 +292,10 @@ string_literal          = ("\""[^\n\"]*"\"")|(''[^\n\']*'')
 <YYINITIAL> {string_literal}    {
                                 tabla_tokens.add(new Tokens(yytext() , "string_literal" ,yyline ,yycolumn)); 
                                 return new Symbol(Simbolos.string_literal, yycolumn, yyline, yytext());
+                                }
+<YYINITIAL> char_er             {
+                                tabla_tokens.add(new Tokens(yytext() , "char_er" ,yyline ,yycolumn)); 
+                                return new Symbol(Simbolos.char_er, yycolumn, yyline, yytext());
                                 }
 
 //---> Espacios 

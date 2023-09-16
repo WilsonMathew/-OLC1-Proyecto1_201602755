@@ -70,8 +70,8 @@ parser code
     public void syntax_error(Symbol s){
 
         String lexema = s.value.toString();
-        int fila = s.right;
-        int columna = s.left;
+        int fila = s.right+1;
+        int columna = s.left+1;
 
         System.out.println("!!! Error Sintactico Recuperado");
         System.out.println("\t\tLexema: " + lexema);
@@ -86,8 +86,8 @@ parser code
     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception
     {
         String lexema = s.value.toString();
-        int fila = s.right;
-        int columna = s.left;
+        int fila = s.right+1;
+        int columna = s.left+1;
 
         System.out.println("!!! Error Sintactico, Panic Mode");
         System.out.println("\t\tLexema: " + lexema);
@@ -121,7 +121,7 @@ terminal String reservada_graficapie, reservada_graficabarras;
 terminal String reservada_titulo, reservada_ejex, reservada_valores, reservada_tituloy, reservada_titulox ;
 terminal String open_square_brackets, close_square_brackets, coma;
 terminal String reservada_definirglobales;
-terminal String dollar, reservada_newvalor;
+terminal String dollar, reservada_newvalor, char_er;
 
 
 //---> declaracion de NO terminales
@@ -139,13 +139,14 @@ non terminal String JSON_VAL;
 non terminal String LST_STRING;
 non terminal String LE;
 non terminal String DECLA_LE,ELSE_IFSTM;
-non terminal String BREAK_STM;
+non terminal String BREAK_STM, LSTS_STRING;
 
 //---> precedencia de menor a mayor
+precedence left and, or, not;
 precedence left Simbolo_mas, Simbolo_menos;
 precedence left Simbolo_multi, Simbolo_divi;
 precedence left mayor , menor, mayor_igual, menor_igual, igual_relacional, distinto;
-precedence left and, or, not;
+
 start with INICIO;
 
 /*------------------------- 3ra Area: Reglas Semanticas -------------------------*/
@@ -199,17 +200,23 @@ BREAK_STM ::= reservada_break:a punto_coma    {:RESULT = a; :}
 //---> Declaracion y asignacion de variables
 DECLARATION_STMT ::= TIPOS_DATOS id:a punto_coma                        {: RESULT = a + " = None"+ "\n"; :}
                 | TIPOS_DATOS id:a igual ME:b punto_coma                {: RESULT = a + " = " + b + "\n"; :}
-                | TIPOS_DATOS id:a igual LST_STRING:b punto_coma        {: RESULT = a + " = " + b + "\n"; :}              
+                | TIPOS_DATOS id:a igual LSTS_STRING:b punto_coma        {: RESULT = a + " = " + b + "\n"; :}              
 ;
 
 // Declaracion logica
 DECLA_LE ::= reservada_bool id:a igual LE:b punto_coma                 {: RESULT = a + " = " + b + "\n"; :}                              
     ;
 
+LSTS_STRING ::= LSTS_STRING:a LST_STRING:b  {: RESULT = a + b; :}
+    | LST_STRING:a                          {: RESULT = a ; :}
+    ;
+   
 // Declaracion con string literales y ids
-LST_STRING ::= LST_STRING Simbolo_mas string_literal:a          {: RESULT = " + " + a ; :} 
-            |  LST_STRING Simbolo_mas id:a                      {: RESULT = " + " + a ; :}
-            |  string_literal:a                                 {: RESULT = a; :}
+LST_STRING ::= LST_STRING:a Simbolo_mas string_literal:b          {: RESULT = a + " + " + b ; :} 
+            |  LST_STRING:a Simbolo_mas id:b                      {: RESULT = a + " + " + b ; :}
+            |  LST_STRING:a Simbolo_mas char_er:b                 {: RESULT = a + " + " + b ; :}
+            |  string_literal:a                                   {: RESULT = a; :}
+            |  char_er:a                                          {: RESULT = a; :}
     ;
 
 TIPOS_DATOS ::= reservada_int
@@ -217,7 +224,6 @@ TIPOS_DATOS ::= reservada_int
     | reservada_double
     | reservada_char 
     ;
-
 
 ME ::= ME:a E:b {: RESULT = a + b; :}
     | E:a     {: RESULT = a; :}
@@ -233,7 +239,7 @@ E::=  E:a Simbolo_mas E:b   {: RESULT = a + " + " + b; :}
 
 //---> Sentencias imprimir 
 PRINT_STMT::= reservada_console dot reservada_write open_pare ARGS:a close_pare punto_coma {: RESULT = "print(" + a + ")" + "\n"; :}
-             //reservada_console dot reservada_write open_pare LE:a close_pare punto_coma {: RESULT = "print(" + a + ")" + "\n"; :}
+            //| reservada_console dot reservada_write open_pare LE:a close_pare punto_coma    {: RESULT = "print(" + a + ")" + "\n"; :}
     ;
 
 ARGS ::= ARGS:a ARG:b     {: RESULT = a + b; :}

@@ -14,6 +14,8 @@ void main (){
     String concatenacion_2 = "Concatenar con variables" + concatenacion;
 	bool flag2 = 6 > 9898;
     bool flag = 5 > 9 || 7 > 10 && 20 > 12;
+	char x = 'a';
+	
 	
     //console.write(5 > 9 || 7 > 10 && 20 > 12 + x + concatenacion + "Esto es un write"+ 48 * 7 - 5 * 20 + True || False+ x == 10);
 

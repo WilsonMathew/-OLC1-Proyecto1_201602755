@@ -8,6 +8,7 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class Simbolos {
   /* terminals */
+  public static final int char_er = 59;
   public static final int reservada_tituloy = 51;
   public static final int distinto = 34;
   public static final int reservada_titulox = 52;
@@ -126,7 +127,8 @@ public class Simbolos {
   "coma",
   "reservada_definirglobales",
   "dollar",
-  "reservada_newvalor"
+  "reservada_newvalor",
+  "char_er"
   };
 }
 

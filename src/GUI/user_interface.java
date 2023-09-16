@@ -34,6 +34,8 @@ import org.jfree.data.general.DefaultPieDataset;
  */
 public class user_interface extends javax.swing.JFrame {
 
+    NumeroLinea numeroLinea;
+    NumeroLinea numeroLinea2;
     /**
      * Creates new form user_interface
      */
@@ -44,6 +46,14 @@ public class user_interface extends javax.swing.JFrame {
         btn_tog.setText("StatPy");
         this.getContentPane().setBackground( Color.yellow );
         jButton2.setVisible(false);
+        
+        
+        numeroLinea = new NumeroLinea(text_entrada);
+        jScrollPane3.setRowHeaderView(numeroLinea);
+        
+        numeroLinea2 = new NumeroLinea(text_salida);
+        jScrollPane1.setRowHeaderView(numeroLinea2);
+        
     }
 
     /**
@@ -62,10 +72,12 @@ public class user_interface extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         text_entrada = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        text_salida = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        salida_errores_sin = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text_salida = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         open_file_menu = new javax.swing.JMenuItem();
@@ -80,8 +92,7 @@ public class user_interface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROYECTO 1");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(2147483647, 900));
-        setPreferredSize(new java.awt.Dimension(1200, 1000));
+        setPreferredSize(new java.awt.Dimension(1200, 1200));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Entrada:");
@@ -108,13 +119,6 @@ public class user_interface extends javax.swing.JFrame {
             }
         });
 
-        text_salida.setEditable(false);
-        text_salida.setBackground(new java.awt.Color(51, 51, 51));
-        text_salida.setColumns(20);
-        text_salida.setForeground(new java.awt.Color(255, 255, 255));
-        text_salida.setRows(5);
-        jScrollPane1.setViewportView(text_salida);
-
         jButton2.setText("piechart");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +133,19 @@ public class user_interface extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        salida_errores_sin.setBackground(new java.awt.Color(0, 102, 102));
+        salida_errores_sin.setColumns(20);
+        salida_errores_sin.setForeground(new java.awt.Color(255, 255, 255));
+        salida_errores_sin.setRows(5);
+        jScrollPane2.setViewportView(salida_errores_sin);
+
+        text_salida.setEditable(false);
+        text_salida.setBackground(new java.awt.Color(102, 102, 102));
+        text_salida.setColumns(20);
+        text_salida.setForeground(new java.awt.Color(255, 255, 255));
+        text_salida.setRows(5);
+        jScrollPane1.setViewportView(text_salida);
 
         jMenuBar1.setMaximumSize(new java.awt.Dimension(98, 300));
 
@@ -202,31 +219,39 @@ public class user_interface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btn_tog)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label_analyzer)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                            .addComponent(jButton1)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btn_tog)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label_analyzer)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                                    .addComponent(jButton1)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(596, 596, 596))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(136, 136, 136)
+                                        .addComponent(jButton3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(64, 64, 64)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,11 +269,13 @@ public class user_interface extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
-                .addGap(389, 389, 389))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(270, 270, 270))
         );
 
         pack();
@@ -470,6 +497,9 @@ public class user_interface extends javax.swing.JFrame {
                 // Reseteando variables globales 
                 parser.tabla_globales.clear();
                 parser.python.clear();
+                salida_errores_sin.setText(parser.TablaES.toString());
+                System.out.println(parser.TablaES.toString());
+                parser.TablaES.clear();
                 
             } catch (Exception e) {
 
@@ -577,6 +607,7 @@ public class user_interface extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         text_salida.setText("");
+        salida_errores_sin.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void save_general(String path){
@@ -1051,9 +1082,11 @@ public class user_interface extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel label_analyzer;
     private javax.swing.JMenuItem open_file_menu;
+    private javax.swing.JTextArea salida_errores_sin;
     private javax.swing.JMenuItem save_as_menu;
     private javax.swing.JMenuItem save_menu;
     private javax.swing.JTextPane text_entrada;
