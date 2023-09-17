@@ -42,6 +42,7 @@ public class user_interface extends javax.swing.JFrame {
     public user_interface() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         btn_tog.setSelected(true);
         btn_tog.setText("StatPy");
         this.getContentPane().setBackground( Color.yellow );

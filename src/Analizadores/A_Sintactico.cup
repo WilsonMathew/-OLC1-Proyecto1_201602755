@@ -320,6 +320,9 @@ DO_STMT ::= reservada_do open_brace STMSLIST:a close_brace reservada_while open_
 //---> Sentencias SWITCH reservada_switch, reservada_case, reservada_break;
 SWITCH_STMT ::= reservada_switch open_pare id:a close_pare open_brace CASE_LIST:b DEFAULT_CASE:c  close_brace
         {: RESULT = "def switch(case, " + a + "): \n" + "switcher = {\n" + b + c + "} \n"   ; :}
+        |
+        reservada_switch open_pare id:a close_pare open_brace CASE_LIST:b close_brace
+        {: RESULT = "def switch(case, " + a + "): \n" + "switcher = {\n" + b + "} \n"   ; :}
     ; 
 
 CASE_LIST ::= CASE_LIST:a CASE_STATEMENT:b      {:RESULT = a + b; :}

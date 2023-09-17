@@ -25,6 +25,10 @@ void main (){
                 j = j + 1;
                 console.write("esto es un while dentro de un if");
                 if (j == 10) {
+
+                    for (int f = 5; f > 10 ; f++){
+                        console.write("XD");
+                    }
                     break;
                 }
             }
@@ -40,7 +44,7 @@ void main (){
         } else if ( contador == 7){
             console.write ("Dos más que la mitad");
 
-            if (contador == 8){
+            if (contador  == 8){
                 console.write("Ya casi llegamos");
             }
         }
@@ -77,7 +81,28 @@ void main (){
 
     }
 
-     void DefinirGlobales(){
+   switch (precio){
+
+        case 1:
+            console.write("Este es el caso número 1");
+            break;
+
+        case 2:
+            if ( precio == 2 || precio == 68){
+                    precio = 68;
+
+                    do{
+                        console.write ("Esto es un do while simple");
+                    }while (precio != 68);
+            }
+
+       case "H":
+           console.write("Caso 3");
+
+    }
+
+/*
+    void DefinirGlobales(){
     		string TItulo1 = ${NewValor, "Prueba1.json", "titulo"};
     		double matematica = ${NewValor, "Prueba1.json", "val1"};
     		double estadistica6 = 100.00;
@@ -114,8 +139,9 @@ void main (){
 
     console.write("Felicidades, haz llegado al final y tu archivo no trono :)");
 
-
+*/
     // Final
+
 }
 
 /* Comentario
