@@ -25,10 +25,6 @@ void main (){
                 j = j + 1;
                 console.write("esto es un while dentro de un if");
                 if (j == 10) {
-
-                    for (int f = 5; f > 10 ; f++){
-                        console.write("XD");
-                    }
                     break;
                 }
             }
@@ -81,65 +77,9 @@ void main (){
 
     }
 
-   switch (precio){
-
-        case 1:
-            console.write("Este es el caso número 1");
-            break;
-
-        case 2:
-            if ( precio == 2 || precio == 68){
-                    precio = 68;
-
-                    do{
-                        console.write ("Esto es un do while simple");
-                    }while (precio != 68);
-            }
-
-       case "H":
-           console.write("Caso 3");
-
-    }
-
-/*
-    void DefinirGlobales(){
-    		string TItulo1 = ${NewValor, "Prueba1.json", "titulo"};
-    		double matematica = ${NewValor, "Prueba1.json", "val1"};
-    		double estadistica6 = 100.00;
-    		double matematica5 = 35.3;
-    		double lfp = 68.9;
-    		String otraclase = "Otros";
-    		String tituloejex = "Notas";
-    		String tituloejey = "Promedios";
-    		String social = "social humanistica";
-    }
-
-    void GraficaBarras(){
-        string Titulo = titulo1;
-        string [] Ejex = { ${NewValor, "Prueba1.json", "ejex1"} , ${NewValor, "Prueba2.json", "ejex2"},
-        social, ${NewValor, "Prueba2.json", "ejex4"}, otraclase
-        };
-        double [] Valores= {matematica5, 80.5, ${NewValor, "Prueba1.json", "val3"},
-        estadistica6, ${NewValor, "Prueba1.json", "val1"}
-        };
-        string TituloX= tituloejex;
-        string TituloY= tituloejey;
-    }
-
-    void GraficaPie(){
-        string Titulo = ${NewValor, "Prueba2.json", "titulo"};
-
-        string [] Ejex = { ${NewValor, "Prueba1.json", "ejex1"} , ${NewValor, "Prueba2.json", "ejex2"},
-        social, ${NewValor, "Prueba1.json", "ejex3"}, otraclase
-        };
-        double [] Valores= {lfp, 17.5, ${NewValor, "Prueba1.json", "val3"},
-        84.21, ${NewValor, "Prueba1.json", "val4"}
-        };
-    }
-
     console.write("Felicidades, haz llegado al final y tu archivo no trono :)");
 
-*/
+    
     // Final
 
 }
